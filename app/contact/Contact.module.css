@@ -1,0 +1,103 @@
+.page {
+  background: hsl(0 0% 4%);
+}
+
+.headerSection {
+  background: hsl(0 0% 4%);
+  padding: 140px 0 60px;
+  border-bottom: 1px solid hsl(0 0% 15%);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.colTitle {
+  font-size: 1.25rem;
+  color: hsl(0 0% 96%);
+}
+
+.infoItem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius);
+  background: rgba(212, 128, 20, 0.12);
+  color: hsl(31 95% 44%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.infoItem strong {
+  display: block;
+  font-size: 0.875rem;
+  color: hsl(0 0% 96%);
+  margin-bottom: 2px;
+}
+
+.infoItem p, .infoItem a {
+  font-size: 0.9375rem;
+  color: hsl(0 0% 64%);
+  text-decoration: none;
+}
+
+.infoItem a:hover {
+  color: hsl(31 95% 44%);
+}
+
+.mapWrap {
+  width: 100%;
+}
+
+.formCol {}
+
+.formTitle {
+  font-size: 1.5rem;
+  color: hsl(0 0% 96%);
+  margin-bottom: 6px;
+}
+
+.formDesc {
+  font-size: 0.9375rem;
+  color: hsl(0 0% 64%);
+  margin-bottom: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.successState {
+  text-align: center;
+  padding: 48px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.successIcon {
+  color: hsl(31 95% 44%);
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+}

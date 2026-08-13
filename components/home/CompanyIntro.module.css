@@ -1,0 +1,86 @@
+.section { background: var(--white); }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.imageCol {}
+
+.imageStack {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--shadow-gold);
+}
+
+.badgeValue {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.badgeLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--navy);
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.strengths {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: -8px;
+}
+
+.strengthItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9375rem;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
+
+.checkIcon {
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .badge {
+    right: 20px;
+    bottom: -16px;
+  }
+}

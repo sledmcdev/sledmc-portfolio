@@ -1,0 +1,5 @@
+{
+  "/page": "app/page.js",
+  "/job-seekers/find-jobs/page": "app/job-seekers/find-jobs/page.js",
+  "/organizations/partner-with-us/page": "app/organizations/partner-with-us/page.js"
+}

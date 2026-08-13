@@ -1,0 +1,90 @@
+.section {
+  background: hsl(0 0% 4%);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  background: hsl(0 0% 7%);
+  border-radius: var(--radius);
+  padding: 32px;
+  border: 1px solid hsl(0 0% 15%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: var(--transition);
+}
+
+.card:hover {
+  border-color: hsl(31 95% 44%);
+  transform: translateY(-2px);
+}
+
+.cardTop {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: hsl(0 0% 96%);
+  line-height: 1.2;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(212, 128, 20, 0.12);
+  border-radius: var(--radius);
+  color: hsl(31 95% 44%);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  border: 1px solid rgba(212, 128, 20, 0.3);
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.storySection {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.storySectionLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: hsl(31 95% 44%);
+}
+
+.storySection p {
+  font-size: 0.875rem;
+  color: hsl(0 0% 64%);
+  line-height: 1.6;
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+}

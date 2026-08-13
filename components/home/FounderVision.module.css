@@ -1,0 +1,77 @@
+.section {
+  background: hsl(0 0% 4%);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  background: hsl(0 0% 7%);
+  border: 1px solid hsl(0 0% 15%);
+  padding: 40px;
+}
+
+.message p {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  line-height: 1.4;
+  color: hsl(0 0% 96%);
+}
+
+.portrait {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid hsl(0 0% 15%);
+}
+
+.portraitInfo strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+  color: hsl(0 0% 96%);
+}
+
+.portraitInfo span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: hsl(31 95% 44%);
+  letter-spacing: 0.15em;
+}
+
+.philosophy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 24px;
+  background: hsl(0 0% 9%);
+  border-left: 2px solid hsl(31 95% 44%);
+}
+
+.philLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: hsl(31 95% 44%);
+}
+
+.philosophy p {
+  font-size: 1.125rem;
+  color: hsl(0 0% 80%);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+  .imageCol { display: none; }
+}
