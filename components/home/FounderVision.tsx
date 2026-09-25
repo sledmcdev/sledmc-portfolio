@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import PlaceholderImage from "@/components/shared/PlaceholderImage";
 import { FOUNDER } from "@/lib/data";
+import content from "@/data/pages/home/founder-vision.json";
 import styles from "./FounderVision.module.css";
 
 export default function FounderVision() {
@@ -15,13 +16,13 @@ export default function FounderVision() {
             viewport={{ once: true }}
             className={styles.card}
           >
-            <div className="mono-eyebrow" style={{ marginBottom: 12 }}>FOUNDER&apos;S VISION</div>
+            <div className="mono-eyebrow" style={{ marginBottom: 12 }}>{content.eyebrow}</div>
             <blockquote className={styles.message}>
-              <p className="serif-quote">&ldquo;{FOUNDER.message}&rdquo;</p>
+              <p className="serif-quote">{content.quoteOpen}{FOUNDER.message}{content.quoteClose}</p>
             </blockquote>
             
             <div className={styles.portrait}>
-              <PlaceholderImage label="Founder Portrait" width={56} height={56} style={{ borderRadius: 2, minHeight: "unset" }} />
+              <PlaceholderImage label={content.portraitLabel} width={56} height={56} style={{ borderRadius: 2, minHeight: "unset" }} />
               <div className={styles.portraitInfo}>
                 <strong>{FOUNDER.name}</strong>
                 <span>{FOUNDER.designation}</span>
@@ -29,7 +30,7 @@ export default function FounderVision() {
             </div>
 
             <div className={styles.philosophy}>
-              <span className={styles.philLabel}>OUR PHILOSOPHY</span>
+              <span className={styles.philLabel}>{content.philosophyLabel}</span>
               <p className="serif-quote">{FOUNDER.philosophy}</p>
             </div>
           </motion.div>
@@ -41,7 +42,7 @@ export default function FounderVision() {
             transition={{ delay: 0.2 }}
             className={styles.imageCol}
           >
-            <PlaceholderImage label="Founder Portrait — High Resolution Photography" height={520} style={{ borderRadius: 2 }} />
+            <PlaceholderImage label={content.imageLabel} height={520} style={{ borderRadius: 2 }} />
           </motion.div>
         </div>
       </div>

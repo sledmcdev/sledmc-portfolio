@@ -1,0 +1,44 @@
+[
+  {
+    "category": "CV & Applications",
+    "title": "How to Write a CV That Gets Noticed",
+    "description": "A practical guide to crafting a compelling CV that stands out in a competitive job market.",
+    "readTime": "5 min read",
+    "icon": "FileText"
+  },
+  {
+    "category": "Interview Preparation",
+    "title": "The Ultimate Interview Preparation Guide",
+    "description": "Everything you need to prepare for interviews — from common questions to strategic answers.",
+    "readTime": "8 min read",
+    "icon": "Mic"
+  },
+  {
+    "category": "Career Advice",
+    "title": "Navigating a Career Change Successfully",
+    "description": "Expert advice for professionals considering a move into a new industry or role type.",
+    "readTime": "6 min read",
+    "icon": "Compass"
+  },
+  {
+    "category": "Salary Guides",
+    "title": "Salary Benchmarking — Know Your Worth",
+    "description": "Understanding market salary ranges across industries to ensure you negotiate the right offer.",
+    "readTime": "4 min read",
+    "icon": "DollarSign"
+  },
+  {
+    "category": "Professional Development",
+    "title": "Building Your Professional Brand Online",
+    "description": "How to optimise your LinkedIn profile and build a strong professional presence digitally.",
+    "readTime": "7 min read",
+    "icon": "Linkedin"
+  },
+  {
+    "category": "Industry Trends",
+    "title": "Emerging Roles in Technology for 2025",
+    "description": "An overview of the fastest-growing roles in tech and the skills that will be most in demand.",
+    "readTime": "6 min read",
+    "icon": "TrendingUp"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "name": "IT & Technology",
+    "icon": "Monitor",
+    "color": "#0052CC"
+  },
+  {
+    "name": "Engineering",
+    "icon": "Settings",
+    "color": "#FF5630"
+  },
+  {
+    "name": "Finance & Accounting",
+    "icon": "DollarSign",
+    "color": "#00875A"
+  },
+  {
+    "name": "Healthcare",
+    "icon": "Heart",
+    "color": "#DE350B"
+  },
+  {
+    "name": "Construction",
+    "icon": "HardHat",
+    "color": "#FF8B00"
+  },
+  {
+    "name": "Manufacturing",
+    "icon": "Factory",
+    "color": "#5243AA"
+  },
+  {
+    "name": "Hospitality",
+    "icon": "UtensilsCrossed",
+    "color": "#00B8D9"
+  },
+  {
+    "name": "Sales & Marketing",
+    "icon": "Megaphone",
+    "color": "#E91E63"
+  },
+  {
+    "name": "Logistics",
+    "icon": "Truck",
+    "color": "#795548"
+  },
+  {
+    "name": "Banking & Finance",
+    "icon": "Building2",
+    "color": "#1565C0"
+  }
+]

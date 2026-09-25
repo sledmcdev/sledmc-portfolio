@@ -1,0 +1,13 @@
+{
+  "label": "Testimonials",
+  "title": "What Our Clients & Candidates Say",
+  "tabs": [
+    { "id": "employer", "label": "Employer Stories", "carouselLabel": "Employer testimonials" },
+    { "id": "candidate", "label": "Candidate Stories", "carouselLabel": "Candidate testimonials" }
+  ],
+  "carouselRoleDescription": "carousel",
+  "cardAriaLabel": "Testimonial from {name}",
+  "dotAriaLabel": "Go to testimonial {n}",
+  "prevAriaLabel": "Previous testimonial",
+  "nextAriaLabel": "Next testimonial"
+}

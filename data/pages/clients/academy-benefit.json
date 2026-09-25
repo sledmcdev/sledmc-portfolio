@@ -1,0 +1,15 @@
+{
+  "badge": { "icon": "GraduationCap", "label": "EMPLOYER ADVANTAGE" },
+  "title": "Why SLEDMC Academy Candidates Outperform",
+  "description": {
+    "before": "Traditional international hiring suffers from culture shock, language barriers, and skill mismatches. SLEDMC Academy solves this by preparing candidates ",
+    "emphasis": "before presentation",
+    "after": ": candidates arrive with workplace language fluency, European safety awareness, verified trade skills, and realistic expectations of worker rights and responsibilities."
+  },
+  "itemIcon": "CheckCircle2",
+  "items": [
+    { "title": "Lower Early Turnover", "desc": "Candidates are pre-oriented to European workplace expectations." },
+    { "title": "Faster Onboarding", "desc": "Language & safety training reduces operational ramp-up time." },
+    { "title": "Legal Integrity", "desc": "All documents, police clearances, and trade certificates 100% verified." }
+  ]
+}

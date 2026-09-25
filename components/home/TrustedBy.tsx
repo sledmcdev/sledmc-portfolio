@@ -1,9 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import PlaceholderImage from "@/components/shared/PlaceholderImage";
+import Marquee from "@/components/shared/Marquee";
+import content from "@/data/pages/home/trusted-by.json";
 import styles from "./TrustedBy.module.css";
-
-const LOGOS = [1, 2, 3, 4, 5, 6, 7, 8];
 
 export default function TrustedBy() {
   return (
@@ -15,18 +15,21 @@ export default function TrustedBy() {
           viewport={{ once: true }}
           className={styles.label}
         >
-          Trusted by leading organisations
+          {content.label}
         </motion.p>
-        <div className={styles.logoTrack}>
-          <div className={styles.logoInner}>
-            {[...LOGOS, ...LOGOS].map((n, i) => (
-              <div key={i} className={styles.logoItem}>
-                <PlaceholderImage label={`Client Logo ${n}`} width={120} height={48} style={{ borderRadius: 8, border: "none", background: "transparent" }} />
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
+      <Marquee duration={35} gap={24}>
+        {content.logos.map((logo) => (
+          <div key={logo} className={styles.logoItem}>
+            <PlaceholderImage
+              label={logo}
+              width={140}
+              height={48}
+              style={{ border: "none", background: "transparent", padding: 0, gap: 6 }}
+            />
+          </div>
+        ))}
+      </Marquee>
     </section>
   );
 }

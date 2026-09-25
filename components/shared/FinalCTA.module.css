@@ -1,30 +1,34 @@
 .section {
-  background: hsl(0 0% 4%);
+  background: var(--bg-color);
   padding: 100px 0;
+  border-top: 1px solid var(--border-color);
 }
 
 .box {
-  background: hsl(0 0% 7%);
-  border: 1px solid hsl(0 0% 15%);
-  padding: 88px 48px;
+  background: var(--card-color);
+  border: 1px solid var(--border-color);
+  padding: 96px 64px clamp(150px, 17vw, 250px);
   text-align: center;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
+/* Sized to the box (not the viewport) and inset on every side so it never clips */
 .watermark {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: clamp(8rem, 25vw, 24rem);
+  left: 48px;
+  right: 48px;
+  bottom: 40px;
+  text-align: center;
+  font-size: clamp(4.5rem, 13vw, 12rem);
   font-weight: 900;
-  color: hsl(0 0% 100%);
-  opacity: 0.035;
+  color: var(--fg-color);
+  opacity: 0.06;
   user-select: none;
   pointer-events: none;
-  line-height: 0.8;
-  letter-spacing: -0.05em;
+  line-height: 1;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
@@ -38,7 +42,7 @@
 .title {
   font-size: clamp(2.2rem, 4vw, 3.6rem);
   font-weight: 900;
-  color: hsl(0 0% 96%);
+  color: var(--fg-color);
   line-height: 0.95;
   letter-spacing: -0.04em;
   margin-bottom: 20px;
@@ -46,7 +50,7 @@
 
 .desc {
   font-size: 1.125rem;
-  color: hsl(0 0% 64%);
+  color: var(--muted-fg);
   line-height: 1.7;
   margin-bottom: 40px;
 }
@@ -59,7 +63,8 @@
 }
 
 @media (max-width: 768px) {
-  .box { padding: 48px 24px; }
+  .box { padding: 56px 24px 120px; }
+  .watermark { left: 24px; right: 24px; bottom: 24px; font-size: 16vw; }
   .buttons { flex-direction: column; }
-  .buttons .btn { width: 100%; }
+  .buttons :global(.btn) { width: 100%; white-space: normal; text-align: center; }
 }

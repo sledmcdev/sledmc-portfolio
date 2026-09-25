@@ -1,0 +1,9 @@
+{
+  "eyebrow": "BUILD YOUR TEAM",
+  "title": "Build Your European Workforce With SLEDMC.",
+  "description": "Connect with our team to secure pre-trained, compliant, and motivated international professionals.",
+  "buttons": [
+    { "label": "Request Workers", "href": "#request-form", "variant": "primary", "icon": "Send" },
+    { "label": "Become a Partner", "href": "#partner-network", "variant": "secondary", "icon": "Users" }
+  ]
+}

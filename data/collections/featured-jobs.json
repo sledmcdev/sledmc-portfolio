@@ -1,0 +1,62 @@
+[
+  {
+    "id": "job-1",
+    "title": "Senior Software Engineer",
+    "location": "London, UK",
+    "type": "Permanent",
+    "experience": "5+ Years",
+    "industry": "IT & Technology",
+    "description": "We are seeking an experienced Senior Software Engineer to join a fast-growing technology company. You will architect and deliver scalable solutions.",
+    "salary": "Competitive"
+  },
+  {
+    "id": "job-2",
+    "title": "Finance Manager",
+    "location": "Dubai, UAE",
+    "type": "Permanent",
+    "experience": "7+ Years",
+    "industry": "Finance & Accounting",
+    "description": "A leading financial services organisation requires an experienced Finance Manager to oversee financial planning, reporting, and compliance.",
+    "salary": "Competitive"
+  },
+  {
+    "id": "job-3",
+    "title": "Civil Engineering Lead",
+    "location": "Nairobi, Kenya",
+    "type": "Contract",
+    "experience": "8+ Years",
+    "industry": "Construction",
+    "description": "A major infrastructure project requires an experienced Civil Engineering Lead to manage a team of engineers through design and delivery phases.",
+    "salary": "Competitive"
+  },
+  {
+    "id": "job-4",
+    "title": "HR Business Partner",
+    "location": "Remote",
+    "type": "Permanent",
+    "experience": "4+ Years",
+    "industry": "Human Resources",
+    "description": "A growing multinational requires an experienced HR Business Partner to support business leaders across multiple departments.",
+    "salary": "Competitive"
+  },
+  {
+    "id": "job-5",
+    "title": "Marketing Director",
+    "location": "Lagos, Nigeria",
+    "type": "Permanent",
+    "experience": "10+ Years",
+    "industry": "Sales & Marketing",
+    "description": "An established consumer brand requires a strategic Marketing Director to lead brand growth, digital transformation, and regional marketing teams.",
+    "salary": "Competitive"
+  },
+  {
+    "id": "job-6",
+    "title": "Logistics Operations Manager",
+    "location": "Accra, Ghana",
+    "type": "Permanent",
+    "experience": "6+ Years",
+    "industry": "Logistics",
+    "description": "A leading logistics provider requires an Operations Manager to oversee end-to-end supply chain operations across a growing regional network.",
+    "salary": "Competitive"
+  }
+]

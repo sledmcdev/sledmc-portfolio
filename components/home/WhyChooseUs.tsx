@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Award, Network, UserCheck, ShieldCheck, Zap, Handshake } from "lucide-react";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { WHY_CHOOSE_US } from "@/lib/data";
+import content from "@/data/pages/home/why-choose-us.json";
 import styles from "./WhyChooseUs.module.css";
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -16,14 +17,12 @@ export default function WhyChooseUs() {
         <div className={styles.inner}>
           <div className={styles.left}>
             <SectionHeader
-              label="Why Choose Us"
-              title="What Sets Us Apart"
-              subtitle="We don't just fill vacancies — we build relationships that create long-term value for every candidate and every organisation we work with."
+              label={content.label}
+              title={content.title}
+              subtitle={content.subtitle}
             />
             <div className={styles.highlightBox}>
-              <p>
-                &ldquo;Our mission is simple: to make every placement count — not just for today, but for the long term.&rdquo;
-              </p>
+              <p>{content.highlightQuote}</p>
             </div>
           </div>
           <div className={styles.right}>
@@ -32,10 +31,10 @@ export default function WhyChooseUs() {
               return (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: (i % 2) * 0.1 + Math.floor(i / 2) * 0.08 }}
                   className={styles.item}
                 >
                   <div className={styles.iconWrap}>

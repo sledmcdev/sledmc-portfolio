@@ -1,0 +1,9 @@
+{
+  "eyebrow": "START YOUR PREPARATION",
+  "title": "Your European Career Starts With Preparation.",
+  "description": "Don't just look for a job in Europe — prepare yourself for long-term career success.",
+  "buttons": [
+    { "label": "Join SLEDMC Academy", "href": "/academy", "variant": "primary", "icon": "GraduationCap" },
+    { "label": "Register as Candidate", "href": "#assessment-form", "variant": "secondary", "icon": "ArrowRight" }
+  ]
+}

@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import PlaceholderImage from "@/components/shared/PlaceholderImage";
 import { COMPANY } from "@/lib/data";
+import content from "@/data/pages/home/hero.json";
 import styles from "./HeroSection.module.css";
 
 export default function HeroSection() {
   return (
-    <section className={`grid-nexus ${styles.hero}`} aria-label="Hero">
+    <section className={`grid-nexus ${styles.hero}`} aria-label={content.ariaLabel}>
       <div className={`container ${styles.inner}`}>
         {/* Text Content */}
         <div className={styles.content}>
@@ -18,7 +19,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6 }}
             className="mono-eyebrow"
           >
-            SPECIALIST RECRUITMENT AGENCY
+            {content.eyebrow}
           </motion.div>
 
           <motion.h1
@@ -27,7 +28,9 @@ export default function HeroSection() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             className={styles.headline}
           >
-            Connecting <span style={{ color: "var(--amber)" }}>elite talent</span> with visionary organizations.
+            {content.headline.before}
+            <span style={{ color: "var(--amber)" }}>{content.headline.highlight}</span>
+            {content.headline.after}
           </motion.h1>
 
           <motion.p
@@ -46,14 +49,12 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className={styles.ctas}
           >
-            <Link href="/organizations" className={`btn btn-primary btn-lg ${styles.ctaCard}`}>
-              <span>I&apos;m Looking for Talent</span>
-              <ArrowUpRight size={18} />
-            </Link>
-            <Link href="/job-seekers" className={`btn btn-secondary btn-lg ${styles.ctaCard}`}>
-              <span>I&apos;m Looking for a Job</span>
-              <ArrowUpRight size={18} />
-            </Link>
+            {content.ctas.map((cta) => (
+              <Link key={cta.href} href={cta.href} className={`btn btn-${cta.variant} btn-lg ${styles.ctaCard}`}>
+                <span>{cta.label}</span>
+                <ArrowUpRight size={18} />
+              </Link>
+            ))}
           </motion.div>
 
           {/* Quick Stats */}
@@ -63,14 +64,9 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className={styles.quickStats}
           >
-            {[
-              { val: "15+", label: "YEARS EXP" },
-              { val: "500+", label: "PLACEMENTS" },
-              { val: "100+", label: "ORGANIZATIONS" },
-              { val: "20+", label: "SECTORS" },
-            ].map((s) => (
+            {content.quickStats.map((s) => (
               <div key={s.label} className={styles.quickStat}>
-                <span className={styles.quickStatVal}>{s.val}</span>
+                <span className={styles.quickStatVal}>{s.value}</span>
                 <span className={styles.quickStatLabel}>{s.label}</span>
               </div>
             ))}
@@ -85,15 +81,15 @@ export default function HeroSection() {
           className={styles.visual}
         >
           <div className={styles.imageFrame}>
-            <PlaceholderImage label="Cinematic Noir — Recruitment Executive Image" height="100%" style={{ minHeight: 520, borderRadius: 2 }} />
+            <PlaceholderImage label={content.imageLabel} height="100%" style={{ minHeight: 520, borderRadius: 2 }} />
             {/* Floating Amber Metric Card */}
             <motion.div
               className={styles.floatCard}
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
-              <span className={styles.floatMetric}>98%</span>
-              <span className={styles.floatLabel}>RETENTION RATE</span>
+              <span className={styles.floatMetric}>{content.floatCard.metric}</span>
+              <span className={styles.floatLabel}>{content.floatCard.label}</span>
             </motion.div>
           </div>
         </motion.div>

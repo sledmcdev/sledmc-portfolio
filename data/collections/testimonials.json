@@ -1,0 +1,50 @@
+[
+  {
+    "id": "t1",
+    "type": "employer",
+    "name": "Sarah Johnson",
+    "position": "Head of People",
+    "company": "Meridian Holdings",
+    "testimonial": "SLEDMC Recruitment understood our culture from day one. The candidates they presented were not just technically qualified — they were genuinely a great fit. The quality of service has been consistently outstanding."
+  },
+  {
+    "id": "t2",
+    "type": "employer",
+    "name": "Michael Chen",
+    "position": "Chief Operating Officer",
+    "company": "Apex Engineering Group",
+    "testimonial": "We had struggled to find the right technical talent through other agencies. SLEDMC delivered a shortlist of exceptional candidates within two weeks. Their industry expertise made all the difference."
+  },
+  {
+    "id": "t3",
+    "type": "employer",
+    "name": "Rachel Williams",
+    "position": "HR Director",
+    "company": "Pinnacle Financial Services",
+    "testimonial": "SLEDMC has been our recruitment partner for over three years. Their professionalism, speed, and quality of candidates consistently exceed our expectations. I wouldn't hesitate to recommend them."
+  },
+  {
+    "id": "t4",
+    "type": "candidate",
+    "name": "James Okafor",
+    "position": "Senior Software Engineer",
+    "company": "TechStream Global",
+    "testimonial": "I had submitted my CV to several agencies with little response. SLEDMC reached out within a week, understood exactly what I was looking for, and placed me in a role that exceeded my expectations in just 3 weeks."
+  },
+  {
+    "id": "t5",
+    "type": "candidate",
+    "name": "Priya Sharma",
+    "position": "Finance Manager",
+    "company": "Cornerstone Capital",
+    "testimonial": "The level of support throughout the process was exceptional. They helped me prepare for every interview stage, kept me informed at every step, and genuinely cared about finding the right opportunity for me."
+  },
+  {
+    "id": "t6",
+    "type": "candidate",
+    "name": "Daniel Osei",
+    "position": "Project Manager",
+    "company": "BuildCore International",
+    "testimonial": "What set SLEDMC apart was how personally they treated me throughout the process. I never felt like just another CV — they invested real time in understanding my career goals."
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "badge": { "icon": "Truck", "label": "FLAGSHIP PROGRAMME" },
+  "title": "Professional Driver Academy",
+  "description": "Our flagship driver preparation program equips heavy vehicle (C/CE) drivers with comprehensive EU road safety standards, driving/rest time regulations (Tachograph), cargo securing, CMR documentation, and Code 95/CQC certification pathways with authorized partners.",
+  "cta": { "label": "Enroll in Driver Academy", "href": "/contact", "icon": "ArrowUpRight" },
+  "itemIcon": "CheckCircle2",
+  "items": [
+    "EU Road Environment",
+    "Defensive Driving",
+    "Tachograph & Rest Rules",
+    "Cargo Securing & CMR",
+    "Vehicle Safety Checks",
+    "Code 95 Pathway Support"
+  ]
+}

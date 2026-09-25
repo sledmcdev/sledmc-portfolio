@@ -3,23 +3,24 @@ import { motion } from "framer-motion";
 import { Award, ShieldCheck, Trophy, Star } from "lucide-react";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { AWARDS } from "@/lib/data";
+import content from "@/data/pages/home/awards.json";
 import styles from "./AwardsSection.module.css";
 
-const ICONS = [Award, Trophy, Star, ShieldCheck];
+const ICON_MAP: Record<string, React.ElementType> = { Trophy, Award, Star, ShieldCheck };
 
 export default function AwardsSection() {
   return (
     <section className={`section ${styles.section}`}>
       <div className="container">
         <SectionHeader
-          label="Excellence &amp; Trust"
-          title="Awards &amp; Industry Recognition"
-          subtitle="Our commitment to quality, ethics, and service excellence is recognized across the recruitment industry."
+          label={content.label}
+          title={content.title}
+          subtitle={content.subtitle}
           center
         />
-        <div className={styles.grid}>
+        <div className={styles.band}>
           {AWARDS.map((award, i) => {
-            const Icon = ICONS[i % ICONS.length];
+            const Icon = ICON_MAP[content.icons[i % content.icons.length]] || Award;
             return (
               <motion.div
                 key={award.title}
@@ -27,10 +28,10 @@ export default function AwardsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={styles.card}
+                className={styles.award}
               >
-                <div className={styles.iconWrap}>
-                  <Icon size={24} />
+                <div className={styles.medal}>
+                  <Icon size={26} strokeWidth={1.75} />
                 </div>
                 <div className={styles.year}>{award.year}</div>
                 <h3 className={styles.title}>{award.title}</h3>

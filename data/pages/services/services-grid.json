@@ -1,0 +1,11 @@
+{
+  "audienceLabels": {
+    "employer": "For Employers",
+    "candidate": "For Candidates",
+    "both": "For Both"
+  },
+  "cta": {
+    "label": "Inquire Service",
+    "href": "/contact"
+  }
+}

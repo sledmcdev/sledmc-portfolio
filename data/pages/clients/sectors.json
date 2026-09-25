@@ -1,0 +1,66 @@
+{
+  "eyebrow": "SPECIALIZED TALENT PIPELINES",
+  "title": "Workforce Sectors",
+  "description": "Pre-screened, trained candidates ready for deployment across key European labor sectors.",
+  "items": [
+    {
+      "icon": "Truck",
+      "title": "Professional Drivers",
+      "items": [
+        "Category C / CE Truck Drivers",
+        "Heavy Vehicle & Tanker Operators",
+        "International Long-Haul Transport",
+        "CQC / Code 95 Pathway Candidates"
+      ]
+    },
+    {
+      "icon": "Building2",
+      "title": "Hospitality & Culinary",
+      "items": [
+        "Hotel Service & Front Desk Staff",
+        "Restaurant & Dining Service Personnel",
+        "Kitchen Staff, Line Cooks & Chefs",
+        "Housekeeping & Room Attendants"
+      ]
+    },
+    {
+      "icon": "HeartHandshake",
+      "title": "Care & Healthcare Support",
+      "items": [
+        "Certified Care Workers",
+        "Elderly Care Assistants",
+        "Healthcare Support Personnel",
+        "Nursing Home Assistants"
+      ]
+    },
+    {
+      "icon": "Package",
+      "title": "Logistics & Warehouse",
+      "items": [
+        "Warehouse Operators & Order Pickers",
+        "Logistics & Inventory Personnel",
+        "Forklift & Distribution Staff",
+        "Packing & Supply Chain Technicians"
+      ]
+    },
+    {
+      "icon": "Wrench",
+      "title": "Skilled Trades",
+      "items": [
+        "Automotive & Heavy Equipment Mechanics",
+        "Industrial & MIG/TIG Welders",
+        "Commercial Electricians",
+        "Construction Workers & Technicians"
+      ]
+    },
+    {
+      "icon": "Sparkles",
+      "title": "Facility Services (Future)",
+      "items": [
+        "Commercial Cleaning Staff",
+        "Facility Maintenance Personnel",
+        "Industrial Hygiene Technicians"
+      ]
+    }
+  ]
+}

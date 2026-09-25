@@ -1,0 +1,10 @@
+{
+  "storyType": "candidate",
+  "portraitLabelSuffix": " Portrait",
+  "outcomePrefix": "Outcome: ",
+  "labels": {
+    "previous": "Before:",
+    "support": "Agency Support:",
+    "result": "Result:"
+  }
+}

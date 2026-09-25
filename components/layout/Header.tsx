@@ -1,58 +1,27 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
+import ThemeToggle from "@/components/theme/ThemeToggle";
+import nav from "@/data/site/navigation.json";
 import styles from "./Header.module.css";
 
-const NAV_ITEMS = [
-  { label: "Home", href: "/" },
-  {
-    label: "About Us",
-    href: "/about",
-    children: [
-      { label: "Our Story", href: "/about#our-story" },
-      { label: "Founder & Leadership", href: "/about#founder" },
-      { label: "Vision & Values", href: "/about#vision" },
-      { label: "Awards & Recognition", href: "/about#awards" },
-    ],
-  },
-  { label: "Services", href: "/services" },
-  { label: "Industries", href: "/industries" },
-  { label: "Our Approach", href: "/our-approach" },
-  { label: "Success Stories", href: "/success-stories" },
-  {
-    label: "Job Seekers",
-    href: "/job-seekers",
-    children: [
-      { label: "Find Jobs", href: "/job-seekers/find-jobs" },
-      { label: "Submit Your CV", href: "/job-seekers/submit-cv" },
-      { label: "Candidate Services", href: "/job-seekers/candidate-services" },
-      { label: "Success Stories", href: "/job-seekers/success-stories" },
-      { label: "Career Resources", href: "/job-seekers/career-resources" },
-      { label: "Candidate FAQ", href: "/job-seekers/faq" },
-    ],
-  },
-  {
-    label: "Organizations",
-    href: "/organizations",
-    children: [
-      { label: "Recruitment Services", href: "/organizations/recruitment-services" },
-      { label: "Why Partner With Us", href: "/organizations/why-partner" },
-      { label: "Partnership Models", href: "/organizations/partnership-models" },
-      { label: "Employer Success Stories", href: "/organizations/success-stories" },
-      { label: "Client Testimonials", href: "/organizations/testimonials" },
-      { label: "Partner With Us", href: "/organizations/partner-with-us" },
-    ],
-  },
-  { label: "Insights", href: "/insights" },
-  { label: "Contact", href: "/contact" },
-];
+type NavItem = {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+};
+
+const NAV_ITEMS: NavItem[] = nav.items;
+const CLOSE_DELAY = 180;
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout>>();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -61,65 +30,110 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
+  const closeAll = useCallback(() => {
+    clearTimeout(closeTimer.current);
     setMobileOpen(false);
     setActiveDropdown(null);
-  }, [pathname]);
+    setMobileExpanded(null);
+  }, []);
+
+  // Route changes close everything; hash-only navigation is handled by closeAll on click
+  useEffect(() => {
+    closeAll();
+  }, [pathname, closeAll]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeAll();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [closeAll]);
+
+  // Small grace period so moving the pointer diagonally into the menu doesn't close it
+  const openDropdown = (label: string) => {
+    clearTimeout(closeTimer.current);
+    setActiveDropdown(label);
+  };
+  const scheduleClose = () => {
+    clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setActiveDropdown(null), CLOSE_DELAY);
+  };
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <>
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
         <div className={`container ${styles.inner}`}>
-          {/* Logo */}
-          <Link href="/" className={styles.logo}>
-            <div className={styles.logoMark}>
-              <span>S</span>
+          <Link href="/" className={styles.logo} onClick={closeAll}>
+            <div className={styles.logoWrapper}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={nav.logo.src} alt={nav.logo.alt} className={styles.logoImg} />
             </div>
             <div className={styles.logoText}>
-              <span className={styles.logoMain}>SLEDMC</span>
-              <span className={styles.logoSub}>RECRUITMENT</span>
+              <span className={styles.logoMain}>{nav.logo.title}</span>
+              <span className={styles.logoSub}>{nav.logo.subtitle}</span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className={styles.desktopNav} aria-label="Main navigation">
+          <nav className={styles.desktopNav} aria-label={nav.a11y.mainNav}>
             {NAV_ITEMS.map((item) =>
               item.children ? (
                 <div
                   key={item.label}
                   className={`${styles.navItem} ${styles.hasDropdown}`}
-                  onMouseEnter={() => setActiveDropdown(item.label)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  onMouseEnter={() => openDropdown(item.label)}
+                  onMouseLeave={scheduleClose}
+                  onFocus={() => openDropdown(item.label)}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget as Node)) scheduleClose();
+                  }}
                 >
                   <Link
                     href={item.href}
-                    className={`${styles.navLink} ${pathname.startsWith(item.href) && item.href !== "/" ? styles.active : ""}`}
+                    onClick={closeAll}
+                    aria-haspopup="true"
+                    aria-expanded={activeDropdown === item.label}
+                    className={`${styles.navLink} ${isActive(item.href) ? styles.active : ""}`}
                   >
                     {item.label}
-                    <ChevronDown size={13} />
+                    <ChevronDown
+                      size={13}
+                      className={`${styles.chevron} ${activeDropdown === item.label ? styles.chevronOpen : ""}`}
+                    />
                   </Link>
-                  <div className={`${styles.dropdown} ${activeDropdown === item.label ? styles.dropdownOpen : ""}`}>
-                    {item.children.map((child) => (
-                      <Link key={child.label} href={child.href} className={styles.dropdownLink}>
-                        {child.label}
-                      </Link>
-                    ))}
+                  <div
+                    className={`${styles.dropdown} ${activeDropdown === item.label ? styles.dropdownOpen : ""}`}
+                  >
+                    <div className={styles.dropdownPanel}>
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.label}
+                          href={child.href}
+                          className={styles.dropdownLink}
+                          onClick={closeAll}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ) : (
                 <div key={item.label} className={styles.navItem}>
                   <Link
                     href={item.href}
-                    className={`${styles.navLink} ${
-                      (pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href)))
-                        ? styles.active
-                        : ""
-                    }`}
+                    onClick={closeAll}
+                    className={`${styles.navLink} ${isActive(item.href) ? styles.active : ""}`}
                   >
                     {item.label}
                   </Link>
@@ -128,62 +142,83 @@ export default function Header() {
             )}
           </nav>
 
-          {/* CTA Buttons */}
           <div className={styles.ctaGroup}>
-            <Link href="/job-seekers/find-jobs" className={`btn btn-secondary btn-sm ${styles.ctaBtn}`}>
-              Find a Job <ArrowUpRight size={14} />
-            </Link>
-            <Link href="/organizations/partner-with-us" className={`btn btn-primary btn-sm ${styles.ctaBtn}`}>
-              Find Talent <ArrowUpRight size={14} />
-            </Link>
+            <ThemeToggle />
+            {nav.ctas.map((cta) => (
+              <Link
+                key={cta.label}
+                href={cta.href}
+                onClick={closeAll}
+                className={`btn btn-${cta.variant} btn-sm ${styles.ctaBtn} ${
+                  cta.variant === "secondary" ? styles.ctaSecondary : ""
+                }`}
+              >
+                {cta.label} <ArrowUpRight size={14} />
+              </Link>
+            ))}
           </div>
 
-          {/* Mobile Toggle */}
           <button
             className={styles.mobileToggle}
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle navigation"
+            onClick={() => setMobileOpen((o) => !o)}
+            aria-label={mobileOpen ? nav.a11y.closeMenu : nav.a11y.openMenu}
             aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Menu */}
-      <div className={`${styles.mobileMenu} ${mobileOpen ? styles.mobileMenuOpen : ""}`}>
+      <div
+        id="mobile-menu"
+        className={`${styles.mobileMenu} ${mobileOpen ? styles.mobileMenuOpen : ""}`}
+        aria-hidden={!mobileOpen}
+      >
         <div className={styles.mobileInner}>
           <div className={styles.mobileCTAs}>
-            <Link href="/job-seekers/find-jobs" className="btn btn-secondary btn-sm" style={{ flex: 1 }}>
-              Find a Job <ArrowUpRight size={14} />
-            </Link>
-            <Link href="/organizations/partner-with-us" className="btn btn-primary btn-sm" style={{ flex: 1 }}>
-              Find Talent <ArrowUpRight size={14} />
-            </Link>
+            <ThemeToggle />
+            {nav.ctas.map((cta) => (
+              <Link
+                key={cta.label}
+                href={cta.href}
+                onClick={closeAll}
+                className={`btn btn-${cta.variant} btn-sm`}
+                style={{ flex: 1 }}
+              >
+                {cta.label}
+              </Link>
+            ))}
           </div>
           {NAV_ITEMS.map((item) => (
             <div key={item.label} className={styles.mobileNavSection}>
               {item.children ? (
                 <>
                   <button
-                    className={styles.mobileNavParent}
+                    className={`${styles.mobileNavParent} ${isActive(item.href) ? styles.mobileActive : ""}`}
                     onClick={() =>
-                      setActiveDropdown(activeDropdown === item.label ? null : item.label)
+                      setMobileExpanded(mobileExpanded === item.label ? null : item.label)
                     }
+                    aria-expanded={mobileExpanded === item.label}
                   >
                     <span>{item.label}</span>
                     <ChevronDown
                       size={16}
-                      style={{
-                        transform: activeDropdown === item.label ? "rotate(180deg)" : "none",
-                        transition: "transform 0.2s",
-                      }}
+                      className={`${styles.chevron} ${mobileExpanded === item.label ? styles.chevronOpen : ""}`}
                     />
                   </button>
-                  {activeDropdown === item.label && (
+                  {mobileExpanded === item.label && (
                     <div className={styles.mobileChildren}>
+                      <Link href={item.href} className={styles.mobileChildLink} onClick={closeAll}>
+                        {nav.mobileOverviewLabel}
+                      </Link>
                       {item.children.map((child) => (
-                        <Link key={child.label} href={child.href} className={styles.mobileChildLink}>
+                        <Link
+                          key={child.label}
+                          href={child.href}
+                          className={styles.mobileChildLink}
+                          onClick={closeAll}
+                        >
                           {child.label}
                         </Link>
                       ))}
@@ -191,7 +226,11 @@ export default function Header() {
                   )}
                 </>
               ) : (
-                <Link href={item.href} className={styles.mobileNavLink}>
+                <Link
+                  href={item.href}
+                  className={`${styles.mobileNavLink} ${isActive(item.href) ? styles.mobileActive : ""}`}
+                  onClick={closeAll}
+                >
                   {item.label}
                 </Link>
               )}
@@ -199,9 +238,7 @@ export default function Header() {
           ))}
         </div>
       </div>
-      {mobileOpen && (
-        <div className={styles.mobileOverlay} onClick={() => setMobileOpen(false)} />
-      )}
+      {mobileOpen && <div className={styles.mobileOverlay} onClick={closeAll} />}
     </>
   );
 }

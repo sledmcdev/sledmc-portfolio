@@ -1,24 +1,17 @@
 import SectionHeader from "@/components/shared/SectionHeader";
 import { CAREER_RESOURCES } from "@/lib/data";
+import meta from "@/data/pages/job-seekers/career-resources/meta.json";
+import hero from "@/data/pages/job-seekers/career-resources/hero.json";
+import resourcesContent from "@/data/pages/job-seekers/career-resources/resources.json";
 
-export const metadata = {
-  title: "Career Resources & Advice | Guides for Job Seekers",
-  description: "CV writing tips, interview preparation guides, salary benchmarks, and career advice from recruitment experts.",
-};
+export const metadata = meta;
 
 export default function CareerResourcesPage() {
   return (
     <div>
-      <section style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2838 100%)", padding: "130px 0 70px" }}>
+      <section style={{ background: "var(--hero-bg)", padding: "130px 0 70px" }}>
         <div className="container">
-          <SectionHeader
-            label="Expert Knowledge"
-            title="Career Resources &amp; Guides"
-            subtitle="Actionable advice and insights to help you navigate your job search and accelerate your career."
-            accent="teal"
-            center
-            light
-          />
+          <SectionHeader label={hero.label} title={hero.title} subtitle={hero.subtitle} accent="teal" center light />
         </div>
       </section>
 
@@ -28,11 +21,11 @@ export default function CareerResourcesPage() {
             {CAREER_RESOURCES.map((res) => (
               <div key={res.title} className="card" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 <span className="tag tag-teal">{res.category}</span>
-                <h3 style={{ fontSize: "1.125rem", color: "var(--navy)" }}>{res.title}</h3>
-                <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.6 }}>{res.description}</p>
-                <div style={{ marginTop: "auto", paddingTop: 16, borderTop: "1px solid var(--gray-100)", display: "flex", justifyContent: "space-between", fontSize: "0.8125rem" }}>
-                  <span style={{ color: "var(--gray-400)" }}>{res.readTime}</span>
-                  <span style={{ color: "var(--teal)", fontWeight: 600, cursor: "pointer" }}>Read Full Guide →</span>
+                <h3 style={{ fontSize: "1.125rem", color: "var(--fg-color)" }}>{res.title}</h3>
+                <p style={{ fontSize: "0.875rem", color: "var(--muted-fg)", lineHeight: 1.6 }}>{res.description}</p>
+                <div style={{ marginTop: "auto", paddingTop: 16, borderTop: "1px solid var(--border-color)", display: "flex", justifyContent: "space-between", fontSize: "0.8125rem" }}>
+                  <span style={{ color: "var(--muted-fg)" }}>{res.readTime}</span>
+                  <span style={{ color: "var(--amber)", fontWeight: 600, cursor: "pointer" }}>{resourcesContent.readMoreLabel}</span>
                 </div>
               </div>
             ))}

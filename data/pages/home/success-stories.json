@@ -1,0 +1,11 @@
+{
+  "label": "Success Stories",
+  "title": "Results That Speak for Themselves",
+  "subtitle": "Real outcomes achieved for our clients and candidates — from ambitious career moves to complex volume hiring campaigns.",
+  "storyTypes": {
+    "employer": { "tag": "Employer Story", "firstLabel": "Challenge", "secondLabel": "Approach" },
+    "candidate": { "tag": "Candidate Story", "firstLabel": "Starting Point", "secondLabel": "Our Support" }
+  },
+  "resultLabel": "Result",
+  "cta": { "label": "View All Success Stories", "href": "/success-stories" }
+}

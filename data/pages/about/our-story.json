@@ -1,0 +1,23 @@
+{
+  "label": "Our Story",
+  "title": "Built on Trust, Driven by Results",
+  "paragraphs": [
+    "Founded with a mission to elevate standards in recruitment, SLEDMC Recruitment has grown into a trusted partner for over 100 organizations and thousands of professionals.",
+    "We believe that successful recruitment goes far beyond matching resumes with job descriptions. It requires understanding organizational culture, business goals, and individual career aspirations."
+  ],
+  "stats": [
+    {
+      "value": "15+",
+      "label": "Years of Excellence"
+    },
+    {
+      "value": "500+",
+      "label": "Placements Made"
+    },
+    {
+      "value": "20+",
+      "label": "Sectors Covered"
+    }
+  ],
+  "imageLabel": "Company Office & Team Photo"
+}

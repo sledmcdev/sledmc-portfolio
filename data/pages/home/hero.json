@@ -1,0 +1,21 @@
+{
+  "ariaLabel": "Hero",
+  "eyebrow": "SPECIALIST RECRUITMENT AGENCY",
+  "headline": {
+    "before": "Connecting ",
+    "highlight": "elite talent",
+    "after": " with visionary organizations."
+  },
+  "ctas": [
+    { "label": "I'm Looking for Talent", "href": "/organizations", "variant": "primary" },
+    { "label": "I'm Looking for a Job", "href": "/job-seekers", "variant": "secondary" }
+  ],
+  "quickStats": [
+    { "value": "15+", "label": "YEARS EXP" },
+    { "value": "500+", "label": "PLACEMENTS" },
+    { "value": "100+", "label": "ORGANIZATIONS" },
+    { "value": "20+", "label": "SECTORS" }
+  ],
+  "imageLabel": "Cinematic Noir — Recruitment Executive Image",
+  "floatCard": { "metric": "98%", "label": "RETENTION RATE" }
+}

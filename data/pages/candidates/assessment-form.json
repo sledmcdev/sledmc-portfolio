@@ -1,0 +1,86 @@
+{
+  "eyebrow": "GET STARTED TODAY",
+  "title": "Candidate Assessment & Registration",
+  "description": "Submit your background details for initial review and readiness evaluation by the SLEDMC Academy team.",
+  "fields": [
+    { "name": "fullName", "label": "Full Name *", "type": "text", "required": true, "placeholder": "e.g. Priyantha Perera" },
+    { "name": "age", "label": "Age *", "type": "number", "required": true, "placeholder": "e.g. 28" },
+    { "name": "email", "label": "Email Address *", "type": "email", "required": true, "placeholder": "name@example.com" },
+    { "name": "phone", "label": "Phone / WhatsApp *", "type": "tel", "required": true, "placeholder": "+94 77 123 4567" },
+    {
+      "name": "education",
+      "label": "Highest Education *",
+      "type": "select",
+      "required": true,
+      "placeholder": "Select Education",
+      "options": [
+        { "value": "O/L", "label": "G.C.E. O/L" },
+        { "value": "A/L", "label": "G.C.E. A/L" },
+        { "value": "NVQ", "label": "NVQ / Trade Certificate" },
+        { "value": "Diploma", "label": "Diploma / Higher Diploma" },
+        { "value": "Bachelor", "label": "Bachelor Degree" }
+      ]
+    },
+    {
+      "name": "experience",
+      "label": "Professional Experience *",
+      "type": "select",
+      "required": true,
+      "placeholder": "Select Experience",
+      "options": [
+        { "value": "1-2 years", "label": "1 - 2 Years" },
+        { "value": "3-5 years", "label": "3 - 5 Years" },
+        { "value": "5-8 years", "label": "5 - 8 Years" },
+        { "value": "8+ years", "label": "8+ Years" }
+      ]
+    },
+    { "name": "drivingLicence", "label": "Driving License (if applicable)", "type": "text", "required": false, "placeholder": "e.g. Light Vehicle / C / CE Heavy" },
+    {
+      "name": "languageLevel",
+      "label": "Language Ability *",
+      "type": "select",
+      "required": true,
+      "placeholder": "Select English / European Level",
+      "options": [
+        { "value": "Basic", "label": "Basic / Beginner" },
+        { "value": "Intermediate", "label": "Intermediate / Conversational" },
+        { "value": "Fluent", "label": "Fluent" }
+      ]
+    },
+    {
+      "name": "passportStatus",
+      "label": "Passport Status *",
+      "type": "select",
+      "required": true,
+      "placeholder": "Select Passport Status",
+      "options": [
+        { "value": "Valid 2+ Years", "label": "Valid Passport (2+ Years)" },
+        { "value": "Valid < 2 Years", "label": "Valid Passport (< 2 Years)" },
+        { "value": "Applied / Pending", "label": "Applied / Renewal Pending" },
+        { "value": "No Passport", "label": "No Passport Yet" }
+      ]
+    },
+    {
+      "name": "preferredOccupation",
+      "label": "Preferred Occupation *",
+      "type": "select",
+      "required": true,
+      "placeholder": "Select Preferred Sector",
+      "options": [
+        { "value": "Driver", "label": "Professional Driver (C/CE)" },
+        { "value": "Hospitality", "label": "Hospitality & Restaurant" },
+        { "value": "Healthcare", "label": "Healthcare & Care Work" },
+        { "value": "Logistics", "label": "Logistics & Warehouse" },
+        { "value": "Skilled Trades", "label": "Skilled Trades (Welder/Electrician)" }
+      ]
+    }
+  ],
+  "submit": { "label": "Submit Candidate Assessment", "icon": "Send" },
+  "success": {
+    "icon": "CheckCircle2",
+    "title": "Registration Submitted!",
+    "message": "Thank you, {fullName}. An SLEDMC Academy advisor will review your qualifications and contact you on {phone} or {email} regarding candidate assessment and next steps.",
+    "emphasize": ["phone", "email"],
+    "resetLabel": "Submit Another Profile"
+  }
+}

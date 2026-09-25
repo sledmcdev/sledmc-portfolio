@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Users, Briefcase, Clock, Code, Target, Globe, TrendingUp, Building } from "lucide-react";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { SERVICES } from "@/lib/data";
+import content from "@/data/pages/home/services.json";
 import styles from "./ServicesGrid.module.css";
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -15,9 +16,9 @@ export default function ServicesGrid() {
     <section className={`section ${styles.section}`}>
       <div className="container">
         <SectionHeader
-          label="What We Do"
-          title="Recruitment Services &amp; Expertise"
-          subtitle="Comprehensive recruitment solutions tailored to connect the right people with the right opportunities, across every level and industry."
+          label={content.label}
+          title={content.title}
+          subtitle={content.subtitle}
           center
         />
         <div className={styles.grid}>
@@ -42,8 +43,8 @@ export default function ServicesGrid() {
           })}
         </div>
         <div className={styles.cta}>
-          <Link href="/services" className="btn btn-outline btn-lg">
-            View All Services
+          <Link href={content.cta.href} className="btn btn-outline btn-lg">
+            {content.cta.label}
           </Link>
         </div>
       </div>

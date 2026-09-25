@@ -1,0 +1,35 @@
+[
+  {
+    "id": "story-1",
+    "type": "employer",
+    "company": "Global Tech Solutions",
+    "title": "Scaling a Tech Team Under Pressure",
+    "challenge": "A fast-growing technology firm needed to hire 15 specialised software engineers within 45 days to meet a critical product launch deadline.",
+    "approach": "We activated a targeted search across our technology talent network, combined with proactive outreach to passive candidates with the specific stack requirements.",
+    "result": "All 15 positions were filled within 38 days. The product launched on schedule, and 13 of the 15 placements remain with the client 18 months later.",
+    "metric": "15 hires in 38 days",
+    "industry": "IT & Technology"
+  },
+  {
+    "id": "story-2",
+    "type": "employer",
+    "company": "National Construction Group",
+    "title": "Specialist Talent for a Major Infrastructure Project",
+    "challenge": "A construction leader required 30 specialist engineers and project managers for a major infrastructure project within 60 days.",
+    "approach": "We deployed a dedicated team using executive search and specialist network activation across multiple engineering disciplines.",
+    "result": "30 specialist professionals placed within the agreed timeline. The project commenced on schedule with a full specialist team.",
+    "metric": "30 placements in 60 days",
+    "industry": "Construction"
+  },
+  {
+    "id": "story-3",
+    "type": "candidate",
+    "name": "Alex Morgan",
+    "title": "From Job Seeker to Engineering Lead",
+    "previous": "A mid-level civil engineer who had been job-seeking for four months without success, struggling to stand out in a competitive market.",
+    "support": "We provided CV optimisation, interview coaching, and directly introduced Alex to three clients within our network who matched his profile.",
+    "result": "Alex secured a Senior Engineering Lead role at a leading construction firm, with a 35% salary increase compared to his previous position.",
+    "metric": "35% salary increase",
+    "industry": "Engineering"
+  }
+]

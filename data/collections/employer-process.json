@@ -1,0 +1,37 @@
+[
+  {
+    "step": "01",
+    "title": "Understand Your Needs",
+    "description": "We begin with a deep consultation to understand your organisation and hiring requirements."
+  },
+  {
+    "step": "02",
+    "title": "Define Talent Profile",
+    "description": "We develop a comprehensive candidate profile aligned with your technical and cultural needs."
+  },
+  {
+    "step": "03",
+    "title": "Source Candidates",
+    "description": "We activate targeted sourcing strategies across our extensive talent network."
+  },
+  {
+    "step": "04",
+    "title": "Screen & Assess",
+    "description": "Multi-stage screening ensures only the most suitable candidates advance."
+  },
+  {
+    "step": "05",
+    "title": "Shortlist",
+    "description": "We deliver a curated shortlist with detailed candidate summaries."
+  },
+  {
+    "step": "06",
+    "title": "Interview & Selection",
+    "description": "We coordinate interviews and support the selection process throughout."
+  },
+  {
+    "step": "07",
+    "title": "Placement & Follow-up",
+    "description": "We manage the placement and provide ongoing support to ensure success."
+  }
+]

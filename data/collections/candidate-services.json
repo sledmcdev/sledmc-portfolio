@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Career Consultation",
+    "description": "One-on-one sessions to understand your career goals and map the right path forward with expert guidance.",
+    "icon": "MessageSquare"
+  },
+  {
+    "title": "CV Guidance",
+    "description": "Professional review and strategic advice to ensure your CV stands out to the right employers.",
+    "icon": "FileText"
+  },
+  {
+    "title": "Interview Preparation",
+    "description": "Comprehensive coaching and practice sessions to help you perform with confidence at every interview.",
+    "icon": "Mic"
+  },
+  {
+    "title": "Job Matching",
+    "description": "Intelligent matching of your profile, skills, and career aspirations with the most relevant opportunities.",
+    "icon": "Target"
+  },
+  {
+    "title": "International Placement",
+    "description": "Access to international opportunities and expert support for cross-border career transitions.",
+    "icon": "Globe"
+  },
+  {
+    "title": "Candidate Representation",
+    "description": "We advocate on your behalf to employers, presenting you in the best possible light to secure the right opportunity.",
+    "icon": "UserCheck"
+  }
+]

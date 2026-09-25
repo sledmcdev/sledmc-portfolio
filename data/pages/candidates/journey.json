@@ -1,0 +1,19 @@
+{
+  "eyebrow": "STEP-BY-STEP PROCESS",
+  "title": "Your Journey With SLEDMC",
+  "description": "From initial registration to European integration, our 11-step framework ensures transparent support at every milestone.",
+  "stepSuffix": "STEP",
+  "steps": [
+    { "step": "01", "title": "Register", "desc": "Candidate registration and initial background submission." },
+    { "step": "02", "title": "Candidate Assessment", "desc": "Review experience, qualifications, language level & document status." },
+    { "step": "03", "title": "Choose Career Path", "desc": "Identify the most suitable sector and European programme." },
+    { "step": "04", "title": "Academy Training", "desc": "Complete professional skills & industry-specific preparation." },
+    { "step": "05", "title": "Language Preparation", "desc": "Develop workplace language fluency and cultural orientation." },
+    { "step": "06", "title": "Documentation & Qualifications", "desc": "Complete legal document verification & external certifications." },
+    { "step": "07", "title": "Employer Matching", "desc": "Match verified profiles with relevant European employer vacancies." },
+    { "step": "08", "title": "Employer Interview", "desc": "Coordinate video or direct practical selection interviews." },
+    { "step": "09", "title": "Employment & Mobility", "desc": "Support visa processing with official legal and mobility partners." },
+    { "step": "10", "title": "Pre-Departure", "desc": "Final travel booking, flight checklist, and destination orientation." },
+    { "step": "11", "title": "Arrival & Integration", "desc": "On-arrival support, accommodation onboarding, and workplace integration." }
+  ]
+}

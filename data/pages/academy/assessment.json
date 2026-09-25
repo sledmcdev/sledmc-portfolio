@@ -1,0 +1,40 @@
+{
+  "eyebrow": "INTERACTIVE TOOL",
+  "title": "Candidate Readiness Assessment",
+  "description": "Evaluate your current eligibility and determine your optimal SLEDMC Academy training pathway.",
+  "steps": [
+    {
+      "field": "sector",
+      "title": "Select Your Desired Sector",
+      "question": "Which industry in Europe matches your professional experience?",
+      "options": ["Commercial Drivers (C/CE)", "Hospitality & Food", "Healthcare & Care Work", "Logistics & Warehouse", "Skilled Trades (Electrician/Welder)"]
+    },
+    {
+      "field": "experience",
+      "title": "Professional Experience",
+      "question": "How many years of relevant experience do you have?",
+      "options": ["Under 1 Year", "1 - 3 Years", "3 - 5 Years", "5+ Years"]
+    },
+    {
+      "field": "language",
+      "title": "English & Language Level",
+      "question": "Rate your current workplace communication abilities.",
+      "options": ["Basic / Elementary", "Intermediate / Conversational", "Fluent / Workplace Ready"]
+    },
+    {
+      "field": "passport",
+      "title": "Passport & Document Status",
+      "question": "Do you hold a valid passport with at least 2 years validity?",
+      "options": ["Yes, Valid Passport Ready", "In Progress / Renewal Needed", "No Passport Yet"]
+    }
+  ],
+  "result": {
+    "icon": "Sparkles",
+    "title": "Assessment Complete!",
+    "messageBeforeSector": "Based on your inputs for ",
+    "messageBeforeExperience": " with ",
+    "messageAfterExperience": " experience, you are qualified for SLEDMC Academy European Preparation Module 01-08!",
+    "primaryCta": { "label": "Proceed to Candidate Registration", "href": "/candidates", "icon": "ArrowRight" },
+    "resetLabel": "Retake Assessment"
+  }
+}

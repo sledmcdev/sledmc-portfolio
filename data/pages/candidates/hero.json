@@ -1,0 +1,10 @@
+{
+  "badge": { "icon": "UserCheck", "label": "Candidates Pathway Platform" },
+  "titleLine1": "Build Your Skills.",
+  "titleHighlight": "Start Your European Career.",
+  "subtitle": "SLEDMC helps Sri Lankan candidates prepare for legitimate employment opportunities in Europe through professional training, language development, career guidance, employer matching, and pre-departure preparation.",
+  "buttons": [
+    { "label": "Join SLEDMC", "href": "#assessment-form", "variant": "primary", "icon": "ArrowRight" },
+    { "label": "Explore Academy Courses", "href": "/academy", "variant": "secondary", "icon": "GraduationCap" }
+  ]
+}

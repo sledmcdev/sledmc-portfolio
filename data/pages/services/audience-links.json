@@ -1,0 +1,16 @@
+{
+  "links": [
+    {
+      "label": "For Job Seekers",
+      "href": "/job-seekers/find-jobs",
+      "icon": "Users",
+      "variant": "btn-teal"
+    },
+    {
+      "label": "For Organizations",
+      "href": "/organizations/partner-with-us",
+      "icon": "Briefcase",
+      "variant": "btn-blue"
+    }
+  ]
+}

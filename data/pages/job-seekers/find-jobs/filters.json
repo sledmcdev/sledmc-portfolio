@@ -1,0 +1,12 @@
+{
+  "searchPlaceholder": "Job title, keywords, or location...",
+  "allValue": "All",
+  "allIndustriesLabel": "All Industries",
+  "allTypesLabel": "All Job Types",
+  "jobTypes": [
+    { "value": "Permanent", "label": "Permanent" },
+    { "value": "Contract", "label": "Contract" },
+    { "value": "Temporary", "label": "Temporary" }
+  ],
+  "searchButtonLabel": "Search Jobs"
+}

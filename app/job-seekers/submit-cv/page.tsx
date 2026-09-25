@@ -1,30 +1,44 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FileUp, CheckCircle2, Shield } from "lucide-react";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { INDUSTRIES } from "@/lib/data";
+import hero from "@/data/pages/job-seekers/submit-cv/hero.json";
+import form from "@/data/pages/job-seekers/submit-cv/form.json";
+import success from "@/data/pages/job-seekers/submit-cv/success.json";
 import styles from "./SubmitCv.module.css";
 
+const ICON_MAP: Record<string, React.ElementType> = { FileUp, CheckCircle2, Shield };
+const SUBMIT_DELAY_MS = 800;
+
 export default function SubmitCvPage() {
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => {
+    if (timer.current) clearTimeout(timer.current);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    timer.current = setTimeout(() => {
+      setSubmitting(false);
+      setSubmitted(true);
+    }, SUBMIT_DELAY_MS);
   };
+
+  const { fields } = form;
+  const FileIcon = ICON_MAP[fields.cv.icon] ?? FileUp;
+  const PrivacyIcon = ICON_MAP[form.privacy.icon] ?? Shield;
+  const SuccessIcon = ICON_MAP[success.icon] ?? CheckCircle2;
 
   return (
     <div className={styles.page}>
       <section className={styles.headerSection}>
         <div className="container">
-          <SectionHeader
-            label="Direct Registration"
-            title="Submit Your CV"
-            subtitle="Let our specialist consultants connect you with opportunities that match your experience and career goals."
-            accent="teal"
-            center
-            light
-          />
+          <SectionHeader label={hero.label} title={hero.title} subtitle={hero.subtitle} accent="teal" center light />
         </div>
       </section>
 
@@ -33,87 +47,94 @@ export default function SubmitCvPage() {
           <div className={styles.formCard}>
             {submitted ? (
               <div className={styles.successState}>
-                <CheckCircle2 size={64} className={styles.successIcon} />
-                <h2>CV Submitted Successfully!</h2>
-                <p>
-                  Thank you for registering with SLEDMC Recruitment. Our recruitment consultants will review your profile and reach out within 2–3 business days regarding suitable vacancies.
-                </p>
+                <SuccessIcon size={64} className={styles.successIcon} />
+                <h2>{success.title}</h2>
+                <p>{success.message}</p>
                 <button onClick={() => setSubmitted(false)} className="btn btn-teal">
-                  Submit Another CV
+                  {success.resetLabel}
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className={styles.form}>
-                <h3 className={styles.formTitle}>Candidate Registration Form</h3>
-                <p className={styles.formDesc}>Please fill in your details and attach your latest resume/CV.</p>
+                <h3 className={styles.formTitle}>{form.title}</h3>
+                <p className={styles.formDesc}>{form.description}</p>
 
                 <div className="grid-2">
                   <div className="form-group">
-                    <label className="form-label">First Name *</label>
-                    <input type="text" className="form-input" required placeholder="Jane" />
+                    <label className="form-label" htmlFor="cv-first-name">{fields.firstName.label}</label>
+                    <input id="cv-first-name" type="text" className="form-input" required placeholder={fields.firstName.placeholder} />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Last Name *</label>
-                    <input type="text" className="form-input" required placeholder="Doe" />
+                    <label className="form-label" htmlFor="cv-last-name">{fields.lastName.label}</label>
+                    <input id="cv-last-name" type="text" className="form-input" required placeholder={fields.lastName.placeholder} />
                   </div>
                 </div>
 
                 <div className="grid-2">
                   <div className="form-group">
-                    <label className="form-label">Email Address *</label>
-                    <input type="email" className="form-input" required placeholder="jane@example.com" />
+                    <label className="form-label" htmlFor="cv-email">{fields.email.label}</label>
+                    <input id="cv-email" type="email" className="form-input" required placeholder={fields.email.placeholder} />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Phone Number *</label>
-                    <input type="tel" className="form-input" required placeholder="+1 234 567 890" />
+                    <label className="form-label" htmlFor="cv-phone">{fields.phone.label}</label>
+                    <input id="cv-phone" type="tel" className="form-input" required placeholder={fields.phone.placeholder} />
                   </div>
                 </div>
 
                 <div className="grid-2">
                   <div className="form-group">
-                    <label className="form-label">Primary Industry *</label>
-                    <select className="form-select" required defaultValue="">
-                      <option value="" disabled>Select your primary industry</option>
+                    <label className="form-label" htmlFor="cv-industry">{fields.industry.label}</label>
+                    <select id="cv-industry" className="form-select" required defaultValue="">
+                      <option value="" disabled>{fields.industry.placeholder}</option>
                       {INDUSTRIES.map((ind) => (
                         <option key={ind.name} value={ind.name}>{ind.name}</option>
                       ))}
                     </select>
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Experience Level *</label>
-                    <select className="form-select" required defaultValue="">
-                      <option value="" disabled>Select experience level</option>
-                      <option value="entry">Entry Level (0 - 2 yrs)</option>
-                      <option value="mid">Mid Level (3 - 5 yrs)</option>
-                      <option value="senior">Senior Level (6 - 10 yrs)</option>
-                      <option value="executive">Executive / Leadership (10+ yrs)</option>
+                    <label className="form-label" htmlFor="cv-experience">{fields.experience.label}</label>
+                    <select id="cv-experience" className="form-select" required defaultValue="">
+                      <option value="" disabled>{fields.experience.placeholder}</option>
+                      {fields.experience.options.map((opt) => (
+                        <option key={opt.value} value={opt.value}>{opt.label}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Upload CV / Resume (PDF, DOC, DOCX - Max 10MB) *</label>
+                  <label className="form-label" htmlFor="cv-file">{fields.cv.label}</label>
                   <div className={styles.fileDrop}>
-                    <FileUp size={32} className={styles.fileIcon} />
-                    <span>Click to browse or drag and drop your file here</span>
-                    <input type="file" required accept=".pdf,.doc,.docx" className={styles.fileInput} />
+                    <FileIcon size={32} className={styles.fileIcon} />
+                    <span>{fields.cv.dropText}</span>
+                    <input id="cv-file" type="file" required accept={fields.cv.accept} className={styles.fileInput} />
                   </div>
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Key Skills / Career Goals Summary</label>
-                  <textarea className="form-textarea" placeholder="Describe your key technical skills, target roles, preferred locations, and salary expectations..."></textarea>
+                  <label className="form-label" htmlFor="cv-summary">{fields.summary.label}</label>
+                  <textarea id="cv-summary" className="form-textarea" placeholder={fields.summary.placeholder}></textarea>
                 </div>
 
                 <div className={styles.privacyConsent}>
-                  <Shield size={18} className={styles.shieldIcon} />
-                  <p>
-                    By submitting this form, you consent to SLEDMC Recruitment storing and processing your personal data strictly for recruitment purposes in accordance with our Privacy Policy.
-                  </p>
+                  <PrivacyIcon size={18} className={styles.shieldIcon} />
+                  <p>{form.privacy.text}</p>
                 </div>
 
-                <button type="submit" className="btn btn-teal btn-lg" style={{ width: "100%" }}>
-                  Submit Your CV Now
+                <button
+                  type="submit"
+                  className="btn btn-teal btn-lg"
+                  style={{ width: "100%" }}
+                  disabled={submitting}
+                  aria-busy={submitting ? "true" : undefined}
+                >
+                  {submitting ? (
+                    <>
+                      <span className="spinner" /> {form.submittingLabel}
+                    </>
+                  ) : (
+                    form.submitLabel
+                  )}
                 </button>
               </form>
             )}

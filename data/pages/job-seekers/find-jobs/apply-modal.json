@@ -1,0 +1,21 @@
+{
+  "closeAriaLabel": "Close",
+  "metaIcons": { "location": "📍", "experience": "💼", "industry": "🏷️" },
+  "descriptionHeading": "Job Description",
+  "extraParagraph": "In this role, you will collaborate with cross-functional teams, lead strategic initiatives, and drive quality outcomes in alignment with organizational objectives.",
+  "applyHeading": "Apply for this position",
+  "fields": {
+    "fullName": { "label": "Full Name *", "placeholder": "John Doe" },
+    "email": { "label": "Email Address *", "placeholder": "john@example.com" },
+    "phone": { "label": "Phone Number *", "placeholder": "+1234567890" },
+    "cv": { "label": "Upload CV (PDF/DOCX) *", "accept": ".pdf,.doc,.docx" },
+    "message": { "label": "Cover Note / Message", "placeholder": "Briefly describe why you are a great fit for this role..." }
+  },
+  "submitLabel": "Submit Application",
+  "submittingLabel": "Submitting…",
+  "success": {
+    "title": "Application Submitted!",
+    "messageBefore": "Thank you for applying to ",
+    "messageAfter": ". Our consultants will review your application and contact you soon."
+  }
+}

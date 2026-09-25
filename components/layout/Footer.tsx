@@ -1,32 +1,16 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, Linkedin, Facebook, Instagram, Youtube, ArrowUpRight } from "lucide-react";
 import { COMPANY } from "@/lib/data";
+import footer from "@/data/site/footer.json";
+import nav from "@/data/site/navigation.json";
 import styles from "./Footer.module.css";
 
-const FOOTER_LINKS = {
-  company: [
-    { label: "About Us", href: "/about" },
-    { label: "Our Approach", href: "/our-approach" },
-    { label: "Services", href: "/services" },
-    { label: "Industries", href: "/industries" },
-    { label: "Success Stories", href: "/success-stories" },
-    { label: "Insights", href: "/insights" },
-  ],
-  jobSeekers: [
-    { label: "Find Jobs", href: "/job-seekers/find-jobs" },
-    { label: "Submit Your CV", href: "/job-seekers/submit-cv" },
-    { label: "Candidate Services", href: "/job-seekers/candidate-services" },
-    { label: "Career Resources", href: "/job-seekers/career-resources" },
-    { label: "Candidate FAQ", href: "/job-seekers/faq" },
-  ],
-  organizations: [
-    { label: "Recruitment Services", href: "/organizations/recruitment-services" },
-    { label: "Why Partner With Us", href: "/organizations/why-partner" },
-    { label: "Partnership Models", href: "/organizations/partnership-models" },
-    { label: "Partner With Us", href: "/organizations/partner-with-us" },
-    { label: "Employer FAQ", href: "/organizations" },
-  ],
-};
+const SOCIALS = [
+  { key: "linkedin", Icon: Linkedin },
+  { key: "facebook", Icon: Facebook },
+  { key: "instagram", Icon: Instagram },
+  { key: "youtube", Icon: Youtube },
+] as const;
 
 export default function Footer() {
   return (
@@ -36,17 +20,16 @@ export default function Footer() {
         <div className="container">
           <div className={styles.ctaInner}>
             <div>
-              <span className="mono-eyebrow" style={{ marginBottom: 12 }}>TRANSFORM YOUR TEAM</span>
-              <h2 className={styles.ctaTitle}>Ready to make your next move?</h2>
-              <p className={styles.ctaSubtitle}>Whether you are seeking executive talent or your next career milestone, we are your strategic partner.</p>
+              <span className="mono-eyebrow" style={{ marginBottom: 12 }}>{footer.ctaBand.eyebrow}</span>
+              <h2 className={styles.ctaTitle}>{footer.ctaBand.title}</h2>
+              <p className={styles.ctaSubtitle}>{footer.ctaBand.subtitle}</p>
             </div>
             <div className={styles.ctaButtons}>
-              <Link href="/job-seekers/find-jobs" className="btn btn-secondary btn-lg">
-                Find a Job <ArrowUpRight size={18} />
-              </Link>
-              <Link href="/organizations/partner-with-us" className="btn btn-primary btn-lg">
-                Find Talent <ArrowUpRight size={18} />
-              </Link>
+              {footer.ctaBand.buttons.map((b) => (
+                <Link key={b.label} href={b.href} className={`btn btn-${b.variant} btn-lg`}>
+                  {b.label} <ArrowUpRight size={18} />
+                </Link>
+              ))}
             </div>
           </div>
         </div>
@@ -54,33 +37,36 @@ export default function Footer() {
 
       {/* Main Footer */}
       <div className={styles.main}>
-        <div className={styles.watermark}>SLEDMC</div>
+        <div className={styles.watermark}>{footer.watermark}</div>
         <div className="container">
           <div className={styles.grid}>
             {/* Brand Column */}
             <div className={styles.brandCol}>
               <Link href="/" className={styles.logo}>
-                <div className={styles.logoMark}>S</div>
+                <div className={styles.logoWrapper}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={nav.logo.src} alt={nav.logo.alt} className={styles.logoImg} />
+                </div>
                 <div>
-                  <div className={styles.logoMain}>SLEDMC</div>
-                  <div className={styles.logoSub}>RECRUITMENT</div>
+                  <div className={styles.logoMain}>{nav.logo.title}</div>
+                  <div className={styles.logoSub}>{nav.logo.subtitle}</div>
                 </div>
               </Link>
               <p className={styles.tagline}>{COMPANY.tagline}</p>
               <p className={styles.description}>{COMPANY.shortDescription}</p>
               <div className={styles.socials}>
-                <a href={COMPANY.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className={styles.socialLink}>
-                  <Linkedin size={16} />
-                </a>
-                <a href={COMPANY.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className={styles.socialLink}>
-                  <Facebook size={16} />
-                </a>
-                <a href={COMPANY.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className={styles.socialLink}>
-                  <Instagram size={16} />
-                </a>
-                <a href={COMPANY.youtube} target="_blank" rel="noreferrer" aria-label="YouTube" className={styles.socialLink}>
-                  <Youtube size={16} />
-                </a>
+                {SOCIALS.map(({ key, Icon }) => (
+                  <a
+                    key={key}
+                    href={COMPANY[key]}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={footer.socialLabels[key]}
+                    className={styles.socialLink}
+                  >
+                    <Icon size={16} />
+                  </a>
+                ))}
               </div>
               <div className={styles.contact}>
                 <a href={`tel:${COMPANY.phone}`} className={styles.contactItem}>
@@ -95,41 +81,18 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Company Links */}
-            <div className={styles.linkCol}>
-              <h3 className={styles.colTitle}>Company</h3>
-              <ul className={styles.linkList}>
-                {FOOTER_LINKS.company.map((l) => (
-                  <li key={l.label}>
-                    <Link href={l.href} className={styles.footerLink}>{l.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Job Seekers */}
-            <div className={styles.linkCol}>
-              <h3 className={styles.colTitle}>Job Seekers</h3>
-              <ul className={styles.linkList}>
-                {FOOTER_LINKS.jobSeekers.map((l) => (
-                  <li key={l.label}>
-                    <Link href={l.href} className={styles.footerLink}>{l.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Organizations */}
-            <div className={styles.linkCol}>
-              <h3 className={styles.colTitle}>Organizations</h3>
-              <ul className={styles.linkList}>
-                {FOOTER_LINKS.organizations.map((l) => (
-                  <li key={l.label}>
-                    <Link href={l.href} className={styles.footerLink}>{l.label}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {footer.columns.map((col) => (
+              <div key={col.title} className={styles.linkCol}>
+                <h3 className={styles.colTitle}>{col.title}</h3>
+                <ul className={styles.linkList}>
+                  {col.links.map((l) => (
+                    <li key={l.label}>
+                      <Link href={l.href} className={styles.footerLink}>{l.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -139,12 +102,12 @@ export default function Footer() {
         <div className="container">
           <div className={styles.bottomInner}>
             <p className={styles.copyright}>
-              © {new Date().getFullYear()} SLEDMC RECRUITMENT. ALL RIGHTS RESERVED.
+              © {new Date().getFullYear()} {footer.copyright}
             </p>
             <div className={styles.legalLinks}>
-              <Link href="/privacy-policy" className={styles.legalLink}>PRIVACY POLICY</Link>
-              <Link href="/terms" className={styles.legalLink}>TERMS &amp; CONDITIONS</Link>
-              <Link href="/cookies" className={styles.legalLink}>COOKIE POLICY</Link>
+              {footer.legalLinks.map((l) => (
+                <Link key={l.label} href={l.href} className={styles.legalLink}>{l.label}</Link>
+              ))}
             </div>
           </div>
         </div>

@@ -2,25 +2,23 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { CANDIDATE_SERVICES } from "@/lib/data";
+import meta from "@/data/pages/job-seekers/candidate-services/meta.json";
+import hero from "@/data/pages/job-seekers/candidate-services/hero.json";
+import servicesContent from "@/data/pages/job-seekers/candidate-services/services.json";
 
-export const metadata = {
-  title: "Candidate Services | Career Consultation & Representation",
-  description: "Explore services provided to job seekers by SLEDMC Recruitment including CV guidance, interview coaching, and job matching.",
-};
+export const metadata = meta;
+
+const ICON_MAP: Record<string, React.ElementType> = { ArrowRight, CheckCircle2 };
 
 export default function CandidateServicesPage() {
+  const CardIcon = ICON_MAP[servicesContent.cardIcon] ?? CheckCircle2;
+  const CtaIcon = ICON_MAP[servicesContent.cta.icon] ?? ArrowRight;
+
   return (
     <div>
-      <section style={{ background: "linear-gradient(160deg, #0A1628 0%, #0d2838 100%)", padding: "130px 0 70px" }}>
+      <section style={{ background: "var(--hero-bg)", padding: "130px 0 70px" }}>
         <div className="container">
-          <SectionHeader
-            label="Empowering Candidates"
-            title="Candidate Services"
-            subtitle="We provide comprehensive support throughout your entire career trajectory."
-            accent="teal"
-            center
-            light
-          />
+          <SectionHeader label={hero.label} title={hero.title} subtitle={hero.subtitle} accent="teal" center light />
         </div>
       </section>
 
@@ -29,18 +27,18 @@ export default function CandidateServicesPage() {
           <div className="grid-3">
             {CANDIDATE_SERVICES.map((serv) => (
               <div key={serv.title} className="card" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: "var(--teal-muted)", color: "var(--teal)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <CheckCircle2 size={24} />
+                <div style={{ width: 44, height: 44, borderRadius: 12, background: "var(--amber-muted)", color: "var(--amber)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <CardIcon size={24} />
                 </div>
-                <h3 style={{ fontSize: "1.125rem", color: "var(--navy)" }}>{serv.title}</h3>
-                <p style={{ fontSize: "0.9375rem", color: "var(--text-muted)", lineHeight: 1.6 }}>{serv.description}</p>
+                <h3 style={{ fontSize: "1.125rem", color: "var(--fg-color)" }}>{serv.title}</h3>
+                <p style={{ fontSize: "0.9375rem", color: "var(--muted-fg)", lineHeight: 1.6 }}>{serv.description}</p>
               </div>
             ))}
           </div>
 
           <div style={{ marginTop: 64, textAlign: "center" }}>
-            <Link href="/job-seekers/submit-cv" className="btn btn-teal btn-lg">
-              Register With Us <ArrowRight size={18} />
+            <Link href={servicesContent.cta.href} className="btn btn-teal btn-lg">
+              {servicesContent.cta.label} <CtaIcon size={18} />
             </Link>
           </div>
         </div>

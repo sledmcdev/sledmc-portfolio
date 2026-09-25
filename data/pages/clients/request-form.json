@@ -1,0 +1,46 @@
+{
+  "eyebrow": "LEAD-GENERATION FORM",
+  "title": "Request Workforce Requirements",
+  "description": "Submit your company's workforce needs to receive a custom talent pipeline proposal from SLEDMC.",
+  "fields": [
+    { "name": "companyName", "label": "Company Name *", "type": "text", "required": true, "placeholder": "e.g. EuroLogistics GmbH" },
+    { "name": "countryCity", "label": "Country & City *", "type": "text", "required": true, "placeholder": "e.g. Frankfurt, Germany" },
+    {
+      "name": "industry",
+      "label": "Industry *",
+      "type": "select",
+      "required": true,
+      "placeholder": "Select Industry",
+      "options": [
+        "Transportation & Logistics",
+        "Hospitality & Hotel",
+        "Healthcare & Elderly Care",
+        "Construction & Engineering",
+        "Manufacturing & Warehousing"
+      ]
+    },
+    { "name": "website", "label": "Company Website", "type": "url", "required": false, "placeholder": "https://www.company.com" },
+    { "name": "contactPerson", "label": "Contact Person Name *", "type": "text", "required": true, "placeholder": "e.g. Klaus Weber" },
+    { "name": "email", "label": "Official Email *", "type": "email", "required": true, "placeholder": "klaus@company.com" },
+    { "name": "telephone", "label": "Telephone / WhatsApp *", "type": "tel", "required": true, "placeholder": "+49 151 1234567" },
+    { "name": "position", "label": "Target Position *", "type": "text", "required": true, "placeholder": "e.g. CE Truck Driver / Chef / Electrician" },
+    { "name": "numberOfWorkers", "label": "Number of Workers Needed *", "type": "number", "required": true, "placeholder": "e.g. 15" },
+    { "name": "languageRequired", "label": "Language Level Required", "type": "text", "required": false, "placeholder": "e.g. English B1 / German A2" },
+    { "name": "salaryRange", "label": "Offered Salary Range", "type": "text", "required": false, "placeholder": "e.g. €2,200 - €2,800 gross/month" },
+    { "name": "expectedStartDate", "label": "Expected Start Date", "type": "date", "required": false, "placeholder": "" }
+  ],
+  "textarea": {
+    "name": "additionalReqs",
+    "label": "Additional Requirements / Specific Needs",
+    "placeholder": "Specify license details, accommodation assistance, transport, or specific shift requirements...",
+    "rows": 4
+  },
+  "submit": { "label": "Submit Workforce Requirement", "submittingLabel": "Submitting...", "icon": "Send" },
+  "success": {
+    "icon": "CheckCircle2",
+    "title": "Workforce Request Received!",
+    "message": "Thank you, {contactPerson} from {companyName}. Our European Business Development Director will reach out to {email} within 24 hours with a custom talent proposal.",
+    "boldTokens": ["companyName", "email"],
+    "resetLabel": "Submit Another Requirement"
+  }
+}

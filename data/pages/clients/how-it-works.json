@@ -1,0 +1,15 @@
+{
+  "eyebrow": "OPERATIONAL WORKFLOW",
+  "title": "How SLEDMC Works For Employers",
+  "description": "Our 8-step employer engagement model guarantees candidate readiness, legal compliance, and seamless onboarding.",
+  "steps": [
+    { "num": "01 STEP", "title": "Employer Requirement", "desc": "Collect positions, worker count, experience, language, salary, contract type & start date." },
+    { "num": "02 STEP", "title": "Candidate Sourcing", "desc": "Identify suitable candidates from the active SLEDMC Sri Lanka talent pipeline." },
+    { "num": "03 STEP", "title": "Screening & Verification", "desc": "Rigorous verification of trade skills, medical fitness, background & document authenticity." },
+    { "num": "04 STEP", "title": "Academy Preparation", "desc": "Language immersion, European workplace culture, safety standards & job skills enhancement." },
+    { "num": "05 STEP", "title": "Employer Matching", "desc": "Present verified, pre-screened candidate dossiers to employer hiring managers." },
+    { "num": "06 STEP", "title": "Interview & Selection", "desc": "Coordinate direct video or practical trade test selection interviews." },
+    { "num": "07 STEP", "title": "Mobility & Documentation", "desc": "Manage legal work permits, visa processing & document legalization with licensed partners." },
+    { "num": "08 STEP", "title": "Arrival & Integration", "desc": "Support airport arrival, initial housing onboarding, and smooth workplace integration." }
+  ]
+}

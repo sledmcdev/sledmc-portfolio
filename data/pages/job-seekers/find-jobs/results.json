@@ -1,0 +1,13 @@
+{
+  "countPrefix": "Showing",
+  "jobSingular": "job",
+  "jobPlural": "jobs",
+  "clearFiltersLabel": "Clear Filters",
+  "viewApplyLabel": "View & Apply",
+  "loadingLabel": "Loading jobs…",
+  "emptyState": {
+    "title": "No jobs found matching your criteria",
+    "description": "Try searching for different keywords or clear your filters.",
+    "buttonLabel": "Clear Search"
+  }
+}

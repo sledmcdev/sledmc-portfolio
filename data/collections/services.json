@@ -1,0 +1,58 @@
+[
+  {
+    "id": "permanent-recruitment",
+    "title": "Permanent Recruitment",
+    "description": "We identify and place full-time professionals who align with your organisation's culture, goals, and long-term vision.",
+    "icon": "Users",
+    "audience": "both"
+  },
+  {
+    "id": "executive-search",
+    "title": "Executive Search",
+    "description": "Confidential, research-led search for senior leadership and executive-level talent across industries.",
+    "icon": "Briefcase",
+    "audience": "both"
+  },
+  {
+    "id": "contract-staffing",
+    "title": "Contract Staffing",
+    "description": "Flexible contract professionals to support short-term projects, seasonal demands, or specialist requirements.",
+    "icon": "Clock",
+    "audience": "employer"
+  },
+  {
+    "id": "technical-recruitment",
+    "title": "Technical Recruitment",
+    "description": "Specialist sourcing for engineering, IT, and technology roles requiring niche technical skills.",
+    "icon": "Code",
+    "audience": "both"
+  },
+  {
+    "id": "talent-acquisition",
+    "title": "Talent Acquisition",
+    "description": "End-to-end talent acquisition strategy and execution, aligned with your business growth objectives.",
+    "icon": "Target",
+    "audience": "employer"
+  },
+  {
+    "id": "international-recruitment",
+    "title": "International Recruitment",
+    "description": "Cross-border recruitment solutions connecting global talent with organisations seeking international expertise.",
+    "icon": "Globe",
+    "audience": "both"
+  },
+  {
+    "id": "hr-consulting",
+    "title": "HR Consulting",
+    "description": "Strategic human resources advisory to help organisations build stronger, more effective people processes.",
+    "icon": "TrendingUp",
+    "audience": "employer"
+  },
+  {
+    "id": "rpo",
+    "title": "Recruitment Process Outsourcing",
+    "description": "Fully managed recruitment delivery as an extension of your internal HR and talent acquisition team.",
+    "icon": "Building",
+    "audience": "employer"
+  }
+]

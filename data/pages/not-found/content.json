@@ -1,0 +1,9 @@
+{
+  "eyebrow": "404 — PAGE NOT FOUND",
+  "title": "Page Not Found",
+  "body": "The page you are looking for does not exist or has been relocated.",
+  "cta": {
+    "label": "Return to Homepage",
+    "href": "/"
+  }
+}

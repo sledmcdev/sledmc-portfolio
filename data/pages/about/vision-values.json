@@ -1,0 +1,39 @@
+{
+  "label": "Guiding Principles",
+  "title": "Vision & Core Values",
+  "subtitle": "The fundamental values that shape our decisions, culture, and relationships.",
+  "cards": [
+    {
+      "icon": "Eye",
+      "title": "Our Vision",
+      "body": "To be the benchmark recruitment agency recognized globally for integrity, candidate care, and delivering transformational hiring outcomes for partner organizations."
+    },
+    {
+      "icon": "Target",
+      "title": "Our Mission",
+      "body": "To connect exceptional talent with visionary organizations, fostering growth, innovation, and long-term career fulfillment."
+    }
+  ],
+  "values": {
+    "icon": "Heart",
+    "title": "Our Core Values",
+    "items": [
+      {
+        "term": "Integrity & Transparency:",
+        "text": "Honest advice always."
+      },
+      {
+        "term": "Excellence:",
+        "text": "Uncompromising quality screening."
+      },
+      {
+        "term": "Partnership:",
+        "text": "Relationships over transactions."
+      },
+      {
+        "term": "Inclusion:",
+        "text": "Equal opportunity for all talent."
+      }
+    ]
+  }
+}

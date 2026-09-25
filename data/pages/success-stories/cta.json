@@ -1,0 +1,16 @@
+{
+  "title": "Ready to write your success story?",
+  "body": "Whether you're hiring or seeking a role, partner with the recruitment agency committed to your growth.",
+  "buttons": [
+    {
+      "label": "For Candidates",
+      "href": "/job-seekers/find-jobs",
+      "variant": "btn-teal"
+    },
+    {
+      "label": "For Employers",
+      "href": "/organizations/partner-with-us",
+      "variant": "btn-blue"
+    }
+  ]
+}

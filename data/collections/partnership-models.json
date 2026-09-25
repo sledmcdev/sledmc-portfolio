@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Recruitment Partnership",
+    "description": "An ongoing recruitment partnership where we act as an extension of your HR function, providing consistent talent across all levels.",
+    "features": [
+      "Dedicated consultant",
+      "Priority candidate access",
+      "Regular reporting",
+      "Preferred pricing"
+    ]
+  },
+  {
+    "title": "Executive Search",
+    "description": "Confidential, research-driven search for senior and C-suite appointments requiring discretion and specialist networks.",
+    "features": [
+      "Confidential search",
+      "Board-level expertise",
+      "Thorough vetting",
+      "Market insight reports"
+    ]
+  },
+  {
+    "title": "Volume Hiring",
+    "description": "Structured high-volume recruitment campaigns for organisations needing to scale rapidly across multiple roles.",
+    "features": [
+      "Dedicated delivery team",
+      "Coordinated campaigns",
+      "Assessment centres",
+      "Fast turnaround"
+    ]
+  },
+  {
+    "title": "Contract Staffing",
+    "description": "Flexible contract and temporary staffing to meet short-term demands, seasonal peaks, or project-specific needs.",
+    "features": [
+      "Fast mobilisation",
+      "Fully vetted contractors",
+      "Payroll management",
+      "Flexible terms"
+    ]
+  }
+]

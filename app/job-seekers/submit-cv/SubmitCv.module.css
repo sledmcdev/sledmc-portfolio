@@ -1,30 +1,30 @@
 .page {
-  background: hsl(0 0% 4%);
+  background: var(--bg-color);
 }
 
 .headerSection {
-  background: hsl(0 0% 4%);
+  background: var(--bg-color);
   padding: 140px 0 60px;
-  border-bottom: 1px solid hsl(0 0% 15%);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .formCard {
-  background: hsl(0 0% 7%);
+  background: var(--card-color);
   border-radius: var(--radius);
   padding: 48px;
-  border: 1px solid hsl(0 0% 15%);
+  border: 1px solid var(--border-color);
 }
 
 .formTitle {
   font-size: 1.6rem;
   font-weight: 800;
-  color: hsl(0 0% 96%);
+  color: var(--fg-color);
   margin-bottom: 6px;
 }
 
 .formDesc {
   font-size: 0.9375rem;
-  color: hsl(0 0% 64%);
+  color: var(--muted-fg);
   margin-bottom: 32px;
 }
 
@@ -35,11 +35,11 @@
 }
 
 .fileDrop {
-  border: 1px dashed hsl(0 0% 25%);
+  border: 1px dashed var(--input-border);
   border-radius: var(--radius);
   padding: 36px 20px;
   text-align: center;
-  background: hsl(0 0% 5%);
+  background: var(--input-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,18 +50,18 @@
 }
 
 .fileDrop:hover {
-  border-color: hsl(31 95% 44%);
-  background: rgba(212, 128, 20, 0.04);
+  border-color: var(--amber);
+  background: var(--amber-muted);
 }
 
 .fileIcon {
-  color: hsl(31 95% 44%);
+  color: var(--amber);
 }
 
 .fileDrop span {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: hsl(0 0% 64%);
+  color: var(--muted-fg);
 }
 
 .fileInput {
@@ -75,21 +75,21 @@
   display: flex;
   gap: 12px;
   padding: 16px;
-  background: rgba(212, 128, 20, 0.08);
+  background: var(--amber-muted);
   border-radius: var(--radius);
-  border: 1px solid rgba(212, 128, 20, 0.2);
+  border: 1px solid var(--accent-border);
   align-items: flex-start;
 }
 
 .shieldIcon {
-  color: hsl(31 95% 44%);
+  color: var(--amber);
   flex-shrink: 0;
   margin-top: 2px;
 }
 
 .privacyConsent p {
   font-size: 0.8125rem;
-  color: hsl(0 0% 80%);
+  color: var(--muted-fg);
   line-height: 1.5;
 }
 
@@ -103,17 +103,17 @@
 }
 
 .successIcon {
-  color: hsl(31 95% 44%);
+  color: var(--amber);
 }
 
 .successState h2 {
   font-size: 1.75rem;
-  color: hsl(0 0% 96%);
+  color: var(--fg-color);
 }
 
 .successState p {
   font-size: 1rem;
-  color: hsl(0 0% 64%);
+  color: var(--muted-fg);
   max-width: 500px;
   line-height: 1.65;
 }

@@ -1,11 +1,11 @@
 .page {
-  background: hsl(0 0% 4%);
+  background: var(--bg-color);
 }
 
 .headerSection {
-  background: hsl(0 0% 4%);
+  background: var(--bg-color);
   padding: 140px 0 60px;
-  border-bottom: 1px solid hsl(0 0% 15%);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .grid {
@@ -23,7 +23,7 @@
 
 .colTitle {
   font-size: 1.25rem;
-  color: hsl(0 0% 96%);
+  color: var(--fg-color);
 }
 
 .infoItem {
@@ -36,8 +36,8 @@
   width: 40px;
   height: 40px;
   border-radius: var(--radius);
-  background: rgba(212, 128, 20, 0.12);
-  color: hsl(31 95% 44%);
+  background: var(--amber-muted);
+  color: var(--amber);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,18 +47,18 @@
 .infoItem strong {
   display: block;
   font-size: 0.875rem;
-  color: hsl(0 0% 96%);
+  color: var(--fg-color);
   margin-bottom: 2px;
 }
 
 .infoItem p, .infoItem a {
   font-size: 0.9375rem;
-  color: hsl(0 0% 64%);
+  color: var(--muted-fg);
   text-decoration: none;
 }
 
 .infoItem a:hover {
-  color: hsl(31 95% 44%);
+  color: var(--amber);
 }
 
 .mapWrap {
@@ -69,13 +69,13 @@
 
 .formTitle {
   font-size: 1.5rem;
-  color: hsl(0 0% 96%);
+  color: var(--fg-color);
   margin-bottom: 6px;
 }
 
 .formDesc {
   font-size: 0.9375rem;
-  color: hsl(0 0% 64%);
+  color: var(--muted-fg);
   margin-bottom: 24px;
 }
 
@@ -92,10 +92,15 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  color: var(--fg-color);
+}
+
+.successState p {
+  color: var(--muted-fg);
 }
 
 .successIcon {
-  color: hsl(31 95% 44%);
+  color: var(--amber);
 }
 
 @media (max-width: 900px) {

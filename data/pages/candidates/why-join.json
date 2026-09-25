@@ -1,0 +1,13 @@
+{
+  "eyebrow": "WHY PREPARE WITH SLEDMC",
+  "title": "A Structured Career Pathway",
+  "description": "We are not a simple recruitment page. We provide a complete end-to-end preparation system that turns candidate ambition into European workplace success.",
+  "items": [
+    { "icon": "GraduationCap", "title": "Professional Training", "desc": "Develop industry-standard skills relevant to your chosen European occupation before employer interviews." },
+    { "icon": "Globe2", "title": "Language Training", "desc": "Prepare for destination languages (English, German, Italian, Dutch) for seamless workplace communication." },
+    { "icon": "Building2", "title": "European Cultural Readiness", "desc": "Understand workplace culture, safety, timekeeping, gender equality, and everyday living expectations in Europe." },
+    { "icon": "FileText", "title": "Documentation Guidance", "desc": "Structure official CVs, police clearances, qualifications attestation, and work visa document packages." },
+    { "icon": "Briefcase", "title": "Direct European Opportunities", "desc": "Access verified job openings across European employers and official workforce partner networks." },
+    { "icon": "ShieldCheck", "title": "Pre-Departure & Protection", "desc": "Receive comprehensive pre-travel orientation, legal contract reviews, and recruitment fraud safeguards." }
+  ]
+}

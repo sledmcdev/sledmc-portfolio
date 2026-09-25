@@ -1,0 +1,12 @@
+{
+  "eyebrow": "SPECIALIZED SECTORS",
+  "title": "Sector-Specific Pathways",
+  "description": "Tailored curriculum combining general European readiness with specialized vocational standards.",
+  "sectors": [
+    { "icon": "Truck", "title": "Professional Drivers", "desc": "Commercial heavy vehicle driving, EU road safety, tachograph compliance & Code 95 pathways." },
+    { "icon": "Building2", "title": "Hospitality & Culinary", "desc": "Hotel staff, restaurant service, professional kitchen personnel & housekeeping excellence." },
+    { "icon": "HeartHandshake", "title": "Care & Healthcare Support", "desc": "Elderly care assistance, patient support, nursing aides & healthcare facility protocols." },
+    { "icon": "Package", "title": "Logistics & Warehousing", "desc": "Inventory management, automated warehouse systems, fork-lift operation & distribution." },
+    { "icon": "Wrench", "title": "Skilled Trades", "desc": "Certified welders, industrial electricians, automotive mechanics & construction technicians." }
+  ]
+}

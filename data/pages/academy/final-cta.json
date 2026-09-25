@@ -1,0 +1,9 @@
+{
+  "eyebrow": "BUILD YOUR FUTURE",
+  "title": "Prepare Today. Build Your European Career Tomorrow.",
+  "description": "Join SLEDMC Academy to transform your experience into verified, European-ready credentials.",
+  "buttons": [
+    { "label": "Join SLEDMC Academy", "href": "/candidates", "variant": "primary", "icon": "ArrowRight" },
+    { "label": "For European Employers", "href": "/clients", "variant": "secondary", "icon": "Building2" }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "eyebrow": "ERROR — SYSTEM EXCEPTION",
+  "title": "Something went wrong",
+  "body": "An unexpected error occurred. Please try again or return home.",
+  "retryLabel": "Try Again",
+  "homeCta": {
+    "label": "Return Home",
+    "href": "/"
+  }
+}

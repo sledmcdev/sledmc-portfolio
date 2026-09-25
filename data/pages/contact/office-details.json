@@ -1,0 +1,34 @@
+{
+  "title": "Office Details",
+  "items": [
+    {
+      "icon": "MapPin",
+      "label": "Head Office Address",
+      "field": "address"
+    },
+    {
+      "icon": "Phone",
+      "label": "Phone Number",
+      "field": "phone",
+      "link": "tel"
+    },
+    {
+      "icon": "Mail",
+      "label": "Email Address",
+      "field": "email",
+      "link": "mailto"
+    },
+    {
+      "icon": "MessageSquare",
+      "label": "WhatsApp Business",
+      "field": "whatsapp",
+      "link": "whatsapp"
+    },
+    {
+      "icon": "Clock",
+      "label": "Business Hours",
+      "field": "hours"
+    }
+  ],
+  "mapLabel": "Google Maps Location"
+}

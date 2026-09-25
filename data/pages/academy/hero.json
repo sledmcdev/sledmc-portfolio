@@ -1,0 +1,10 @@
+{
+  "badge": { "icon": "GraduationCap", "label": "SLEDMC Academy Platform" },
+  "titleLine1": "SLEDMC Academy —",
+  "titleHighlight": "Prepare for Europe",
+  "subtitle": "The specialized training and Europe-readiness engine turning Sri Lankan talent into high-performing, workplace-ready professionals before employer matching and international mobility.",
+  "buttons": [
+    { "label": "Explore Core Modules", "href": "#curriculum", "variant": "primary", "icon": "ArrowRight" },
+    { "label": "Check Readiness Status", "href": "#assessment", "variant": "secondary", "icon": "UserCheck" }
+  ]
+}

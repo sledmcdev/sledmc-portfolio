@@ -1,0 +1,57 @@
+{
+  "ctaBand": {
+    "eyebrow": "TRANSFORM YOUR TEAM",
+    "title": "Ready to make your next move?",
+    "subtitle": "Whether you are seeking prepared international talent or your next European career milestone, SLEDMC is your strategic partner.",
+    "buttons": [
+      { "label": "Join as Candidate", "href": "/candidates", "variant": "secondary" },
+      { "label": "Request Workers", "href": "/clients#request-form", "variant": "primary" }
+    ]
+  },
+  "watermark": "SLEDMC",
+  "columns": [
+    {
+      "title": "Company",
+      "links": [
+        { "label": "About Us", "href": "/about" },
+        { "label": "SLEDMC Academy", "href": "/academy" },
+        { "label": "Our Approach", "href": "/our-approach" },
+        { "label": "Services", "href": "/services" },
+        { "label": "Industries", "href": "/industries" },
+        { "label": "Insights", "href": "/insights" }
+      ]
+    },
+    {
+      "title": "Candidates",
+      "links": [
+        { "label": "Candidates Pathway", "href": "/candidates" },
+        { "label": "Academy Modules", "href": "/academy#curriculum" },
+        { "label": "Readiness Assessment", "href": "/academy#assessment" },
+        { "label": "Candidate Registration", "href": "/candidates#assessment-form" },
+        { "label": "Candidate FAQ", "href": "/candidates#faq" }
+      ]
+    },
+    {
+      "title": "Employers",
+      "links": [
+        { "label": "Employer Solutions", "href": "/clients#solutions" },
+        { "label": "Workforce Sectors", "href": "/clients#sectors" },
+        { "label": "Request Workforce", "href": "/clients#request-form" },
+        { "label": "Partner Network", "href": "/clients#partner-network" },
+        { "label": "Employer FAQ", "href": "/clients#faq" }
+      ]
+    }
+  ],
+  "socialLabels": {
+    "linkedin": "LinkedIn",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "youtube": "YouTube"
+  },
+  "copyright": "SLEDMC RECRUITMENT. ALL RIGHTS RESERVED.",
+  "legalLinks": [
+    { "label": "PRIVACY POLICY", "href": "/privacy-policy" },
+    { "label": "TERMS & CONDITIONS", "href": "/terms" },
+    { "label": "COOKIE POLICY", "href": "/cookies" }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "eyebrow": "DIGITAL INNOVATION",
+  "title": "SLEDMC European Readiness Profile",
+  "description": "Every academy candidate is issued a digital readiness profile detailing verified credentials to match directly with European employers.",
+  "widgets": [
+    { "label": "LANGUAGE STATUS", "metric": "B2 Certified", "detail": "Workplace English & Basic German/Italian" },
+    { "label": "VERIFIED QUALIFICATIONS", "metric": "Trade Approved", "detail": "C/CE License & Workplace Safety" },
+    { "label": "TRAINING COMPLETION", "metric": "100% Ready", "detail": "Modules 1 - 8 Completed" },
+    { "label": "PRE-DEPARTURE STATUS", "metric": "Verified", "detail": "Passport, Police Clearance & Contract" }
+  ]
+}

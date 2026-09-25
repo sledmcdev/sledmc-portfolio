@@ -1,0 +1,37 @@
+{
+  "title": "Candidate Registration Form",
+  "description": "Please fill in your details and attach your latest resume/CV.",
+  "fields": {
+    "firstName": { "label": "First Name *", "placeholder": "Jane" },
+    "lastName": { "label": "Last Name *", "placeholder": "Doe" },
+    "email": { "label": "Email Address *", "placeholder": "jane@example.com" },
+    "phone": { "label": "Phone Number *", "placeholder": "+1 234 567 890" },
+    "industry": { "label": "Primary Industry *", "placeholder": "Select your primary industry" },
+    "experience": {
+      "label": "Experience Level *",
+      "placeholder": "Select experience level",
+      "options": [
+        { "value": "entry", "label": "Entry Level (0 - 2 yrs)" },
+        { "value": "mid", "label": "Mid Level (3 - 5 yrs)" },
+        { "value": "senior", "label": "Senior Level (6 - 10 yrs)" },
+        { "value": "executive", "label": "Executive / Leadership (10+ yrs)" }
+      ]
+    },
+    "cv": {
+      "label": "Upload CV / Resume (PDF, DOC, DOCX - Max 10MB) *",
+      "dropText": "Click to browse or drag and drop your file here",
+      "accept": ".pdf,.doc,.docx",
+      "icon": "FileUp"
+    },
+    "summary": {
+      "label": "Key Skills / Career Goals Summary",
+      "placeholder": "Describe your key technical skills, target roles, preferred locations, and salary expectations..."
+    }
+  },
+  "privacy": {
+    "icon": "Shield",
+    "text": "By submitting this form, you consent to SLEDMC Recruitment storing and processing your personal data strictly for recruitment purposes in accordance with our Privacy Policy."
+  },
+  "submitLabel": "Submit Your CV Now",
+  "submittingLabel": "Submitting…"
+}

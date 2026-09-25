@@ -4,13 +4,38 @@ import { Phone, Mail, MapPin, Clock, MessageSquare, CheckCircle2 } from "lucide-
 import SectionHeader from "@/components/shared/SectionHeader";
 import PlaceholderImage from "@/components/shared/PlaceholderImage";
 import { COMPANY } from "@/lib/data";
+import hero from "@/data/pages/contact/hero.json";
+import office from "@/data/pages/contact/office-details.json";
+import form from "@/data/pages/contact/form.json";
 import styles from "./Contact.module.css";
+
+const ICON_MAP: Record<string, React.ElementType> = { Phone, Mail, MapPin, Clock, MessageSquare };
+
+type CompanyField = "address" | "phone" | "email" | "whatsapp" | "hours";
+
+function buildHref(link: string | undefined, value: string): string | null {
+  switch (link) {
+    case "tel":
+      return `tel:${value}`;
+    case "mailto":
+      return `mailto:${value}`;
+    case "whatsapp":
+      return `https://wa.me/${value.replace(/\D/g, "")}`;
+    default:
+      return null;
+  }
+}
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+    // Simulated async submission until a real endpoint is wired up.
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    setSubmitting(false);
     setSubmitted(true);
   };
 
@@ -18,13 +43,7 @@ export default function ContactPage() {
     <div className={styles.page}>
       <section className={styles.headerSection}>
         <div className="container">
-          <SectionHeader
-            label="Get In Touch"
-            title="Contact SLEDMC Recruitment"
-            subtitle="We're here to answer your questions, whether you're looking for talent or your next career move."
-            center
-            light
-          />
+          <SectionHeader label={hero.label} title={hero.title} subtitle={hero.subtitle} center light />
         </div>
       </section>
 
@@ -34,52 +53,27 @@ export default function ContactPage() {
             {/* Contact Information & Office Details */}
             <div className={styles.infoCol}>
               <div className="card" style={{ display: "flex", flexDirection: "column", gap: 24, padding: 36 }}>
-                <h3 className={styles.colTitle}>Office Details</h3>
+                <h3 className={styles.colTitle}>{office.title}</h3>
 
-                <div className={styles.infoItem}>
-                  <div className={styles.iconWrap}><MapPin size={20} /></div>
-                  <div>
-                    <strong>Head Office Address</strong>
-                    <p>{COMPANY.address}</p>
-                  </div>
-                </div>
-
-                <div className={styles.infoItem}>
-                  <div className={styles.iconWrap}><Phone size={20} /></div>
-                  <div>
-                    <strong>Phone Number</strong>
-                    <p><a href={`tel:${COMPANY.phone}`}>{COMPANY.phone}</a></p>
-                  </div>
-                </div>
-
-                <div className={styles.infoItem}>
-                  <div className={styles.iconWrap}><Mail size={20} /></div>
-                  <div>
-                    <strong>Email Address</strong>
-                    <p><a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a></p>
-                  </div>
-                </div>
-
-                <div className={styles.infoItem}>
-                  <div className={styles.iconWrap}><MessageSquare size={20} /></div>
-                  <div>
-                    <strong>WhatsApp Business</strong>
-                    <p><a href={`https://wa.me/${COMPANY.whatsapp.replace(/\D/g, "")}`}>{COMPANY.whatsapp}</a></p>
-                  </div>
-                </div>
-
-                <div className={styles.infoItem}>
-                  <div className={styles.iconWrap}><Clock size={20} /></div>
-                  <div>
-                    <strong>Business Hours</strong>
-                    <p>{COMPANY.hours}</p>
-                  </div>
-                </div>
+                {office.items.map((item) => {
+                  const Icon = ICON_MAP[item.icon];
+                  const value = COMPANY[item.field as CompanyField];
+                  const href = buildHref((item as { link?: string }).link, value);
+                  return (
+                    <div key={item.field} className={styles.infoItem}>
+                      <div className={styles.iconWrap}>{Icon && <Icon size={20} />}</div>
+                      <div>
+                        <strong>{item.label}</strong>
+                        <p>{href ? <a href={href}>{value}</a> : value}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Map Placeholder */}
               <div className={styles.mapWrap}>
-                <PlaceholderImage label="Google Maps Location" height={220} style={{ borderRadius: 16 }} />
+                <PlaceholderImage label={office.mapLabel} height={220} style={{ borderRadius: 16 }} />
               </div>
             </div>
 
@@ -87,51 +81,63 @@ export default function ContactPage() {
             <div className={styles.formCol}>
               <div className="card" style={{ padding: 40 }}>
                 {submitted ? (
-                  <div className={styles.successState}>
+                  <div className={styles.successState} role="status">
                     <CheckCircle2 size={56} className={styles.successIcon} />
-                    <h2>Message Sent!</h2>
-                    <p>Thank you for reaching out. A representative from SLEDMC Recruitment will get back to you shortly.</p>
+                    <h2>{form.success.title}</h2>
+                    <p>{form.success.body}</p>
                     <button onClick={() => setSubmitted(false)} className="btn btn-outline">
-                      Send Another Message
+                      {form.success.resetLabel}
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className={styles.form}>
-                    <h3 className={styles.formTitle}>General Inquiry Form</h3>
-                    <p className={styles.formDesc}>Select your inquiry category and send us a message.</p>
+                  <form onSubmit={handleSubmit} className={styles.form} aria-busy={submitting}>
+                    <h3 className={styles.formTitle}>{form.title}</h3>
+                    <p className={styles.formDesc}>{form.description}</p>
 
                     <div className="form-group">
-                      <label className="form-label">I am a... *</label>
-                      <select className="form-select" required defaultValue="candidate">
-                        <option value="candidate">Job Seeker / Candidate</option>
-                        <option value="employer">Organization / Employer</option>
-                        <option value="general">General Partnership / Media</option>
+                      <label className="form-label" htmlFor="contact-category">{form.category.label}</label>
+                      <select id="contact-category" className="form-select" required defaultValue={form.category.defaultValue}>
+                        {form.category.options.map((opt) => (
+                          <option key={opt.value} value={opt.value}>{opt.label}</option>
+                        ))}
                       </select>
                     </div>
 
                     <div className="grid-2">
                       <div className="form-group">
-                        <label className="form-label">Full Name *</label>
-                        <input type="text" className="form-input" required placeholder="Alex Morgan" />
+                        <label className="form-label" htmlFor="contact-name">{form.fullName.label}</label>
+                        <input id="contact-name" type="text" className="form-input" required placeholder={form.fullName.placeholder} />
                       </div>
                       <div className="form-group">
-                        <label className="form-label">Email Address *</label>
-                        <input type="email" className="form-input" required placeholder="alex@example.com" />
+                        <label className="form-label" htmlFor="contact-email">{form.email.label}</label>
+                        <input id="contact-email" type="email" className="form-input" required placeholder={form.email.placeholder} />
                       </div>
                     </div>
 
                     <div className="form-group">
-                      <label className="form-label">Subject *</label>
-                      <input type="text" className="form-input" required placeholder="Inquiry regarding recruitment services..." />
+                      <label className="form-label" htmlFor="contact-subject">{form.subject.label}</label>
+                      <input id="contact-subject" type="text" className="form-input" required placeholder={form.subject.placeholder} />
                     </div>
 
                     <div className="form-group">
-                      <label className="form-label">Your Message *</label>
-                      <textarea className="form-textarea" required placeholder="How can we help you?"></textarea>
+                      <label className="form-label" htmlFor="contact-message">{form.message.label}</label>
+                      <textarea id="contact-message" className="form-textarea" required placeholder={form.message.placeholder}></textarea>
                     </div>
 
-                    <button type="submit" className="btn btn-primary btn-lg" style={{ width: "100%" }}>
-                      Send Message
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-lg"
+                      style={{ width: "100%" }}
+                      disabled={submitting}
+                      aria-busy={submitting}
+                    >
+                      {submitting ? (
+                        <>
+                          <span className="spinner" aria-hidden="true" /> {form.submittingLabel}
+                        </>
+                      ) : (
+                        form.submitLabel
+                      )}
                     </button>
                   </form>
                 )}

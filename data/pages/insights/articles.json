@@ -1,0 +1,19 @@
+{
+  "readMoreLabel": "Read Article →",
+  "extraArticles": [
+    {
+      "category": "Employer Insights",
+      "title": "Navigating Talent Shortages in Technical Sectors",
+      "description": "Strategies for organizations competing for rare software and engineering skills in a tight labor market.",
+      "readTime": "7 min read",
+      "icon": "TrendingUp"
+    },
+    {
+      "category": "Market Reports",
+      "title": "Global Hiring Trends & Compensation Benchmarks 2025",
+      "description": "Key findings on salary expectations, remote working policies, and employee retention factors.",
+      "readTime": "10 min read",
+      "icon": "FileText"
+    }
+  ]
+}

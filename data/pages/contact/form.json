@@ -1,0 +1,45 @@
+{
+  "title": "General Inquiry Form",
+  "description": "Select your inquiry category and send us a message.",
+  "category": {
+    "label": "I am a... *",
+    "defaultValue": "candidate",
+    "options": [
+      {
+        "value": "candidate",
+        "label": "Job Seeker / Candidate"
+      },
+      {
+        "value": "employer",
+        "label": "Organization / Employer"
+      },
+      {
+        "value": "general",
+        "label": "General Partnership / Media"
+      }
+    ]
+  },
+  "fullName": {
+    "label": "Full Name *",
+    "placeholder": "Alex Morgan"
+  },
+  "email": {
+    "label": "Email Address *",
+    "placeholder": "alex@example.com"
+  },
+  "subject": {
+    "label": "Subject *",
+    "placeholder": "Inquiry regarding recruitment services..."
+  },
+  "message": {
+    "label": "Your Message *",
+    "placeholder": "How can we help you?"
+  },
+  "submitLabel": "Send Message",
+  "submittingLabel": "Sending...",
+  "success": {
+    "title": "Message Sent!",
+    "body": "Thank you for reaching out. A representative from SLEDMC Recruitment will get back to you shortly.",
+    "resetLabel": "Send Another Message"
+  }
+}

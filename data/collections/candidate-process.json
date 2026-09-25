@@ -1,0 +1,32 @@
+[
+  {
+    "step": "01",
+    "title": "Submit CV / Register",
+    "description": "Share your CV and tell us about your career goals and aspirations."
+  },
+  {
+    "step": "02",
+    "title": "Candidate Assessment",
+    "description": "We conduct a thorough assessment of your skills, experience, and ambitions."
+  },
+  {
+    "step": "03",
+    "title": "Match With Opportunities",
+    "description": "We match you with relevant opportunities from our client network."
+  },
+  {
+    "step": "04",
+    "title": "Interview Preparation",
+    "description": "Expert coaching and preparation to help you perform at your best."
+  },
+  {
+    "step": "05",
+    "title": "Interview",
+    "description": "We coordinate and support you throughout the interview process."
+  },
+  {
+    "step": "06",
+    "title": "Placement",
+    "description": "We manage the offer and support your transition into your new role."
+  }
+]

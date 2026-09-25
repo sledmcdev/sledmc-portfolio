@@ -5,14 +5,8 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 import PlaceholderImage from "@/components/shared/PlaceholderImage";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { COMPANY } from "@/lib/data";
+import content from "@/data/pages/home/company-intro.json";
 import styles from "./CompanyIntro.module.css";
-
-const STRENGTHS = [
-  "15+ years of specialist recruitment experience",
-  "Personalised service for every client and candidate",
-  "Deep industry expertise across 20+ sectors",
-  "International reach with a local touch",
-];
 
 export default function CompanyIntro() {
   return (
@@ -27,21 +21,21 @@ export default function CompanyIntro() {
             className={styles.imageCol}
           >
             <div className={styles.imageStack}>
-              <PlaceholderImage label="Office / Team Photo" height={480} style={{ borderRadius: 20 }} />
+              <PlaceholderImage label={content.imageLabel} height={480} style={{ borderRadius: 20 }} />
               <div className={styles.badge}>
-                <span className={styles.badgeValue}>15+</span>
-                <span className={styles.badgeLabel}>Years of Excellence</span>
+                <span className={styles.badgeValue}>{content.badge.value}</span>
+                <span className={styles.badgeLabel}>{content.badge.label}</span>
               </div>
             </div>
           </motion.div>
           <div className={styles.textCol}>
             <SectionHeader
-              label="About Us"
-              title="More Than a Recruitment Agency"
+              label={content.label}
+              title={content.title}
               subtitle={COMPANY.description}
             />
             <ul className={styles.strengths}>
-              {STRENGTHS.map((s, i) => (
+              {content.strengths.map((s, i) => (
                 <motion.li
                   key={i}
                   initial={{ opacity: 0, x: 20 }}
@@ -55,8 +49,8 @@ export default function CompanyIntro() {
                 </motion.li>
               ))}
             </ul>
-            <Link href="/about" className="btn btn-outline">
-              Learn More About Us <ArrowRight size={16} />
+            <Link href={content.cta.href} className="btn btn-outline">
+              {content.cta.label} <ArrowRight size={16} />
             </Link>
           </div>
         </div>

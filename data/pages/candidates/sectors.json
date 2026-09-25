@@ -1,0 +1,12 @@
+{
+  "eyebrow": "EUROPEAN OPPORTUNITIES",
+  "title": "Available Sector Pathways",
+  "description": "Explore our core occupational sectors actively seeking prepared talent across Europe.",
+  "items": [
+    { "icon": "Truck", "title": "Professional Drivers", "tags": ["Category C / CE Drivers", "International Transport", "Heavy Vehicle Operators", "Code 95 / CQC Pathway"] },
+    { "icon": "Building2", "title": "Hospitality & Services", "tags": ["Hotel Staff", "Restaurant Service", "Kitchen Staff & Chefs", "Housekeeping"] },
+    { "icon": "HeartHandshake", "title": "Care & Healthcare", "tags": ["Care Workers", "Elderly Care Aides", "Healthcare Assistants"] },
+    { "icon": "Package", "title": "Logistics & Warehouse", "tags": ["Warehouse Operators", "Logistics Personnel", "Distribution Staff", "Picking & Packing"] },
+    { "icon": "Wrench", "title": "Skilled Trades", "tags": ["Automotive Mechanics", "Certified Welders", "Industrial Electricians", "Construction Workers"] }
+  ]
+}

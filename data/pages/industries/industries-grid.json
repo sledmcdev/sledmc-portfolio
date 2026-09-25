@@ -1,0 +1,83 @@
+{
+  "glyph": "★",
+  "descriptionTemplate": "Specialized talent sourcing and executive recruitment for top companies in {name}.",
+  "rolesLabel": "Key Roles Commonly Recruited:",
+  "roles": {
+    "IT & Technology": [
+      "Software Engineering",
+      "Cloud Architecture",
+      "Cybersecurity",
+      "Product Management",
+      "Data Analytics"
+    ],
+    "Engineering": [
+      "Civil Engineering",
+      "Mechanical Engineer",
+      "Electrical Systems",
+      "Project Management",
+      "Structural Design"
+    ],
+    "Finance & Accounting": [
+      "Financial Planning",
+      "Corporate Accounting",
+      "Audit & Tax",
+      "Risk Management",
+      "Investment Banking"
+    ],
+    "Healthcare": [
+      "Medical Directors",
+      "Clinical Specialists",
+      "Healthcare Admin",
+      "Pharmaceutical Sales",
+      "Nursing Leadership"
+    ],
+    "Construction": [
+      "Site Managers",
+      "Quantity Surveyors",
+      "Safety Officers",
+      "Construction PMs",
+      "BIM Specialists"
+    ],
+    "Manufacturing": [
+      "Plant Operations",
+      "Quality Assurance",
+      "Supply Chain Lead",
+      "Lean Specialists",
+      "Industrial Engineering"
+    ],
+    "Hospitality": [
+      "General Managers",
+      "F&B Directors",
+      "Operations Leads",
+      "Revenue Managers",
+      "Executive Chefs"
+    ],
+    "Sales & Marketing": [
+      "CMO / Directors",
+      "Digital Marketing",
+      "Brand Managers",
+      "Key Account Execs",
+      "Business Development"
+    ],
+    "Logistics": [
+      "Supply Chain Managers",
+      "Fleet Operations",
+      "Warehouse Directors",
+      "Freight Forwarding",
+      "Logistics Analysts"
+    ],
+    "Banking & Finance": [
+      "Relationship Managers",
+      "Credit Risk Analysts",
+      "Compliance Officers",
+      "Wealth Managers",
+      "Treasury Leads"
+    ]
+  },
+  "fallbackRoles": [
+    "Specialist Roles",
+    "Team Leads",
+    "Management",
+    "Executives"
+  ]
+}

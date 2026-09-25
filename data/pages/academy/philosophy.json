@@ -1,0 +1,11 @@
+{
+  "eyebrow": "OUR FOUNDATIONAL PHILOSOPHY",
+  "title": "Training Beyond Technical Skills",
+  "description": "Technical competency alone does not guarantee international success. SLEDMC Academy delivers a 360-degree curriculum combining professional aptitude, language mastery, European culture, worker rights, and pre-departure readiness.",
+  "pillars": [
+    { "icon": "Globe2", "title": "Language & Workplace Communication", "desc": "Destination-specific language training focused on practical workplace dialogues, safety instructions, and supervisor interaction." },
+    { "icon": "Compass", "title": "European Culture & Work Ethic", "desc": "Deep orientation into European work culture, punctuality, gender equality, workplace safety, and civic norms." },
+    { "icon": "ShieldCheck", "title": "Rights & Fraud Protection", "desc": "Thorough education on employment contracts, working hour laws, fair wages, tax compliance, and anti-recruitment fraud." },
+    { "icon": "Award", "title": "Verified Qualification Pathways", "desc": "Structuring candidate documents, trade certifications, and facilitating legal pathways for European regulated licenses." }
+  ]
+}

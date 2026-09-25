@@ -1,0 +1,11 @@
+{
+  "eyebrow": "STRATEGIC COLLABORATION",
+  "title": "European Partner Network",
+  "description": "We collaborate with recruitment agencies, training centers, driving schools, legal/immigration professionals, relocation specialists, and housing providers across Europe.",
+  "items": [
+    { "title": "Recruitment Agencies", "desc": "Partner with us to expand your talent supply chain from Sri Lanka." },
+    { "title": "Driving Schools & Code 95", "desc": "Provide authorized European driver qualification pathways." },
+    { "title": "Legal & Immigration Experts", "desc": "Assist with work permits, embassy appointments & visa compliance." },
+    { "title": "Relocation & Housing", "desc": "Support worker housing and local municipal integration." }
+  ]
+}

@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { STATS } from "@/lib/data";
+import content from "@/data/pages/home/key-stats.json";
 import styles from "./KeyStats.module.css";
 
 function useCountUp(end: number, duration: number = 2000, start: boolean = false) {
@@ -58,7 +59,7 @@ export default function KeyStats() {
   }, []);
 
   return (
-    <section className={styles.section} ref={ref}>
+    <section className={styles.section} ref={ref} aria-label={content.ariaLabel}>
       <div className={styles.bgDecor} />
       <div className="container">
         <div className={styles.grid}>

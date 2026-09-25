@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Industry Expertise",
+    "description": "Deep sector knowledge across 20+ industries, enabling us to understand technical requirements and cultural fit.",
+    "icon": "Award"
+  },
+  {
+    "title": "Extensive Candidate Network",
+    "description": "Access to a curated network of active and passive candidates built over years of relationship investment.",
+    "icon": "Network"
+  },
+  {
+    "title": "Personalised Recruitment",
+    "description": "No template solutions. Every mandate is handled with bespoke strategy tailored to your specific needs.",
+    "icon": "UserCheck"
+  },
+  {
+    "title": "Quality Screening",
+    "description": "Rigorous multi-stage screening ensures only the most suitable candidates reach your interview stage.",
+    "icon": "ShieldCheck"
+  },
+  {
+    "title": "Fast Turnaround",
+    "description": "Efficient processes and a ready talent pool allow us to deliver quality candidates within agreed timelines.",
+    "icon": "Zap"
+  },
+  {
+    "title": "Long-Term Partnerships",
+    "description": "We invest in lasting relationships with both clients and candidates, not just single transactions.",
+    "icon": "Handshake"
+  }
+]

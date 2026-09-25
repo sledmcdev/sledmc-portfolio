@@ -1,0 +1,34 @@
+{
+  "eyebrow": "DUAL EXPERIENCES",
+  "title": "Two Journeys. One Agency.",
+  "panels": [
+    {
+      "id": "candidates",
+      "tag": "FOR CANDIDATES",
+      "title": "Find Your Next Opportunity",
+      "description": "Discover relevant opportunities, build your career and connect with employers who are actively seeking your skills.",
+      "items": [
+        "Browse active executive & specialist openings",
+        "Submit your CV with total confidentiality",
+        "Personalized interview preparation & guidance",
+        "International career placement support"
+      ],
+      "cta": { "label": "Explore Opportunities", "href": "/job-seekers", "variant": "secondary" },
+      "primary": false
+    },
+    {
+      "id": "organizations",
+      "tag": "FOR ORGANIZATIONS",
+      "title": "Find the Right Talent",
+      "description": "Partner with our specialist recruitment consultants to source and retain top-tier talent across 20+ industries.",
+      "items": [
+        "Permanent & contract recruitment solutions",
+        "Retained executive search for C-suite roles",
+        "High-volume hiring & international mobilization",
+        "Dedicated account manager & custom SLAs"
+      ],
+      "cta": { "label": "Partner With Us", "href": "/organizations", "variant": "primary" },
+      "primary": true
+    }
+  ]
+}

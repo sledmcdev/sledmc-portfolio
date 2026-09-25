@@ -1,0 +1,37 @@
+[
+  {
+    "step": "01",
+    "title": "Understand",
+    "description": "We take time to deeply understand your requirements, culture, and goals."
+  },
+  {
+    "step": "02",
+    "title": "Search",
+    "description": "We activate our network and research to identify the right talent pool."
+  },
+  {
+    "step": "03",
+    "title": "Screen",
+    "description": "Rigorous screening filters candidates by skills, experience, and cultural fit."
+  },
+  {
+    "step": "04",
+    "title": "Shortlist",
+    "description": "We present a curated shortlist of thoroughly vetted candidates."
+  },
+  {
+    "step": "05",
+    "title": "Interview",
+    "description": "We coordinate and support the interview process for all parties."
+  },
+  {
+    "step": "06",
+    "title": "Placement",
+    "description": "We manage the offer, negotiation, and seamless onboarding process."
+  },
+  {
+    "step": "07",
+    "title": "Follow-up",
+    "description": "Post-placement support to ensure long-term success for all parties."
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "storyType": "employer",
+  "metricPrefix": "Result: ",
+  "labels": {
+    "challenge": "Challenge:",
+    "approach": "Approach:",
+    "result": "Result:"
+  }
+}

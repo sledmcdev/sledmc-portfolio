@@ -1,0 +1,112 @@
+{
+  "eyebrow": "STRUCTURED PREPARATION",
+  "title": "The 8 Core Academy Modules",
+  "description": "Every candidate enrolled in SLEDMC Academy completes a rigorous preparation path engineered specifically for European employer demands.",
+  "tabSeparator": ": ",
+  "modules": [
+    {
+      "id": "m1",
+      "num": "Module 01",
+      "title": "European Language Preparation",
+      "desc": "Targeted language instruction to ensure conversational, workplace, and technical fluency across European destinations.",
+      "items": [
+        "English for Europe & Workplace English",
+        "Italian, German, Dutch & Destination Languages",
+        "Workplace & Industry-Specific Vocabulary",
+        "Employer, Supervisor & Telephone Communication",
+        "Reading Employment Contracts & Basic Instructions"
+      ]
+    },
+    {
+      "id": "m2",
+      "num": "Module 02",
+      "title": "European Culture & Workplace Integration",
+      "desc": "Cross-cultural training designed to align Sri Lankan candidates with European social norms, legal obligations, and workplace dynamics.",
+      "items": [
+        "European Workplace Culture & Professional Etiquette",
+        "Punctuality, Timekeeping & Accountability",
+        "Workplace Communication & Team Dynamics",
+        "Gender Equality, Diversity & Personal Boundaries",
+        "Public Conduct, Transport & Emergency Services"
+      ]
+    },
+    {
+      "id": "m3",
+      "num": "Module 03",
+      "title": "Employment & Workers' Rights",
+      "desc": "Empowering workers with thorough knowledge of legal employment rights, contract safety, and anti-exploitation safeguards.",
+      "items": [
+        "Understanding European Employment Contracts",
+        "Salary Calculations, Taxes & Payslips",
+        "Working Hours, Overtime & Mandatory Holidays",
+        "Workplace Safety Standards (HSE)",
+        "Recruitment Fraud Awareness & Protection"
+      ]
+    },
+    {
+      "id": "m4",
+      "num": "Module 04",
+      "title": "Documentation & Mobility Preparation",
+      "desc": "Ensuring candidates possess 100% compliant, legalized, and verified documentation prior to visa submission and travel.",
+      "items": [
+        "Passport Verification & International Identity Standards",
+        "Police Clearance & Legal Record Certification",
+        "Educational & Work Experience Attestation",
+        "Certified Translations & Legalization Process",
+        "Visa & Work Permit Documentation Readiness"
+      ]
+    },
+    {
+      "id": "m5",
+      "num": "Module 05",
+      "title": "Professional Job-Specific Training",
+      "desc": "Hands-on vocational enhancement aligned with European employer operational standards and equipment.",
+      "items": [
+        "Commercial Driver & Fleet Operations",
+        "Hospitality, Hotel & Culinary Standards",
+        "Elderly Care & Healthcare Support Protocols",
+        "Logistics, Automated Warehousing & Picking",
+        "Skilled Trades (Welding, Electrical, Mechanics)"
+      ]
+    },
+    {
+      "id": "m6",
+      "num": "Module 06",
+      "title": "Employability & Interview Skills",
+      "desc": "Preparing candidates to present their experience convincingly in direct employer video and practical interviews.",
+      "items": [
+        "European Standard CV (Europass / Tailored Format)",
+        "Professional Cover Letter Preparation",
+        "Digital Video Interview Readiness & Tech Setup",
+        "Role-Specific Mock Interviews with European Trainers",
+        "Employer Communication Etiquette"
+      ]
+    },
+    {
+      "id": "m7",
+      "num": "Module 07",
+      "title": "Financial & Independent Living Skills",
+      "desc": "Guiding candidates on practical living essentials to foster smooth personal independence upon relocation.",
+      "items": [
+        "European Banking Setup & Remittance Procedures",
+        "Personal Budgeting & Cost of Living Management",
+        "Rent, Security Deposits & Accommodation Rules",
+        "Public Utilities, Transportation Cards & Mobile Plans",
+        "Digital Government Services & Local Registration"
+      ]
+    },
+    {
+      "id": "m8",
+      "num": "Module 08",
+      "title": "Pre-Departure & Arrival Orientation",
+      "desc": "Comprehensive final preparation ensuring smooth transit, airport reception, and initial onboarding in Europe.",
+      "items": [
+        "Final Document Verification Checklist",
+        "Contract Re-Verification & Terms Confirmation",
+        "Travel Planning & Luggage Requirements",
+        "Destination Orientation & First-Week Survival Guide",
+        "On-Arrival Partner Support Network"
+      ]
+    }
+  ]
+}

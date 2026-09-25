@@ -1,0 +1,10 @@
+{
+  "badge": { "icon": "Building2", "label": "European Employers & Partners Platform" },
+  "title": "Build Your Workforce",
+  "titleHighlight": "With SLEDMC",
+  "subtitle": "Access pre-screened, professionally prepared international talent from Sri Lanka — trained, certified, and ready for employment across European industries.",
+  "buttons": [
+    { "label": "Submit Workforce Requirement", "href": "#request-form", "variant": "primary", "icon": "Send" },
+    { "label": "Become a Partner", "href": "#partner-network", "variant": "secondary", "icon": "Users" }
+  ]
+}

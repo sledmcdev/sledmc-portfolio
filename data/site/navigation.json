@@ -1,0 +1,130 @@
+{
+  "logo": {
+    "src": "/logo.png",
+    "alt": "SLEDMC Logo",
+    "title": "SLEDMC",
+    "subtitle": "MOBILITY & SKILLS"
+  },
+  "items": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "About Us",
+      "href": "/about",
+      "children": [
+        {
+          "label": "Our Story",
+          "href": "/about#our-story"
+        },
+        {
+          "label": "Founder & Leadership",
+          "href": "/about#founder"
+        },
+        {
+          "label": "Vision & Values",
+          "href": "/about#vision"
+        },
+        {
+          "label": "Awards & Recognition",
+          "href": "/about#awards"
+        }
+      ]
+    },
+    {
+      "label": "Academy",
+      "href": "/academy"
+    },
+    {
+      "label": "Candidates",
+      "href": "/candidates",
+      "children": [
+        {
+          "label": "Candidates Pathway",
+          "href": "/candidates"
+        },
+        {
+          "label": "Academy Courses",
+          "href": "/academy#curriculum"
+        },
+        {
+          "label": "Readiness Assessment",
+          "href": "/academy#assessment"
+        },
+        {
+          "label": "Register as Candidate",
+          "href": "/candidates#assessment-form"
+        },
+        {
+          "label": "Candidate FAQ",
+          "href": "/candidates#faq"
+        }
+      ]
+    },
+    {
+      "label": "Clients & Employers",
+      "href": "/clients",
+      "children": [
+        {
+          "label": "Employer Solutions",
+          "href": "/clients#solutions"
+        },
+        {
+          "label": "Workforce Sectors",
+          "href": "/clients#sectors"
+        },
+        {
+          "label": "Request Workforce",
+          "href": "/clients#request-form"
+        },
+        {
+          "label": "Partner Network",
+          "href": "/clients#partner-network"
+        },
+        {
+          "label": "Employer FAQ",
+          "href": "/clients#faq"
+        }
+      ]
+    },
+    {
+      "label": "Services",
+      "href": "/services"
+    },
+    {
+      "label": "Industries",
+      "href": "/industries"
+    },
+    {
+      "label": "Our Approach",
+      "href": "/our-approach"
+    },
+    {
+      "label": "Insights",
+      "href": "/insights"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
+    }
+  ],
+  "ctas": [
+    {
+      "label": "For Candidates",
+      "href": "/candidates",
+      "variant": "secondary"
+    },
+    {
+      "label": "Find Talent",
+      "href": "/clients#request-form",
+      "variant": "primary"
+    }
+  ],
+  "mobileOverviewLabel": "Overview",
+  "a11y": {
+    "mainNav": "Main navigation",
+    "openMenu": "Open navigation",
+    "closeMenu": "Close navigation"
+  }
+}

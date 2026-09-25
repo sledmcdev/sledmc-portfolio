@@ -1,0 +1,13 @@
+{
+  "label": "About Us",
+  "title": "More Than a Recruitment Agency",
+  "imageLabel": "Office / Team Photo",
+  "badge": { "value": "15+", "label": "Years of Excellence" },
+  "strengths": [
+    "15+ years of specialist recruitment experience",
+    "Personalised service for every client and candidate",
+    "Deep industry expertise across 20+ sectors",
+    "International reach with a local touch"
+  ],
+  "cta": { "label": "Learn More About Us", "href": "/about" }
+}

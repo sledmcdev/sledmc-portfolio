@@ -1,0 +1,43 @@
+{
+  "title": "Client Partnership Inquiry",
+  "description": "Provide your details and position specifications below.",
+  "fields": {
+    "companyName": { "label": "Company Name *", "placeholder": "Acme Corporation" },
+    "contactName": { "label": "Contact Person Name *", "placeholder": "John Smith" },
+    "email": { "label": "Work Email Address *", "placeholder": "john.smith@acme.com" },
+    "phone": { "label": "Phone Number *", "placeholder": "+1 234 567 890" },
+    "industry": { "label": "Industry *", "placeholder": "Select company industry" },
+    "positions": {
+      "label": "Number of Positions *",
+      "placeholder": "Select hiring volume",
+      "options": [
+        { "value": "1-2", "label": "1 - 2 Key Roles" },
+        { "value": "3-5", "label": "3 - 5 Roles" },
+        { "value": "6-10", "label": "6 - 10 Roles" },
+        { "value": "10+", "label": "10+ Volume Campaign" }
+      ]
+    },
+    "model": {
+      "label": "Service / Partnership Model Interested In",
+      "defaultValue": "permanent",
+      "options": [
+        { "value": "permanent", "label": "Permanent Recruitment" },
+        { "value": "executive", "label": "Executive Search" },
+        { "value": "contract", "label": "Contract Staffing" },
+        { "value": "volume", "label": "Volume Hiring" },
+        { "value": "rpo", "label": "RPO (Managed Services)" }
+      ]
+    },
+    "requirements": {
+      "label": "Recruitment Requirements & Job Description",
+      "placeholder": "Please detail the job titles, required skillsets, location, target start date, and budget details..."
+    }
+  },
+  "privacy": {
+    "icon": "Shield",
+    "text": "Your business inquiry is treated with strict confidentiality. We do not share corporate data with third parties."
+  },
+  "submit": {
+    "label": "Talk to Our Recruitment Team"
+  }
+}

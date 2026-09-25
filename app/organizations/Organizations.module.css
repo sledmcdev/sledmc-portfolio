@@ -1,12 +1,12 @@
 .page {
-  background: hsl(0 0% 4%);
+  background: var(--bg-color);
 }
 
 .hero {
-  background: hsl(0 0% 4%);
+  background: var(--bg-color);
   padding: 150px 0 80px;
-  color: hsl(0 0% 96%);
-  border-bottom: 1px solid hsl(0 0% 15%);
+  color: var(--fg-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .heroGrid {
@@ -32,7 +32,7 @@
 
 .heroDesc {
   font-size: 1.125rem;
-  color: hsl(0 0% 64%);
+  color: var(--muted-fg);
   line-height: 1.7;
   margin-bottom: 32px;
 }
@@ -45,11 +45,11 @@
 
 .heroVisual {
   position: relative;
-  border: 1px solid hsl(0 0% 15%);
+  border: 1px solid var(--border-color);
 }
 
-.sectionWhite { background: hsl(0 0% 4%); }
-.sectionOffWhite { background: hsl(0 0% 4%); }
+.sectionWhite { background: var(--bg-color); }
+.sectionOffWhite { background: var(--bg-color); }
 
 /* Challenges Grid */
 .challengesGrid {
@@ -59,10 +59,10 @@
 }
 
 .challengeCard {
-  background: hsl(0 0% 7%);
+  background: var(--card-color);
   border-radius: var(--radius);
   padding: 28px;
-  border: 1px solid hsl(0 0% 15%);
+  border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -74,17 +74,17 @@
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: hsl(31 95% 44%);
+  color: var(--amber);
 }
 
 .challengeCard h3 {
   font-size: 1.125rem;
-  color: hsl(0 0% 96%);
+  color: var(--fg-color);
 }
 
 .challengeCard p {
   font-size: 0.875rem;
-  color: hsl(0 0% 64%);
+  color: var(--muted-fg);
   line-height: 1.6;
 }
 
@@ -96,18 +96,18 @@
 }
 
 .processCard {
-  background: hsl(0 0% 7%);
+  background: var(--card-color);
   border-radius: var(--radius);
   padding: 24px;
-  border: 1px solid hsl(0 0% 15%);
+  border: 1px solid var(--border-color);
 }
 
 .processStepNum {
   width: 36px;
   height: 36px;
   border-radius: var(--radius);
-  background: hsl(31 95% 44%);
-  color: hsl(0 0% 4%);
+  background: var(--amber);
+  color: var(--on-accent);
   font-family: var(--font-mono);
   font-weight: 800;
   display: flex;
@@ -118,13 +118,13 @@
 
 .processCard h3 {
   font-size: 1rem;
-  color: hsl(0 0% 96%);
+  color: var(--fg-color);
   margin-bottom: 8px;
 }
 
 .processCard p {
   font-size: 0.875rem;
-  color: hsl(0 0% 64%);
+  color: var(--muted-fg);
   line-height: 1.5;
 }
 
@@ -136,10 +136,10 @@
 }
 
 .modelCard {
-  background: hsl(0 0% 7%);
+  background: var(--card-color);
   border-radius: var(--radius);
   padding: 32px 24px;
-  border: 1px solid hsl(0 0% 15%);
+  border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -147,18 +147,18 @@
 }
 
 .modelCard:hover {
-  border-color: hsl(31 95% 44%);
+  border-color: var(--amber);
   transform: translateX(2px);
 }
 
 .modelCard h3 {
   font-size: 1.25rem;
-  color: hsl(0 0% 96%);
+  color: var(--fg-color);
 }
 
 .modelDesc {
   font-size: 0.875rem;
-  color: hsl(0 0% 64%);
+  color: var(--muted-fg);
   line-height: 1.6;
 }
 
@@ -172,14 +172,14 @@
 
 .modelFeatures li {
   font-size: 0.875rem;
-  color: hsl(0 0% 80%);
+  color: var(--muted-fg);
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .checkIcon {
-  color: hsl(31 95% 44%);
+  color: var(--amber);
   flex-shrink: 0;
 }
 
@@ -191,10 +191,10 @@
 }
 
 .storyCard {
-  background: hsl(0 0% 7%);
+  background: var(--card-color);
   border-radius: var(--radius);
   padding: 32px;
-  border: 1px solid hsl(0 0% 15%);
+  border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -204,22 +204,22 @@
   font-family: var(--font-mono);
   font-size: 0.875rem;
   font-weight: 700;
-  color: hsl(31 95% 44%);
+  color: var(--amber);
   padding: 8px 14px;
-  background: rgba(212, 128, 20, 0.12);
-  border: 1px solid rgba(212, 128, 20, 0.3);
+  background: var(--amber-muted);
+  border: 1px solid var(--accent-border);
   border-radius: var(--radius);
   align-self: flex-start;
 }
 
 .storyCard h3 {
   font-size: 1.25rem;
-  color: hsl(0 0% 96%);
+  color: var(--fg-color);
 }
 
 .storyCard p {
   font-size: 0.875rem;
-  color: hsl(0 0% 64%);
+  color: var(--muted-fg);
   line-height: 1.6;
 }
 
@@ -233,15 +233,15 @@
 }
 
 .faqBox {
-  background: hsl(0 0% 7%);
+  background: var(--card-color);
   border-radius: var(--radius);
   padding: 24px;
-  border: 1px solid hsl(0 0% 15%);
+  border: 1px solid var(--border-color);
 }
 
 .faqBox h3 {
   font-size: 1.0625rem;
-  color: hsl(0 0% 96%);
+  color: var(--fg-color);
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -249,13 +249,13 @@
 }
 
 .faqIcon {
-  color: hsl(31 95% 44%);
+  color: var(--amber);
   flex-shrink: 0;
 }
 
 .faqBox p {
   font-size: 0.9375rem;
-  color: hsl(0 0% 64%);
+  color: var(--muted-fg);
   line-height: 1.65;
   padding-left: 28px;
 }
