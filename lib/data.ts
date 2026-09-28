@@ -21,6 +21,7 @@ import candidateServices from "@/data/collections/candidate-services.json";
 import careerResources from "@/data/collections/career-resources.json";
 import candidateFaq from "@/data/collections/candidate-faq.json";
 import employerFaq from "@/data/collections/employer-faq.json";
+import blogs from "@/data/collections/blogs.json";
 
 export type Audience = "employer" | "candidate";
 
@@ -48,6 +49,33 @@ export interface SuccessStory {
   support?: string;
 }
 
+export interface BlogAuthor {
+  name: string;
+  role: string;
+  avatar: string;
+  bio: string;
+}
+
+export interface BlogContentBlock {
+  type: "paragraph" | "heading";
+  text: string;
+}
+
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  coverImage: string;
+  readTime: string;
+  publishedAt: string;
+  featured: boolean;
+  author: BlogAuthor;
+  tags: string[];
+  content: BlogContentBlock[];
+}
+
 export const COMPANY = company;
 export const FOUNDER = founder;
 export const STATS = stats;
@@ -66,3 +94,4 @@ export const CANDIDATE_SERVICES = candidateServices;
 export const CAREER_RESOURCES = careerResources;
 export const CANDIDATE_FAQ = candidateFaq;
 export const EMPLOYER_FAQ = employerFaq;
+export const BLOGS = blogs as BlogPost[];
