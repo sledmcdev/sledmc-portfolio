@@ -1,0 +1,73 @@
+[
+  {
+    "id": "1",
+    "slug": "global-hiring-trends-2025",
+    "title": "Global Hiring Trends & Compensation Benchmarks 2025",
+    "excerpt": "Key findings on salary expectations, remote working policies, and employee retention factors shaping the recruitment market this year.",
+    "category": "Market Reports",
+    "coverImage": "/images/blog/global-hiring-trends.jpg",
+    "readTime": "10 min read",
+    "publishedAt": "2025-01-14",
+    "featured": true,
+    "author": {
+      "name": "Amara Okonkwo",
+      "role": "Head of Talent Research",
+      "avatar": "/images/authors/amara-okonkwo.jpg",
+      "bio": "Amara leads SLEDMC's talent research desk, analyzing labor market data across mobility and skills corridors."
+    },
+    "tags": ["Hiring Trends", "Compensation", "Market Report"],
+    "content": [
+      { "type": "paragraph", "text": "The 2025 hiring landscape is defined by tighter technical talent pools and rising candidate expectations around flexibility." },
+      { "type": "heading", "text": "Remote work is now a baseline expectation" },
+      { "type": "paragraph", "text": "Organizations that fail to offer hybrid or remote options are seeing longer time-to-fill for mid-to-senior technical roles." },
+      { "type": "heading", "text": "Compensation benchmarking" },
+      { "type": "paragraph", "text": "Salary transparency continues to shift negotiating power toward candidates, particularly in specialized engineering and healthcare fields." }
+    ]
+  },
+  {
+    "id": "2",
+    "slug": "navigating-technical-talent-shortages",
+    "title": "Navigating Talent Shortages in Technical Sectors",
+    "excerpt": "Strategies for organizations competing for rare software and engineering skills in a tight labor market.",
+    "category": "Employer Insights",
+    "coverImage": "/images/blog/technical-talent-shortages.jpg",
+    "readTime": "7 min read",
+    "publishedAt": "2025-02-03",
+    "featured": false,
+    "author": {
+      "name": "David Mensah",
+      "role": "Senior Recruitment Consultant",
+      "avatar": "/images/authors/david-mensah.jpg",
+      "bio": "David specializes in technical and engineering recruitment across international placements."
+    },
+    "tags": ["Technical Recruitment", "Employer Strategy"],
+    "content": [
+      { "type": "paragraph", "text": "Technical talent shortages are forcing employers to rethink sourcing strategy beyond traditional job boards." },
+      { "type": "heading", "text": "Widen the sourcing funnel" },
+      { "type": "paragraph", "text": "Referral programs, international recruitment, and upskilling partnerships are proving more effective than passive listings." }
+    ]
+  },
+  {
+    "id": "3",
+    "slug": "cv-writing-tips-for-international-roles",
+    "title": "CV Writing Tips for International Job Applications",
+    "excerpt": "How candidates can tailor their CVs to stand out to recruiters and hiring managers across borders.",
+    "category": "Career Resources",
+    "coverImage": "/images/blog/cv-writing-tips.jpg",
+    "readTime": "6 min read",
+    "publishedAt": "2025-03-11",
+    "featured": false,
+    "author": {
+      "name": "Farida Haddad",
+      "role": "Candidate Success Manager",
+      "avatar": "/images/authors/farida-haddad.jpg",
+      "bio": "Farida supports candidates through CV preparation, interview coaching, and international placement guidance."
+    },
+    "tags": ["CV Tips", "Career Advice", "Candidates"],
+    "content": [
+      { "type": "paragraph", "text": "A strong CV for international roles highlights transferable skills and quantifies impact clearly for reviewers unfamiliar with your home market." },
+      { "type": "heading", "text": "Lead with outcomes, not duties" },
+      { "type": "paragraph", "text": "Replace task lists with measurable results — numbers, percentages, and timeframes make achievements easy to scan." }
+    ]
+  }
+]

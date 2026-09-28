@@ -102,7 +102,17 @@
     },
     {
       "label": "Insights",
-      "href": "/insights"
+      "href": "/insights",
+      "children": [
+        {
+          "label": "Market Insights",
+          "href": "/insights"
+        },
+        {
+          "label": "Blogs",
+          "href": "/blogs"
+        }
+      ]
     },
     {
       "label": "Contact",
