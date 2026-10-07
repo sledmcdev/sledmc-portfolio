@@ -2,7 +2,6 @@
   "eyebrow": "STRUCTURED PREPARATION",
   "title": "The 8 Core Academy Modules",
   "description": "Every candidate enrolled in SLEDMC Academy completes a rigorous preparation path engineered specifically for European employer demands.",
-  "tabSeparator": ": ",
   "modules": [
     {
       "id": "m1",
@@ -15,7 +14,8 @@
         "Workplace & Industry-Specific Vocabulary",
         "Employer, Supervisor & Telephone Communication",
         "Reading Employment Contracts & Basic Instructions"
-      ]
+      ],
+      "icon": "Languages"
     },
     {
       "id": "m2",
@@ -28,7 +28,8 @@
         "Workplace Communication & Team Dynamics",
         "Gender Equality, Diversity & Personal Boundaries",
         "Public Conduct, Transport & Emergency Services"
-      ]
+      ],
+      "icon": "Globe2"
     },
     {
       "id": "m3",
@@ -41,7 +42,8 @@
         "Working Hours, Overtime & Mandatory Holidays",
         "Workplace Safety Standards (HSE)",
         "Recruitment Fraud Awareness & Protection"
-      ]
+      ],
+      "icon": "Scale"
     },
     {
       "id": "m4",
@@ -54,7 +56,8 @@
         "Educational & Work Experience Attestation",
         "Certified Translations & Legalization Process",
         "Visa & Work Permit Documentation Readiness"
-      ]
+      ],
+      "icon": "FileCheck2"
     },
     {
       "id": "m5",
@@ -67,7 +70,8 @@
         "Elderly Care & Healthcare Support Protocols",
         "Logistics, Automated Warehousing & Picking",
         "Skilled Trades (Welding, Electrical, Mechanics)"
-      ]
+      ],
+      "icon": "Wrench"
     },
     {
       "id": "m6",
@@ -80,7 +84,8 @@
         "Digital Video Interview Readiness & Tech Setup",
         "Role-Specific Mock Interviews with European Trainers",
         "Employer Communication Etiquette"
-      ]
+      ],
+      "icon": "Briefcase"
     },
     {
       "id": "m7",
@@ -93,7 +98,8 @@
         "Rent, Security Deposits & Accommodation Rules",
         "Public Utilities, Transportation Cards & Mobile Plans",
         "Digital Government Services & Local Registration"
-      ]
+      ],
+      "icon": "Wallet"
     },
     {
       "id": "m8",
@@ -106,7 +112,9 @@
         "Travel Planning & Luggage Requirements",
         "Destination Orientation & First-Week Survival Guide",
         "On-Arrival Partner Support Network"
-      ]
+      ],
+      "icon": "PlaneTakeoff"
     }
-  ]
+  ],
+  "hint": "Tap any module to expand it and see exactly what you'll learn."
 }

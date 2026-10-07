@@ -94,7 +94,7 @@
 .jobTitle {
   font-size: 1.35rem;
   font-weight: 800;
-  color: var(--fg-color);
+  color: var(--heading-color);
 }
 
 .jobMeta {
@@ -162,7 +162,7 @@
 .processTitle {
   font-size: 1.125rem;
   font-weight: 800;
-  color: var(--fg-color);
+  color: var(--heading-color);
   margin-bottom: 8px;
 }
 
@@ -204,7 +204,7 @@
 .serviceTitle {
   font-size: 1rem;
   font-weight: 800;
-  color: var(--fg-color);
+  color: var(--heading-color);
   margin-bottom: 6px;
 }
 
@@ -234,7 +234,7 @@
 .resourceTitle {
   font-size: 1.125rem;
   font-weight: 800;
-  color: var(--fg-color);
+  color: var(--heading-color);
   line-height: 1.2;
 }
 
@@ -287,7 +287,7 @@
 .faqQ {
   font-size: 1.0625rem;
   font-weight: 800;
-  color: var(--fg-color);
+  color: var(--heading-color);
   margin-bottom: 8px;
   display: flex;
   align-items: center;

@@ -71,7 +71,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div>
-              <PlaceholderImage label={story.imageLabel} height={420} style={{ borderRadius: 24 }} />
+              <PlaceholderImage label={story.imageLabel} src={story.image} alt={story.imageAlt} height={420} style={{ borderRadius: 24 }} />
             </div>
           </div>
         </div>

@@ -122,6 +122,10 @@ export default function TestimonialsSlider() {
                 <div className={styles.person}>
                   <PlaceholderImage
                     label=""
+                    src={t.photo}
+                    alt={t.name}
+                    position="center"
+                    sizes="52px"
                     width={52}
                     height={52}
                     rounded

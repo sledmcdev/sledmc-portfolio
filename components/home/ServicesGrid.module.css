@@ -41,7 +41,7 @@
 .title {
   font-size: 1.25rem;
   font-weight: 800;
-  color: var(--fg-color);
+  color: var(--heading-color);
   margin-bottom: 12px;
 }
 

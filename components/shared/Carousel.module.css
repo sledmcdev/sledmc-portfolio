@@ -1,0 +1,109 @@
+.carousel {
+  --per: var(--per-desktop);
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  .carousel {
+    --per: var(--per-tablet);
+  }
+}
+
+@media (max-width: 640px) {
+  .carousel {
+    --per: var(--per-mobile);
+  }
+}
+
+.track {
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 4px 2px 8px;
+  outline: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 4px;
+}
+
+.slide {
+  flex: 0 0 calc((100% - (var(--per) - 1) * var(--gap)) / var(--per));
+  min-width: 0;
+  scroll-snap-align: start;
+  display: flex;
+}
+
+.slide > * {
+  flex: 1;
+}
+
+/* Mobile: show a peek of the next slide so swiping is discoverable */
+@media (max-width: 640px) {
+  .slide {
+    flex-basis: 86%;
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--border-color);
+  transition: var(--transition);
+}
+
+.dotActive {
+  width: 32px;
+  background: var(--amber);
+}
+
+.arrows {
+  display: flex;
+  gap: 10px;
+}
+
+.arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--accent-border);
+  color: var(--amber);
+  background: var(--card-color);
+  transition: var(--transition);
+}
+
+.arrow:hover:not(:disabled) {
+  background: var(--amber);
+  color: var(--on-accent);
+}
+
+.arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}

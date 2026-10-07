@@ -35,6 +35,10 @@ export default function CandidateSuccessStoriesPage() {
                 <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                   <PlaceholderImage
                     label={`${story.name}${storiesContent.portraitLabelSuffix}`}
+                    src={story.photo}
+                    alt={story.name}
+                    position="center"
+                    sizes="64px"
                     rounded
                     width={64}
                     height={64}

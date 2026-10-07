@@ -19,5 +19,7 @@
       "label": "Sectors Covered"
     }
   ],
-  "imageLabel": "Company Office & Team Photo"
+  "imageLabel": "Company Office & Team Photo",
+  "image": "/images/about/our-story.jpg",
+  "imageAlt": "SLEDMC team collaborating around a meeting table"
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import PlaceholderImage from "@/components/shared/PlaceholderImage";
+import LionMotif from "@/components/shared/LionMotif";
 import { COMPANY } from "@/lib/data";
 import content from "@/data/pages/home/hero.json";
 import styles from "./HeroSection.module.css";
@@ -10,6 +11,7 @@ import styles from "./HeroSection.module.css";
 export default function HeroSection() {
   return (
     <section className={`grid-nexus ${styles.hero}`} aria-label={content.ariaLabel}>
+      <LionMotif width={480} opacity={0.06} className={styles.lion} />
       <div className={`container ${styles.inner}`}>
         {/* Text Content */}
         <div className={styles.content}>
@@ -81,7 +83,15 @@ export default function HeroSection() {
           className={styles.visual}
         >
           <div className={styles.imageFrame}>
-            <PlaceholderImage label={content.imageLabel} height="100%" style={{ minHeight: 520, borderRadius: 2 }} />
+            <PlaceholderImage
+              label={content.imageLabel}
+              src={content.image}
+              alt={content.imageAlt}
+              priority
+              sizes="(max-width: 900px) 100vw, 45vw"
+              height="100%"
+              style={{ minHeight: 520, borderRadius: 2 }}
+            />
             {/* Floating Amber Metric Card */}
             <motion.div
               className={styles.floatCard}

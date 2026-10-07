@@ -1,0 +1,80 @@
+{
+  "drivers": [
+    {
+      "id": "drv-001",
+      "title": "C/CE International Truck Driver",
+      "country": "Netherlands",
+      "location": "Rotterdam",
+      "salary": "€2,800 – €3,400 / month",
+      "contract": "Full-time · 2-year contract",
+      "positions": 12,
+      "requirements": ["Valid C/CE licence", "3+ years experience", "Basic English", "Code 95 (training provided)"]
+    },
+    {
+      "id": "drv-002",
+      "title": "Heavy Goods Vehicle Driver",
+      "country": "Germany",
+      "location": "Hamburg",
+      "salary": "€2,700 – €3,200 / month",
+      "contract": "Full-time · Permanent",
+      "positions": 8,
+      "requirements": ["C/CE licence", "2+ years experience", "A1 German (training provided)"]
+    },
+    {
+      "id": "drv-003",
+      "title": "Regional Distribution Driver",
+      "country": "Italy",
+      "location": "Milan",
+      "salary": "€2,200 – €2,600 / month",
+      "contract": "Full-time · 1-year renewable",
+      "positions": 6,
+      "requirements": ["C licence", "1+ year experience", "Willingness to learn Italian"]
+    }
+  ],
+  "hospitality": [
+    {
+      "id": "hos-001",
+      "title": "Commis Chef / Line Cook",
+      "country": "Malta",
+      "location": "St. Julian's",
+      "salary": "€1,600 – €1,900 / month + accommodation",
+      "contract": "Full-time · Seasonal (8 months)",
+      "positions": 10,
+      "requirements": ["2+ years kitchen experience", "Food hygiene certificate", "Conversational English"]
+    },
+    {
+      "id": "hos-002",
+      "title": "Hotel Housekeeping Attendant",
+      "country": "Croatia",
+      "location": "Dubrovnik",
+      "salary": "€1,300 – €1,500 / month + meals",
+      "contract": "Full-time · Seasonal (6 months)",
+      "positions": 15,
+      "requirements": ["1+ year hotel experience", "Basic English", "Team player"]
+    }
+  ],
+  "healthcare": [],
+  "logistics": [],
+  "skilled-trades": [
+    {
+      "id": "trd-001",
+      "title": "MIG/TIG Certified Welder",
+      "country": "Poland",
+      "location": "Gdańsk",
+      "salary": "€1,900 – €2,400 / month",
+      "contract": "Full-time · 2-year contract",
+      "positions": 9,
+      "requirements": ["Welding certification", "3+ years experience", "Ability to read technical drawings"]
+    },
+    {
+      "id": "trd-002",
+      "title": "Industrial Electrician",
+      "country": "Romania",
+      "location": "Cluj-Napoca",
+      "salary": "€1,700 – €2,100 / month",
+      "contract": "Full-time · Permanent",
+      "positions": 5,
+      "requirements": ["NVQ / equivalent qualification", "2+ years industrial experience", "Basic English"]
+    }
+  ]
+}

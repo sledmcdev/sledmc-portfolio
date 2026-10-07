@@ -118,7 +118,7 @@
 .jobTitle {
   font-size: 1.35rem;
   font-weight: 800;
-  color: var(--fg-color);
+  color: var(--heading-color);
 }
 
 .jobDetails {
@@ -224,7 +224,7 @@
 
 .modalHeader h2 {
   font-size: 1.6rem;
-  color: var(--fg-color);
+  color: var(--heading-color);
 }
 
 .modalMeta {
@@ -237,7 +237,7 @@
 
 .modalBody h4 {
   font-size: 1rem;
-  color: var(--fg-color);
+  color: var(--heading-color);
   margin-bottom: 8px;
 }
 

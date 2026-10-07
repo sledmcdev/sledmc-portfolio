@@ -23,7 +23,7 @@
 
 .colTitle {
   font-size: 1.25rem;
-  color: var(--fg-color);
+  color: var(--heading-color);
 }
 
 .infoItem {
@@ -69,7 +69,7 @@
 
 .formTitle {
   font-size: 1.5rem;
-  color: var(--fg-color);
+  color: var(--heading-color);
   margin-bottom: 6px;
 }
 

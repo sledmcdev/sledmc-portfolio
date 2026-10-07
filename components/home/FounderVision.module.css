@@ -69,8 +69,13 @@
   text-transform: uppercase;
 }
 
+/* Portrait frame (4:5) so the founder shows head-and-shoulders, like an editorial portrait */
 .imageCol {
   position: relative;
+  justify-self: center;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 4 / 5;
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   overflow: hidden;

@@ -3,10 +3,25 @@
   padding: 160px 0 100px;
   background: var(--hero-bg);
   border-bottom: 1px solid var(--border-color);
+  overflow: hidden;
 }
 
 .heroContent {
+  position: relative;
   max-width: 840px;
+}
+
+.heroLion {
+  position: absolute;
+  right: -30px;
+  bottom: -10px;
+}
+
+@media (max-width: 900px) {
+  .heroLion {
+    width: 300px !important;
+    right: -60px;
+  }
 }
 
 .badge {
@@ -31,7 +46,7 @@
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin-bottom: 20px;
-  color: var(--fg-color);
+  color: var(--heading-color);
 }
 
 .heroSubtitle {
@@ -77,7 +92,7 @@
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.01em;
-  color: var(--fg-color);
+  color: var(--heading-color);
 }
 
 .sectionDesc {
@@ -118,71 +133,6 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-}
-
-/* Pathways Grid */
-.pathwayGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-.pathwayCard {
-  background: var(--card-color);
-  border: 1px solid var(--border-color);
-  padding: 28px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
-}
-
-.pathwayTitle {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--fg-color);
-}
-
-.pathwayTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.tag {
-  background: var(--amber-muted);
-  border: 1px solid var(--border-color);
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  color: var(--fg-color);
-  font-weight: 600;
-}
-
-/* 11 Step Journey Timeline */
-.timeline {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.timelineStep {
-  background: var(--card-color);
-  border: 1px solid var(--border-color);
-  padding: 24px;
-  border-radius: var(--radius);
-  position: relative;
-  box-shadow: var(--shadow-card);
-}
-
-.stepNum {
-  font-size: 0.8125rem;
-  font-weight: 800;
-  color: var(--amber);
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
 }
 
 /* Assessment Registration Form */
@@ -247,35 +197,17 @@
 
 /* FAQ Accordion */
 .faqList {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   max-width: 840px;
   margin: 0 auto;
 }
 
-.faqItem {
-  background: var(--card-color);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-}
-
-.faqQuestion {
-  width: 100%;
-  padding: 20px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.faqQuestionText {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--fg-color);
-  text-align: left;
+  line-height: 1.4;
 }
 
 .faqAnswer {
-  padding: 0 24px 20px;
   color: var(--muted-fg);
   font-size: 0.95rem;
   line-height: 1.6;
@@ -298,34 +230,17 @@
   margin: 0 auto 40px;
 }
 
-.accentIcon {
-  color: var(--amber);
-  flex-shrink: 0;
-}
-
 .cardTitle {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 12px;
-  color: var(--fg-color);
+  color: var(--heading-color);
 }
 
 .cardDesc {
   color: var(--muted-fg);
   font-size: 0.95rem;
   line-height: 1.6;
-}
-
-.stepTitle {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--fg-color);
-}
-
-.stepDesc {
-  color: var(--muted-fg);
-  font-size: 0.875rem;
 }
 
 .submitBtn {
@@ -347,7 +262,7 @@
   font-size: 1.75rem;
   font-weight: 800;
   margin-bottom: 12px;
-  color: var(--fg-color);
+  color: var(--heading-color);
 }
 
 .successMessage {
@@ -375,7 +290,7 @@
   font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 12px;
-  color: var(--fg-color);
+  color: var(--heading-color);
 }
 
 .safetyIntro {
@@ -392,15 +307,6 @@
   line-height: 1.6;
 }
 
-.faqChevron {
-  flex-shrink: 0;
-  transition: transform 0.2s;
-}
-
-.faqChevronOpen {
-  transform: rotate(180deg);
-}
-
 .ctaTitle {
   margin-bottom: 16px;
 }
@@ -411,4 +317,9 @@
 
 .btnGroupCentered {
   justify-content: center;
+}
+
+.hero > :global(.container) {
+  position: relative;
+  z-index: 1;
 }

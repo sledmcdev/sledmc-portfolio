@@ -1,0 +1,74 @@
+{
+  "eyebrow": "HOW TO JOIN",
+  "title": "Your Path Into the Academy",
+  "description": "No tests to pass online. Tell us about yourself, and our team will guide you personally to the right modules and sector pathway.",
+  "steps": [
+    {
+      "icon": "Send",
+      "title": "Submit an Inquiry",
+      "desc": "Fill in the short form below with your details, experience and the sector you're interested in."
+    },
+    {
+      "icon": "PhoneCall",
+      "title": "Our Team Contacts You",
+      "desc": "An SLEDMC advisor will call or WhatsApp you within 2 working days to discuss your goals."
+    },
+    {
+      "icon": "MessagesSquare",
+      "title": "Interview & Skills Review",
+      "desc": "A friendly in-person or online interview to understand your experience, language level and documents."
+    },
+    {
+      "icon": "ClipboardCheck",
+      "title": "Your Personal Module Plan",
+      "desc": "We recommend which of the 8 core modules and which sector pathway to follow — then you enrol and begin training."
+    }
+  ],
+  "form": {
+    "title": "Start Your Inquiry",
+    "description": "It takes less than 2 minutes. There is no fee to submit an inquiry.",
+    "fields": [
+      { "name": "fullName", "label": "Full Name", "type": "text", "required": true, "placeholder": "e.g. Nimal Perera" },
+      { "name": "phone", "label": "Phone / WhatsApp", "type": "tel", "required": true, "placeholder": "+94 7X XXX XXXX" },
+      { "name": "email", "label": "Email Address", "type": "email", "required": false, "placeholder": "you@example.com" },
+      {
+        "name": "district",
+        "label": "District",
+        "type": "select",
+        "required": true,
+        "placeholder": "Select your district",
+        "options": [
+          "Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", "Galle", "Gampaha", "Hambantota",
+          "Jaffna", "Kalutara", "Kandy", "Kegalle", "Kilinochchi", "Kurunegala", "Mannar", "Matale",
+          "Matara", "Monaragala", "Mullaitivu", "Nuwara Eliya", "Polonnaruwa", "Puttalam", "Ratnapura",
+          "Trincomalee", "Vavuniya"
+        ]
+      },
+      { "name": "sector", "label": "Sector of Interest", "type": "sector", "required": true, "placeholder": "Select a sector" },
+      {
+        "name": "experience",
+        "label": "Years of Experience",
+        "type": "select",
+        "required": true,
+        "placeholder": "Select experience",
+        "options": ["No experience yet", "Under 1 year", "1 – 3 years", "3 – 5 years", "5+ years"]
+      },
+      {
+        "name": "contactMethod",
+        "label": "Preferred Contact Method",
+        "type": "select",
+        "required": true,
+        "placeholder": "How should we reach you?",
+        "options": ["Phone call", "WhatsApp", "Email"]
+      },
+      { "name": "message", "label": "Anything else we should know?", "type": "textarea", "required": false, "placeholder": "Questions, preferred country, language level…" }
+    ],
+    "submit": { "label": "Send Inquiry", "icon": "Send" },
+    "success": {
+      "icon": "CheckCircle2",
+      "title": "Bohoma Isthuthi — Thank You!",
+      "message": "Your inquiry has been received. Our team will contact you within 2 working days to arrange your interview.",
+      "resetLabel": "Submit Another Inquiry"
+    }
+  }
+}

@@ -1,0 +1,299 @@
+.section {
+  position: relative;
+  padding: var(--section-py) 0;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-color);
+  overflow: hidden;
+}
+
+.header {
+  max-width: 760px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--amber);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--heading-color);
+}
+
+.desc {
+  color: var(--muted-fg);
+  font-size: 1.125rem;
+  margin-top: 16px;
+}
+
+/* ── Horizontal timeline: phase brackets / cards above / line / cards below ── */
+.scroller {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  padding: 4px 4px 16px;
+  margin: 0 -4px;
+}
+
+.grid {
+  --node: 48px;
+  --gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(var(--steps), minmax(0, 1fr));
+  grid-template-rows: auto auto calc(var(--node) + 28px) auto;
+  min-width: 1180px;
+}
+
+.stepItem {
+  display: contents;
+}
+
+/* Phase brackets */
+.phase {
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 0 6px 20px;
+  text-align: center;
+}
+
+.phaseText {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.phaseIndex {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.phaseName {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--heading-color);
+}
+
+.bracket {
+  align-self: stretch;
+  height: 10px;
+  border: 2px solid var(--accent-border);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+
+/* The line runs from the first node to the last */
+.spine {
+  grid-row: 3;
+  grid-column: 1 / -1;
+  align-self: center;
+  justify-self: center;
+  position: relative;
+  width: calc(100% - 100% / var(--steps));
+  height: 3px;
+  border-radius: 3px;
+  background: var(--border-color);
+  overflow: hidden;
+}
+
+.spineFill {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: linear-gradient(90deg, var(--amber), hsl(43 85% 62%));
+  transform-origin: left center;
+}
+
+.node {
+  grid-row: 3;
+  align-self: center;
+  justify-self: center;
+  position: relative;
+  z-index: 1;
+  width: var(--node);
+  height: var(--node);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--amber);
+  background: var(--card-color);
+  border: 2px solid var(--amber);
+  box-shadow: 0 0 0 6px var(--bg-color), 0 0 0 8px var(--amber-muted);
+}
+
+/* Cards span two columns' width, centred on their node, alternating above / below */
+.card {
+  --stub-x: 50%;
+  position: relative;
+  justify-self: center;
+  width: calc(200% - var(--gap));
+  padding: 18px 18px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  border-top: 3px solid var(--amber);
+  background: var(--card-color);
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--accent-border);
+  border-top-color: var(--amber);
+}
+
+.above {
+  grid-row: 2;
+  align-self: end;
+}
+
+.below {
+  grid-row: 4;
+  align-self: start;
+}
+
+.above:hover {
+  transform: translateY(-4px);
+}
+
+.below:hover {
+  transform: translateY(4px);
+}
+
+/* Edge cards hug the timeline ends so they never overflow */
+.first,
+.last {
+  width: calc(150% - var(--gap) / 2);
+}
+
+.first {
+  justify-self: start;
+  --stub-x: 33.333%;
+}
+
+.last {
+  justify-self: end;
+  --stub-x: 66.667%;
+}
+
+/* Stub connecting each card to its node */
+.card::after {
+  content: "";
+  position: absolute;
+  left: var(--stub-x);
+  width: 2px;
+  height: 14px;
+  transform: translateX(-50%);
+  background: var(--accent-border);
+}
+
+.above::after {
+  top: 100%;
+}
+
+.below::after {
+  bottom: 100%;
+}
+
+.watermark {
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--amber);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.stepLabel {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--amber);
+  margin-bottom: 6px;
+}
+
+.cardTitle {
+  position: relative;
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  padding-right: 36px;
+}
+
+.cardDesc {
+  position: relative;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--muted-fg);
+}
+
+/* Swipe controls — shown only when the timeline overflows (tablet / mobile) */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.hint {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--amber);
+}
+
+.arrows {
+  display: flex;
+  gap: 10px;
+}
+
+.arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--accent-border);
+  color: var(--amber);
+  background: var(--card-color);
+  transition: var(--transition);
+}
+
+.arrow:hover:not(:disabled) {
+  background: var(--amber);
+  color: var(--on-accent);
+}
+
+.arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}

@@ -21,7 +21,13 @@ export default function CompanyIntro() {
             className={styles.imageCol}
           >
             <div className={styles.imageStack}>
-              <PlaceholderImage label={content.imageLabel} height={480} style={{ borderRadius: 20 }} />
+              <PlaceholderImage
+                label={content.imageLabel}
+                src={content.image}
+                alt={content.imageAlt}
+                height={480}
+                style={{ borderRadius: 20 }}
+              />
               <div className={styles.badge}>
                 <span className={styles.badgeValue}>{content.badge.value}</span>
                 <span className={styles.badgeLabel}>{content.badge.label}</span>

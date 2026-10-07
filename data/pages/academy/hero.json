@@ -5,6 +5,6 @@
   "subtitle": "The specialized training and Europe-readiness engine turning Sri Lankan talent into high-performing, workplace-ready professionals before employer matching and international mobility.",
   "buttons": [
     { "label": "Explore Core Modules", "href": "#curriculum", "variant": "primary", "icon": "ArrowRight" },
-    { "label": "Check Readiness Status", "href": "#assessment", "variant": "secondary", "icon": "UserCheck" }
+    { "label": "Start Your Inquiry", "href": "#inquiry", "variant": "secondary", "icon": "Send" }
   ]
 }

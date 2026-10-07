@@ -2,6 +2,8 @@
   "label": "About Us",
   "title": "More Than a Recruitment Agency",
   "imageLabel": "Office / Team Photo",
+  "image": "/images/home/company-intro.jpg",
+  "imageAlt": "SLEDMC advisor greeting a partner in the office",
   "badge": { "value": "15+", "label": "Years of Excellence" },
   "strengths": [
     "15+ years of specialist recruitment experience",

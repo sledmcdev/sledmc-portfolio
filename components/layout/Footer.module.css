@@ -23,7 +23,7 @@
 
 .ctaTitle {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  color: var(--fg-color);
+  color: var(--heading-color);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.04em;
@@ -259,4 +259,22 @@
 @media (max-width: 1024px) {
   .grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   .ctaInner { flex-direction: column; text-align: center; }
+}
+
+/* Sri Lankan lion watermark */
+.lion {
+  position: absolute;
+  left: -30px;
+  bottom: 40px;
+}
+
+@media (max-width: 900px) {
+  .lion {
+    width: 260px !important;
+  }
+}
+
+.main > :global(.container) {
+  position: relative;
+  z-index: 1;
 }

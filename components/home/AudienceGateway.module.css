@@ -59,7 +59,7 @@
 .panelTitle {
   font-size: 1.75rem;
   font-weight: 800;
-  color: var(--fg-color);
+  color: var(--heading-color);
   line-height: 1.2;
   margin-bottom: 16px;
 }

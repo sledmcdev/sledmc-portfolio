@@ -22,6 +22,8 @@ import careerResources from "@/data/collections/career-resources.json";
 import candidateFaq from "@/data/collections/candidate-faq.json";
 import employerFaq from "@/data/collections/employer-faq.json";
 import blogs from "@/data/collections/blogs.json";
+import sectorPathways from "@/data/collections/sector-pathways.json";
+import vacancies from "@/data/collections/vacancies.json";
 
 export type Audience = "employer" | "candidate";
 
@@ -32,12 +34,14 @@ export interface Testimonial {
   position: string;
   company?: string;
   testimonial: string;
+  photo?: string;
 }
 
 export interface SuccessStory {
   id: string;
   type: Audience;
   title: string;
+  photo?: string;
   metric: string;
   industry: string;
   result: string;
@@ -76,6 +80,28 @@ export interface BlogPost {
   content: BlogContentBlock[];
 }
 
+export interface SectorPathway {
+  slug: string;
+  icon: string;
+  title: string;
+  desc: string;
+  tags: string[];
+  video: string;
+  poster: string;
+  brochures: string[];
+}
+
+export interface Vacancy {
+  id: string;
+  title: string;
+  country: string;
+  location: string;
+  salary: string;
+  contract: string;
+  positions: number;
+  requirements: string[];
+}
+
 export const COMPANY = company;
 export const FOUNDER = founder;
 export const STATS = stats;
@@ -95,3 +121,5 @@ export const CAREER_RESOURCES = careerResources;
 export const CANDIDATE_FAQ = candidateFaq;
 export const EMPLOYER_FAQ = employerFaq;
 export const BLOGS = blogs as BlogPost[];
+export const SECTOR_PATHWAYS = sectorPathways as Omit<typeof sectorPathways, "sectors"> & { sectors: SectorPathway[] };
+export const VACANCIES = vacancies as Record<string, Vacancy[]>;

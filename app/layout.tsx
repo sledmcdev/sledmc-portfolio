@@ -3,27 +3,13 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/theme/ThemeContext";
+import site from "@/data/site/metadata.json";
 
 export const metadata: Metadata = {
-  title: {
-    default: "SLEDMC — Sri Lanka European Skills Development & Mobility Centre",
-    template: "%s | SLEDMC",
-  },
-  description:
-    "SLEDMC connects prepared Sri Lankan professionals with legitimate European employment opportunities through language, skills, and pre-departure preparation.",
-  keywords: [
-    "SLEDMC",
-    "European skills development",
-    "Sri Lanka mobility centre",
-    "European driver academy",
-    "Code 95 Sri Lanka",
-    "European work visa preparation",
-  ],
-  openGraph: {
-    type: "website",
-    locale: "en_GB",
-    siteName: "SLEDMC Mobility & Skills",
-  },
+  title: site.title,
+  description: site.description,
+  keywords: site.keywords,
+  openGraph: site.openGraph as Metadata["openGraph"],
 };
 
 const THEME_INIT_SCRIPT = `try{var t=localStorage.getItem("sledmc_theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}`;

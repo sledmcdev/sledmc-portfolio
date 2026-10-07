@@ -1,0 +1,239 @@
+.headerLion {
+  position: absolute;
+  right: 88px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.headerIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--amber);
+  background: var(--amber-muted);
+  border: 1px solid var(--accent-border);
+  margin-bottom: 12px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.lead {
+  font-size: 1.0625rem;
+  color: var(--muted-fg);
+  max-width: 760px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.blockTitle {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--heading-color);
+}
+
+.blockTitle svg {
+  color: var(--amber);
+}
+
+.count {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--amber);
+  background: var(--amber-muted);
+  border: 1px solid var(--accent-border);
+}
+
+/* Brochures */
+.brochure {
+  position: relative;
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--surface-2);
+  aspect-ratio: 210 / 297;
+  transition: var(--transition);
+}
+
+.brochure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brochure:hover,
+.brochure:focus-visible {
+  border-color: var(--amber);
+  outline: none;
+}
+
+.brochureOpen {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0b1422;
+  background: #d4af37;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: var(--transition);
+}
+
+.brochure:hover .brochureOpen,
+.brochure:focus-visible .brochureOpen {
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: none) {
+  .brochureOpen {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Vacancies */
+.vacancyList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vacancy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 22px;
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--amber);
+  border-radius: 8px;
+  background: var(--bg-color);
+}
+
+.vacancyMain {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vacancyTitle {
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: 0.875rem;
+  color: var(--muted-fg);
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.meta svg {
+  color: var(--amber);
+  flex-shrink: 0;
+}
+
+.reqs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.req {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--fg-color);
+  background: var(--surface-2);
+  border: 1px solid var(--border-color);
+}
+
+.apply {
+  flex-shrink: 0;
+}
+
+@media (max-width: 720px) {
+  .vacancy {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Empty state */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 44px 24px;
+  border: 1px dashed var(--accent-border);
+  border-radius: 10px;
+  background: var(--amber-muted);
+}
+
+.emptyIcon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--amber);
+  background: var(--card-color);
+  border: 1px solid var(--accent-border);
+  margin-bottom: 4px;
+}
+
+.emptyTitle {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.emptyText {
+  max-width: 520px;
+  color: var(--muted-fg);
+  margin-bottom: 8px;
+}

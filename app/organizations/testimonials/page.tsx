@@ -28,6 +28,10 @@ export default function ClientTestimonialsPage() {
                 <div style={{ display: "flex", alignItems: "center", gap: 14, paddingTop: 16, borderTop: "1px solid var(--border-color)" }}>
                   <PlaceholderImage
                     label={content.photoLabel.replace("{name}", item.name)}
+                    src={item.photo}
+                    alt={item.name}
+                    position="center"
+                    sizes="48px"
                     rounded
                     width={48}
                     height={48}

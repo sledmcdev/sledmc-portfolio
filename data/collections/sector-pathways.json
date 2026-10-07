@@ -1,0 +1,80 @@
+{
+  "eyebrow": "FROM SRI LANKA TO EUROPE",
+  "title": "Available Sector Pathways",
+  "description": "Tailored pathways combining European readiness with sector-specific vocational standards. Tap a sector to see open vacancies and programme brochures.",
+  "cardCta": "View opportunities",
+  "badge": { "one": "{count} vacancy", "many": "{count} vacancies", "none": "Opening soon" },
+  "carouselLabel": "Sector pathways",
+  "dialog": {
+    "brochuresTitle": "Programme Brochures",
+    "brochureOpenLabel": "Open full size",
+    "vacanciesTitle": "Available Vacancies",
+    "vacancyCountSuffix": "open positions",
+    "positionsSuffix": "positions",
+    "brochureAlt": "{sector} brochure {n}",
+    "applyLabel": "Apply Now",
+    "applyHref": "/contact",
+    "requirementsLabel": "Requirements",
+    "closeLabel": "Close",
+    "empty": {
+      "title": "Positions will be opened soon",
+      "message": "We're finalising new placements with our European partners for this sector. Register your interest today and our team will contact you as soon as positions open.",
+      "cta": { "label": "Register Your Interest", "href": "/academy#inquiry" }
+    }
+  },
+  "sectors": [
+    {
+      "slug": "drivers",
+      "icon": "Truck",
+      "title": "Professional Drivers",
+      "desc": "Commercial heavy vehicle driving, EU road safety, tachograph compliance & Code 95 pathways.",
+      "tags": ["Category C / CE", "International Transport", "Heavy Vehicles", "Code 95 / CQC"],
+      "video": "https://videos.pexels.com/video-files/4320049/4320049-hd_1280_720_30fps.mp4",
+      "poster": "https://images.pexels.com/videos/4320049/caminhao-de-carga-4320049.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "brochures": ["/images/academic/sector-pathways/drivers/brochure-1.svg"]
+    },
+    {
+      "slug": "hospitality",
+      "icon": "Building2",
+      "title": "Hospitality & Culinary",
+      "desc": "Hotel staff, restaurant service, professional kitchen personnel & housekeeping excellence.",
+      "tags": ["Hotel Staff", "Restaurant Service", "Kitchen & Chefs", "Housekeeping"],
+      "video": "https://videos.pexels.com/video-files/8626269/8626269-hd_1280_720_25fps.mp4",
+      "poster": "https://images.pexels.com/videos/8626269/pexels-photo-8626269.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "brochures": [
+        "/images/academic/sector-pathways/hospitality/brochure-1.svg",
+        "/images/academic/sector-pathways/hospitality/brochure-2.svg"
+      ]
+    },
+    {
+      "slug": "healthcare",
+      "icon": "HeartHandshake",
+      "title": "Care & Healthcare Support",
+      "desc": "Elderly care assistance, patient support, nursing aides & healthcare facility protocols.",
+      "tags": ["Care Workers", "Elderly Care Aides", "Healthcare Assistants"],
+      "video": "https://videos.pexels.com/video-files/7522219/7522219-hd_1280_720_25fps.mp4",
+      "poster": "https://images.pexels.com/videos/7522219/pexels-photo-7522219.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "brochures": []
+    },
+    {
+      "slug": "logistics",
+      "icon": "Package",
+      "title": "Logistics & Warehousing",
+      "desc": "Inventory management, automated warehouse systems, fork-lift operation & distribution.",
+      "tags": ["Warehouse Operators", "Fork-lift", "Distribution", "Picking & Packing"],
+      "video": "https://videos.pexels.com/video-files/6079421/6079421-hd_1280_720_24fps.mp4",
+      "poster": "https://images.pexels.com/videos/6079421/pexels-photo-6079421.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "brochures": ["/images/academic/sector-pathways/logistics/brochure-1.svg"]
+    },
+    {
+      "slug": "skilled-trades",
+      "icon": "Wrench",
+      "title": "Skilled Trades",
+      "desc": "Certified welders, industrial electricians, automotive mechanics & construction technicians.",
+      "tags": ["Welders", "Electricians", "Mechanics", "Construction"],
+      "video": "https://videos.pexels.com/video-files/6046365/6046365-hd_1280_720_24fps.mp4",
+      "poster": "https://images.pexels.com/videos/6046365/pexels-photo-6046365.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      "brochures": ["/images/academic/sector-pathways/skilled-trades/brochure-1.svg"]
+    }
+  ]
+}

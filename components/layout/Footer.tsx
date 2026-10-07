@@ -3,6 +3,7 @@ import { MapPin, Phone, Mail, Linkedin, Facebook, Instagram, Youtube, ArrowUpRig
 import { COMPANY } from "@/lib/data";
 import footer from "@/data/site/footer.json";
 import nav from "@/data/site/navigation.json";
+import LionMotif from "@/components/shared/LionMotif";
 import styles from "./Footer.module.css";
 
 const SOCIALS = [
@@ -38,6 +39,7 @@ export default function Footer() {
       {/* Main Footer */}
       <div className={styles.main}>
         <div className={styles.watermark}>{footer.watermark}</div>
+        <LionMotif width={320} opacity={0.06} className={styles.lion} />
         <div className="container">
           <div className={styles.grid}>
             {/* Brand Column */}

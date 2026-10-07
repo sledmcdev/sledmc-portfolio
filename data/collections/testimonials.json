@@ -1,6 +1,7 @@
 [
   {
     "id": "t1",
+    "photo": "/images/testimonials/avatars/t1.jpg",
     "type": "employer",
     "name": "Sarah Johnson",
     "position": "Head of People",
@@ -9,6 +10,7 @@
   },
   {
     "id": "t2",
+    "photo": "/images/testimonials/avatars/t2.jpg",
     "type": "employer",
     "name": "Michael Chen",
     "position": "Chief Operating Officer",
@@ -17,6 +19,7 @@
   },
   {
     "id": "t3",
+    "photo": "/images/testimonials/avatars/t3.jpg",
     "type": "employer",
     "name": "Rachel Williams",
     "position": "HR Director",
@@ -25,6 +28,7 @@
   },
   {
     "id": "t4",
+    "photo": "/images/testimonials/avatars/t4.jpg",
     "type": "candidate",
     "name": "James Okafor",
     "position": "Senior Software Engineer",
@@ -33,6 +37,7 @@
   },
   {
     "id": "t5",
+    "photo": "/images/testimonials/avatars/t5.jpg",
     "type": "candidate",
     "name": "Priya Sharma",
     "position": "Finance Manager",
@@ -41,6 +46,7 @@
   },
   {
     "id": "t6",
+    "photo": "/images/testimonials/avatars/t6.jpg",
     "type": "candidate",
     "name": "Daniel Osei",
     "position": "Project Manager",

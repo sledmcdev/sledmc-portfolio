@@ -180,6 +180,7 @@
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .ctaBtn {
@@ -307,13 +308,11 @@
   to { opacity: 1; }
 }
 
-/* Secondary CTA drops first, then the whole bar collapses to the drawer.
-   Thresholds include buffer for the Insights dropdown chevron added by the Blogs entry. */
-@media (max-width: 1620px) {
-  .ctaSecondary { display: none !important; }
-}
+/* The desktop bar is capped by the container width, so the secondary CTA never has room
+   next to the full nav — it lives in the mobile drawer only. Below 1440px the bar collapses (the full nav needs ~1420px). */
+.ctaSecondary { display: none !important; }
 
-@media (max-width: 1380px) {
+@media (max-width: 1439px) {
   .desktopNav { display: none; }
   .ctaGroup { display: none; }
   .mobileToggle { display: flex; margin-left: auto; }

@@ -4,22 +4,22 @@
    DESIGN TOKENS — SLEDMC BRANDING (MIDNIGHT NAVY & METALLIC GOLD)
 ───────────────────────────────────────────────────────── */
 :root {
-  --background: 217 60% 7%;        /* Deep Midnight Navy */
+  --background: 217 40% 17%;       /* Lifted navy canvas (#1A2840) */
   --foreground: 210 40% 98%;       /* Crisp White */
-  --card: 217 48% 12%;             /* Navy Surface */
+  --card: 217 36% 22%;             /* Navy surface, one step lighter than the canvas */
   --card-foreground: 210 40% 98%;
-  --popover: 217 55% 9%;
+  --popover: 217 40% 15%;
   --popover-foreground: 210 40% 98%;
   --primary: 43 85% 50%;           /* SLEDMC Signature Gold */
-  --primary-foreground: 217 60% 7%;
-  --secondary: 217 45% 15%;        /* Royal Navy Surface */
+  --primary-foreground: 217 51% 9%;
+  --secondary: 217 34% 26%;        /* Royal Navy Surface */
   --secondary-foreground: 210 40% 98%;
-  --muted: 217 35% 14%;
-  --muted-foreground: 215 25% 75%;  /* Light Slate Gray */
+  --muted: 217 30% 24%;
+  --muted-foreground: 215 30% 82%;  /* Light Slate Gray */
   --accent: 43 85% 50%;            /* SLEDMC Gold */
-  --accent-foreground: 217 60% 7%;
-  --border: 217 30% 18%;
-  --input: 217 30% 18%;
+  --accent-foreground: 217 51% 9%;
+  --border: 217 28% 30%;
+  --input: 217 28% 30%;
   --ring: 43 85% 50%;
   --radius: 0.25rem;
 
@@ -33,26 +33,30 @@
   --border-color: hsl(var(--border));
   --muted-fg: hsl(var(--muted-foreground));
 
+  /* Typography roles — headings vs. running text */
+  --heading-color: var(--fg-color);
+  --text-color: var(--fg-color);
+
   /* Adaptive Section Backgrounds */
-  --section-dark-bg: hsl(217 50% 9%);
-  --hero-bg: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.15) 0%, hsl(217 60% 7%) 70%);
-  --feature-box-bg: linear-gradient(135deg, hsl(217 50% 13%) 0%, hsl(217 60% 8%) 100%);
-  --input-bg: rgba(6, 14, 26, 0.8);
-  --input-border: hsl(217 30% 22%);
+  --section-dark-bg: hsl(217 40% 17%);     /* same navy as the canvas — one consistent dark surface */
+  --hero-bg: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.15) 0%, hsl(217 40% 17%) 70%);
+  --feature-box-bg: linear-gradient(135deg, hsl(217 36% 24%) 0%, hsl(217 40% 18%) 100%);
+  --input-bg: hsl(217 40% 14% / 0.85);
+  --input-border: hsl(217 28% 34%);
 
   /* Semantic surface & text tokens — always use these instead of raw colours */
   --surface-2: hsl(var(--secondary));
-  --surface-hover: hsl(217 40% 16%);
+  --surface-hover: hsl(217 34% 27%);
   --on-accent: hsl(220 50% 8%);          /* text on gold */
   --on-dark: hsl(210 40% 98%);           /* text on intentionally dark imagery */
   --feature-box-fg: hsl(210 40% 98%);
   --feature-box-muted: hsl(215 25% 78%);
   --feature-box-border: rgba(212, 175, 55, 0.4);
-  --grid-line: hsl(0 0% 100% / 0.04);
+  --grid-line: hsl(0 0% 100% / 0.05);
   --overlay: rgba(2, 6, 14, 0.7);
   --accent-border: rgba(212, 175, 55, 0.3);
-  --skeleton-base: hsl(217 40% 14%);
-  --skeleton-shine: hsl(217 40% 20%);
+  --skeleton-base: hsl(217 32% 23%);
+  --skeleton-shine: hsl(217 32% 30%);
 
   /* Font Families */
   --font-heading: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
@@ -79,7 +83,7 @@
 ───────────────────────────────────────────────────────── */
 [data-theme="light"] {
   --background: 210 25% 97%;       /* Crisp Clean Canvas */
-  --foreground: 220 50% 8%;        /* Sharp Black / Navy Text */
+  --foreground: 0 0% 4%;          /* Black running text */
   --card: 0 0% 100%;               /* Pure White Cards */
   --card-foreground: 220 50% 8%;
   --popover: 0 0% 100%;
@@ -89,7 +93,7 @@
   --secondary: 217 30% 93%;        /* Soft Light Slate Surface */
   --secondary-foreground: 220 50% 8%;
   --muted: 217 25% 90%;
-  --muted-foreground: 220 35% 20%;  /* Highly Legible Dark Navy Slate (No faint gray) */
+  --muted-foreground: 0 0% 12%;     /* Near-black for paragraphs / secondary copy */
   --accent: 38 92% 30%;
   --accent-foreground: 0 0% 100%;
   --border: 217 20% 84%;
@@ -104,6 +108,10 @@
   --navy-accent: hsl(218 60% 15%);
   --border-color: hsl(var(--border));
   --muted-fg: hsl(var(--muted-foreground));
+
+  /* Navy-blue headers & sub-headers, black paragraphs */
+  --heading-color: hsl(217 72% 22%);
+  --text-color: hsl(0 0% 4%);
 
   /* Adaptive Section Backgrounds for Light Theme */
   --section-dark-bg: hsl(217 30% 93%);
@@ -138,6 +146,16 @@
   padding: 0;
 }
 
+/* Scrolling stays fully functional; only the scrollbar chrome is hidden site-wide */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 96px; /* keep anchor targets clear of the fixed header */
@@ -150,7 +168,7 @@ body {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
-  color: var(--fg-color);
+  color: var(--text-color);
   background: var(--bg-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -196,7 +214,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.04em;
-  color: var(--fg-color);
+  color: var(--heading-color);
 }
 
 .serif-quote {
@@ -459,14 +477,14 @@ h1, h2, h3, h4, h5, h6 {
 .section-title {
   font-size: clamp(2rem, 4vw, 3.25rem);
   font-weight: 800;
-  color: var(--fg-color);
+  color: var(--heading-color);
   line-height: 0.98;
   letter-spacing: -0.04em;
   margin-bottom: 16px;
 }
 
 .section-title.light {
-  color: var(--fg-color);
+  color: var(--heading-color);
 }
 
 .section-subtitle {
@@ -526,6 +544,15 @@ h1, h2, h3, h4, h5, h6 {
   background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
                     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+/* Real image wrapper used by PlaceholderImage once a photo is supplied */
+.img-frame {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  background: var(--surface-2);
 }
 
 .img-placeholder span {

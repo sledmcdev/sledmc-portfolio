@@ -18,7 +18,7 @@
 .formTitle {
   font-size: 1.6rem;
   font-weight: 800;
-  color: var(--fg-color);
+  color: var(--heading-color);
   margin-bottom: 6px;
 }
 
@@ -108,7 +108,7 @@
 
 .successState h2 {
   font-size: 1.75rem;
-  color: var(--fg-color);
+  color: var(--heading-color);
 }
 
 .successState p {

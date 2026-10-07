@@ -22,7 +22,16 @@ export default function FounderVision() {
             </blockquote>
             
             <div className={styles.portrait}>
-              <PlaceholderImage label={content.portraitLabel} width={56} height={56} style={{ borderRadius: 2, minHeight: "unset" }} />
+              <PlaceholderImage
+                label={content.portraitLabel}
+                src={content.image}
+                alt={content.imageAlt}
+                position="50% 20%"
+                sizes="56px"
+                width={56}
+                height={56}
+                style={{ borderRadius: 2, minHeight: "unset" }}
+              />
               <div className={styles.portraitInfo}>
                 <strong>{FOUNDER.name}</strong>
                 <span>{FOUNDER.designation}</span>
@@ -42,7 +51,15 @@ export default function FounderVision() {
             transition={{ delay: 0.2 }}
             className={styles.imageCol}
           >
-            <PlaceholderImage label={content.imageLabel} height={520} style={{ borderRadius: 2 }} />
+            <PlaceholderImage
+              label={content.imageLabel}
+              src={content.image}
+              alt={content.imageAlt}
+              position="50% 15%"
+              sizes="(max-width: 900px) 90vw, 440px"
+              height="100%"
+              style={{ borderRadius: 2 }}
+            />
           </motion.div>
         </div>
       </div>

@@ -1,0 +1,14 @@
+.lion {
+  display: block;
+  aspect-ratio: 907 / 832;
+  max-width: 100%;
+  background-color: var(--amber);
+  -webkit-mask: url("/images/brand/lion-motif.png") center / contain no-repeat;
+  mask: url("/images/brand/lion-motif.png") center / contain no-repeat;
+  pointer-events: none;
+  user-select: none;
+}
+
+.flip {
+  transform: scaleX(-1);
+}

@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   GraduationCap,
   Globe2,
@@ -18,15 +19,28 @@ import {
   Sparkles,
   Compass,
   ArrowUpRight,
+  Languages,
+  Scale,
+  FileCheck2,
+  Briefcase,
+  Wallet,
+  PlaneTakeoff,
+  Send,
+  PhoneCall,
+  MessagesSquare,
+  ClipboardCheck,
 } from "lucide-react";
 import styles from "./Academy.module.css";
+import Accordion from "@/components/shared/Accordion";
+import SectorPathways from "@/components/shared/SectorPathways";
+import LionMotif from "@/components/shared/LionMotif";
+import { SECTOR_PATHWAYS } from "@/lib/data";
 
 import hero from "@/data/pages/academy/hero.json";
 import philosophy from "@/data/pages/academy/philosophy.json";
 import curriculum from "@/data/pages/academy/curriculum.json";
 import flagship from "@/data/pages/academy/flagship.json";
-import sectors from "@/data/pages/academy/sectors.json";
-import assessment from "@/data/pages/academy/assessment.json";
+import admission from "@/data/pages/academy/admission-process.json";
 import readinessProfile from "@/data/pages/academy/readiness-profile.json";
 import finalCta from "@/data/pages/academy/final-cta.json";
 
@@ -46,6 +60,16 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Sparkles,
   Compass,
   ArrowUpRight,
+  Languages,
+  Scale,
+  FileCheck2,
+  Briefcase,
+  Wallet,
+  PlaneTakeoff,
+  Send,
+  PhoneCall,
+  MessagesSquare,
+  ClipboardCheck,
 };
 
 function Icon({ name, size }: { name: string; size: number }) {
@@ -59,55 +83,42 @@ function btnClass(variant: string, size: "md" | "lg") {
   return `btn ${variant === "secondary" ? "btn-secondary" : "btn-primary"} btn-${size}`;
 }
 
-type Answers = Record<string, string>;
+type InquiryField = {
+  name: string;
+  label: string;
+  type: string;
+  required: boolean;
+  placeholder: string;
+  options?: string[];
+};
 
-const EMPTY_ANSWERS: Answers = Object.fromEntries(assessment.steps.map((s) => [s.field, ""]));
+const INQUIRY_FIELDS = admission.form.fields as InquiryField[];
+const EMPTY_INQUIRY: Record<string, string> = Object.fromEntries(INQUIRY_FIELDS.map((f) => [f.name, ""]));
 const SUBMIT_DELAY_MS = 800;
 
 export default function AcademyContent() {
-  const [activeModule, setActiveModule] = useState(curriculum.modules[0].id);
+  const [inquiry, setInquiry] = useState<Record<string, string>>(EMPTY_INQUIRY);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  // Readiness Assessment Wizard state
-  const totalSteps = assessment.steps.length;
-  const [step, setStep] = useState(1);
-  const [answers, setAnswers] = useState<Answers>(EMPTY_ANSWERS);
-  const [assessmentDone, setAssessmentDone] = useState(false);
-  const [submittingOption, setSubmittingOption] = useState<string | null>(null);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => () => {
-    if (timerRef.current) clearTimeout(timerRef.current);
-  }, []);
-
-  const handleSelectOption = (field: string, val: string) => {
-    if (submittingOption) return;
-    setAnswers((prev) => ({ ...prev, [field]: val }));
-    if (step < totalSteps) {
-      setStep(step + 1);
-    } else {
-      // Final answer: simulate an async submission so the loading state is visible.
-      setSubmittingOption(val);
-      timerRef.current = setTimeout(() => {
-        setSubmittingOption(null);
-        setAssessmentDone(true);
-      }, SUBMIT_DELAY_MS);
-    }
+  const handleInquirySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
+    // Simulated async submission until a real endpoint is wired up.
+    await new Promise((resolve) => setTimeout(resolve, SUBMIT_DELAY_MS));
+    setSubmitting(false);
+    setSubmitted(true);
   };
 
-  const resetAssessment = () => {
-    setStep(1);
-    setAnswers(EMPTY_ANSWERS);
-    setSubmittingOption(null);
-    setAssessmentDone(false);
-  };
-
-  const currentStep = assessment.steps[step - 1];
-  const { result } = assessment;
+  const setField = (name: string, value: string) => setInquiry((prev) => ({ ...prev, [name]: value }));
+  const { form } = admission;
 
   return (
     <main className={styles.page}>
       {/* HERO SECTION */}
       <section className={styles.hero}>
+        <LionMotif width={440} opacity={0.08} className={styles.heroLion} />
         <div className="container">
           <div className={styles.heroContent}>
             <div className={styles.badge}>
@@ -161,37 +172,38 @@ export default function AcademyContent() {
             <p className={styles.sectionDesc}>{curriculum.description}</p>
           </div>
 
-          <div className={styles.moduleNav}>
-            {curriculum.modules.map((mod) => (
-              <button
-                key={mod.id}
-                className={`${styles.moduleTab} ${activeModule === mod.id ? styles.moduleTabActive : ""}`}
-                onClick={() => setActiveModule(mod.id)}
-                aria-pressed={activeModule === mod.id}
-              >
-                {mod.num}
-                {curriculum.tabSeparator}
-                {mod.title}
-              </button>
-            ))}
-          </div>
+          <p className={styles.moduleHint}>
+            <ArrowRight size={16} /> {curriculum.hint}
+          </p>
 
-          <div className={styles.moduleGrid}>
-            {curriculum.modules
-              .filter((m) => m.id === activeModule)
-              .map((mod) => (
-                <div key={mod.id} className={`${styles.moduleCard} ${styles.moduleCardFull}`}>
-                  <span className={styles.moduleBadge}>{mod.num}</span>
-                  <h3 className={styles.moduleTitle}>{mod.title}</h3>
+          <Accordion
+            columns={2}
+            defaultOpenIds={[curriculum.modules[0].id]}
+            items={curriculum.modules.map((mod) => ({
+              id: mod.id,
+              header: (
+                <span className={styles.moduleHeader}>
+                  <span className={styles.moduleIcon}>
+                    <Icon name={mod.icon} size={22} />
+                  </span>
+                  <span className={styles.moduleHeading}>
+                    <span className={styles.moduleBadge}>{mod.num}</span>
+                    <span className={styles.moduleTitle}>{mod.title}</span>
+                  </span>
+                </span>
+              ),
+              content: (
+                <>
                   <p className={styles.moduleDesc}>{mod.desc}</p>
                   <ul className={styles.moduleList}>
                     {mod.items.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
-                </div>
-              ))}
-          </div>
+                </>
+              ),
+            }))}
+          />
         </div>
       </section>
 
@@ -213,111 +225,137 @@ export default function AcademyContent() {
             </div>
 
             <div>
-              <div className={styles.flagshipList}>
+              <ul className={styles.flagshipList}>
                 {flagship.items.map((item) => (
-                  <div key={item} className={styles.flagshipItem}>
+                  <li key={item} className={styles.flagshipItem}>
                     <span className={styles.flagshipCheck}>
-                      <Icon name={flagship.itemIcon} size={16} />
+                      <Icon name={flagship.itemIcon} size={18} />
                     </span>
                     {item}
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTOR ACADEMIES */}
-      <section className={`${styles.section} ${styles.sectionDark}`}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className={styles.eyebrow}>{sectors.eyebrow}</span>
-            <h2 className={styles.sectionTitle}>{sectors.title}</h2>
-            <p className={styles.sectionDesc}>{sectors.description}</p>
-          </div>
+      {/* SECTOR-SPECIFIC PATHWAYS */}
+      <SectorPathways />
 
-          <div className={styles.philosophyGrid}>
-            {sectors.sectors.map((sec) => (
-              <div key={sec.title} className={styles.philosophyCard}>
-                <div className={styles.iconBox}>
-                  <Icon name={sec.icon} size={24} />
-                </div>
-                <h3 className={styles.cardTitle}>{sec.title}</h3>
-                <p className={styles.cardText}>{sec.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CANDIDATE READINESS ASSESSMENT TOOL */}
-      <section id="assessment" className={styles.section}>
+      {/* ADMISSION PROCESS: INQUIRY → CONTACT → INTERVIEW → MODULE PLAN */}
+      <section id="inquiry" className={styles.section}>
         <div className="container">
           <div className={`${styles.sectionHeader} ${styles.sectionHeaderCentered}`}>
-            <span className={styles.eyebrow}>{assessment.eyebrow}</span>
-            <h2 className={styles.sectionTitle}>{assessment.title}</h2>
-            <p className={styles.sectionDesc}>{assessment.description}</p>
+            <span className={styles.eyebrow}>{admission.eyebrow}</span>
+            <h2 className={styles.sectionTitle}>{admission.title}</h2>
+            <p className={styles.sectionDesc}>{admission.description}</p>
           </div>
 
-          <div className={styles.assessmentCard} aria-live="polite">
-            {!assessmentDone ? (
-              <>
-                <div className={styles.stepIndicator}>
-                  {assessment.steps.map((_, i) => {
-                    const s = i + 1;
+          <ol className={styles.pathSteps}>
+            {admission.steps.map((step, i) => (
+              <motion.li
+                key={step.title}
+                className={styles.pathStep}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <span className={styles.pathConnector} aria-hidden="true">
+                  <motion.span
+                    className={styles.pathConnectorFill}
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 + i * 0.12 }}
+                  />
+                </span>
+                <span className={styles.pathIcon}>
+                  <Icon name={step.icon} size={24} />
+                  <span className={styles.pathNum}>{i + 1}</span>
+                </span>
+                <h3 className={styles.pathTitle}>{step.title}</h3>
+                <p className={styles.pathDesc}>{step.desc}</p>
+              </motion.li>
+            ))}
+          </ol>
+
+          <div className={styles.inquiryCard} aria-live="polite">
+            {!submitted ? (
+              <form onSubmit={handleInquirySubmit} aria-busy={submitting}>
+                <div className={styles.inquiryHead}>
+                  <h3 className={styles.inquiryTitle}>{form.title}</h3>
+                  <p className={styles.inquiryDesc}>{form.description}</p>
+                </div>
+                <div className={styles.inquiryGrid}>
+                  {INQUIRY_FIELDS.map((field) => {
+                    const id = `inquiry-${field.name}`;
+                    const common = { id, name: field.name, required: field.required, value: inquiry[field.name] };
+                    const options =
+                      field.type === "sector" ? SECTOR_PATHWAYS.sectors.map((s) => s.title) : field.options ?? [];
                     return (
-                      <div key={s} className={`${styles.stepDot} ${step >= s ? styles.stepDotActive : ""}`}>
-                        {s}
+                      <div key={field.name} className={`form-group ${field.type === "textarea" ? styles.inquiryFull : ""}`}>
+                        <label htmlFor={id} className="form-label">
+                          {field.label}
+                          {field.required && <span className={styles.required}> *</span>}
+                        </label>
+                        {field.type === "select" || field.type === "sector" ? (
+                          <select {...common} className="form-select" onChange={(e) => setField(field.name, e.target.value)}>
+                            <option value="">{field.placeholder}</option>
+                            {options.map((opt) => (
+                              <option key={opt} value={opt}>
+                                {opt}
+                              </option>
+                            ))}
+                          </select>
+                        ) : field.type === "textarea" ? (
+                          <textarea
+                            {...common}
+                            className="form-textarea"
+                            placeholder={field.placeholder}
+                            onChange={(e) => setField(field.name, e.target.value)}
+                          />
+                        ) : (
+                          <input
+                            {...common}
+                            type={field.type}
+                            className="form-input"
+                            placeholder={field.placeholder}
+                            onChange={(e) => setField(field.name, e.target.value)}
+                          />
+                        )}
                       </div>
                     );
                   })}
                 </div>
-
-                {currentStep && (
-                  <div key={currentStep.field}>
-                    <h3 className={styles.stepTitle}>{currentStep.title}</h3>
-                    <p className={styles.stepQuestion}>{currentStep.question}</p>
-                    <div className={styles.optionGrid}>
-                      {currentStep.options.map((opt) => {
-                        const busy = submittingOption === opt;
-                        return (
-                          <button
-                            key={opt}
-                            type="button"
-                            className={styles.optionBtn}
-                            onClick={() => handleSelectOption(currentStep.field, opt)}
-                            disabled={submittingOption !== null}
-                            aria-busy={busy ? "true" : undefined}
-                          >
-                            {busy && <span className="spinner" aria-hidden="true" />}
-                            {opt}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-              </>
+                <button
+                  type="submit"
+                  className={`btn btn-primary btn-lg ${styles.inquirySubmit}`}
+                  disabled={submitting}
+                  aria-busy={submitting}
+                >
+                  {form.submit.label}{" "}
+                  {submitting ? <span className="spinner" aria-hidden="true" /> : <Icon name={form.submit.icon} size={18} />}
+                </button>
+              </form>
             ) : (
               <div className={styles.result}>
                 <div className={styles.resultIcon}>
-                  <Icon name={result.icon} size={32} />
+                  <Icon name={form.success.icon} size={32} />
                 </div>
-                <h3 className={styles.resultTitle}>{result.title}</h3>
-                <p className={styles.resultText}>
-                  {result.messageBeforeSector}
-                  <strong>{answers.sector}</strong>
-                  {result.messageBeforeExperience}
-                  <strong>{answers.experience}</strong>
-                  {result.messageAfterExperience}
-                </p>
+                <h3 className={styles.resultTitle}>{form.success.title}</h3>
+                <p className={styles.resultText}>{form.success.message}</p>
                 <div className={styles.resultActions}>
-                  <Link href={result.primaryCta.href} className="btn btn-primary btn-md">
-                    {result.primaryCta.label} <Icon name={result.primaryCta.icon} size={16} />
-                  </Link>
-                  <button type="button" onClick={resetAssessment} className="btn btn-secondary btn-md">
-                    {result.resetLabel}
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-md"
+                    onClick={() => {
+                      setInquiry(EMPTY_INQUIRY);
+                      setSubmitted(false);
+                    }}
+                  >
+                    {form.success.resetLabel}
                   </button>
                 </div>
               </div>

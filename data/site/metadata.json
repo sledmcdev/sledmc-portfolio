@@ -1,0 +1,20 @@
+{
+  "title": {
+    "default": "SLEDMC — Sri Lanka European Skills Development & Mobility Centre",
+    "template": "%s | SLEDMC"
+  },
+  "description": "SLEDMC connects prepared Sri Lankan professionals with legitimate European employment opportunities through language, skills, and pre-departure preparation.",
+  "keywords": [
+    "SLEDMC",
+    "European skills development",
+    "Sri Lanka mobility centre",
+    "European driver academy",
+    "Code 95 Sri Lanka",
+    "European work visa preparation"
+  ],
+  "openGraph": {
+    "type": "website",
+    "locale": "en_GB",
+    "siteName": "SLEDMC Mobility & Skills"
+  }
+}

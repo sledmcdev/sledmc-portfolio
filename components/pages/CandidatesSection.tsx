@@ -13,7 +13,6 @@ import {
   HeartHandshake,
   Package,
   Wrench,
-  ChevronDown,
   ArrowRight,
   CheckCircle2,
   FileText,
@@ -21,11 +20,13 @@ import {
   Send,
 } from "lucide-react";
 import styles from "@/app/candidates/Candidates.module.css";
+import SectorPathways from "@/components/shared/SectorPathways";
+import Accordion from "@/components/shared/Accordion";
+import LionMotif from "@/components/shared/LionMotif";
+import JourneyTimeline from "./JourneyTimeline";
 
 import hero from "@/data/pages/candidates/hero.json";
 import whyJoin from "@/data/pages/candidates/why-join.json";
-import sectors from "@/data/pages/candidates/sectors.json";
-import journey from "@/data/pages/candidates/journey.json";
 import assessmentForm from "@/data/pages/candidates/assessment-form.json";
 import safetyNotice from "@/data/pages/candidates/safety-notice.json";
 import faq from "@/data/pages/candidates/faq.json";
@@ -92,7 +93,6 @@ function renderTemplate(template: string, values: Record<string, string>, emphas
 }
 
 export default function CandidatesSection() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState<Record<string, string>>(INITIAL_FORM);
@@ -112,6 +112,7 @@ export default function CandidatesSection() {
     <main className={styles.page}>
       {/* HERO SECTION */}
       <section className={styles.hero}>
+        <LionMotif width={430} opacity={0.08} className={styles.heroLion} />
         <div className="container">
           <div className={styles.heroContent}>
             <div className={styles.badge}>
@@ -130,6 +131,9 @@ export default function CandidatesSection() {
           </div>
         </div>
       </section>
+
+      {/* AVAILABLE SECTOR PATHWAYS — first thing candidates see */}
+      <SectorPathways id="pathways" />
 
       {/* WHY JOIN SLEDMC */}
       <section id="why-join" className={styles.section}>
@@ -154,52 +158,8 @@ export default function CandidatesSection() {
         </div>
       </section>
 
-      {/* CAREER PATHWAYS */}
-      <section className={`${styles.section} ${styles.sectionDark}`}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className={styles.eyebrow}>{sectors.eyebrow}</span>
-            <h2 className={styles.sectionTitle}>{sectors.title}</h2>
-            <p className={styles.sectionDesc}>{sectors.description}</p>
-          </div>
-
-          <div className={styles.pathwayGrid}>
-            {sectors.items.map((sector, i) => (
-              <div key={i} className={styles.pathwayCard}>
-                <h3 className={styles.pathwayTitle}>
-                  <Icon name={sector.icon} size={20} className={styles.accentIcon} /> {sector.title}
-                </h3>
-                <div className={styles.pathwayTags}>
-                  {sector.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>{tag}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* 11 STEP CANDIDATE JOURNEY */}
-      <section className={styles.section}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className={styles.eyebrow}>{journey.eyebrow}</span>
-            <h2 className={styles.sectionTitle}>{journey.title}</h2>
-            <p className={styles.sectionDesc}>{journey.description}</p>
-          </div>
-
-          <div className={styles.timeline}>
-            {journey.steps.map((s, i) => (
-              <div key={i} className={styles.timelineStep}>
-                <div className={styles.stepNum}>{s.step} {journey.stepSuffix}</div>
-                <h3 className={styles.stepTitle}>{s.title}</h3>
-                <p className={styles.stepDesc}>{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <JourneyTimeline />
 
       {/* CANDIDATE ASSESSMENT / REGISTRATION FORM */}
       <section id="assessment-form" className={`${styles.section} ${styles.sectionDark}`}>
@@ -310,27 +270,15 @@ export default function CandidatesSection() {
             <h2 className={styles.sectionTitle}>{faq.title}</h2>
           </div>
 
-          <div className={styles.faqList}>
-            {faq.items.map((item, i) => {
-              const isOpen = openFaq === i;
-              return (
-                <div key={i} className={styles.faqItem}>
-                  <button
-                    className={styles.faqQuestion}
-                    aria-expanded={isOpen}
-                    onClick={() => setOpenFaq(isOpen ? null : i)}
-                  >
-                    <span>{item.q}</span>
-                    <ChevronDown
-                      size={18}
-                      className={`${styles.faqChevron} ${isOpen ? styles.faqChevronOpen : ""}`}
-                    />
-                  </button>
-                  {isOpen && <div className={styles.faqAnswer}>{item.a}</div>}
-                </div>
-              );
-            })}
-          </div>
+          <Accordion
+            className={styles.faqList}
+            allowMultiple={false}
+            items={faq.items.map((item, i) => ({
+              id: `faq-${i}`,
+              header: <span className={styles.faqQuestionText}>{item.q}</span>,
+              content: <p className={styles.faqAnswer}>{item.a}</p>,
+            }))}
+          />
         </div>
       </section>
 

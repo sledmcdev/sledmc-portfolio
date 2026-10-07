@@ -111,7 +111,7 @@
 .personName {
   font-size: 1rem;
   font-weight: 800;
-  color: var(--fg-color);
+  color: var(--heading-color);
 }
 
 .personRole {

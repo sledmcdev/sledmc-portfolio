@@ -17,5 +17,7 @@
     { "value": "20+", "label": "SECTORS" }
   ],
   "imageLabel": "Cinematic Noir — Recruitment Executive Image",
+  "image": "/images/home/hero.jpg",
+  "imageAlt": "SLEDMC fleet of heavy trucks ready for European transport routes",
   "floatCard": { "metric": "98%", "label": "RETENTION RATE" }
 }

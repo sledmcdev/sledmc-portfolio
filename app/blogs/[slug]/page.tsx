@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import { BLOGS } from "@/lib/data";
+import article from "@/data/pages/blogs/article.json";
 
 interface BlogPageProps {
   params: { slug: string };
@@ -35,7 +36,7 @@ export default function BlogPostPage({ params }: BlogPageProps) {
             href="/blogs"
             style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--amber)", fontSize: "0.875rem", fontWeight: 600, marginBottom: 24, textDecoration: "none" }}
           >
-            <ArrowLeft size={16} /> Back to Blogs
+            <ArrowLeft size={16} /> {article.backLabel}
           </Link>
           <span className="tag tag-gold" style={{ marginBottom: 16 }}>
             {post.category}

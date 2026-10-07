@@ -1,0 +1,198 @@
+.section {
+  position: relative;
+  padding: var(--section-py) 0;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-color);
+  overflow: hidden;
+}
+
+.sectionDark {
+  background: var(--section-dark-bg);
+}
+
+.header {
+  margin-bottom: 48px;
+  max-width: 760px;
+}
+
+.eyebrow {
+  color: var(--amber);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--heading-color);
+}
+
+.desc {
+  color: var(--muted-fg);
+  font-size: 1.125rem;
+  margin-top: 16px;
+}
+
+/* ── Sector card (whole card is the trigger) ── */
+.card {
+  position: relative;
+  isolation: isolate;
+  min-height: 440px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px;
+  text-align: left;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background:
+    radial-gradient(circle at 85% 10%, rgba(212, 175, 55, 0.18), transparent 55%),
+    linear-gradient(160deg, hsl(217 48% 15%) 0%, hsl(217 51% 9%) 100%);
+  color: var(--on-dark);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-6px);
+  border-color: var(--amber);
+  box-shadow: var(--shadow-amber);
+  outline: none;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.22;
+  z-index: -2;
+  transition: opacity 0.4s ease, transform 0.8s ease;
+}
+
+.card:hover .video {
+  opacity: 0.34;
+  transform: scale(1.04);
+}
+
+.cardShade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(11, 20, 34, 0.15) 0%, rgba(11, 20, 34, 0.55) 55%, rgba(11, 20, 34, 0.92) 100%);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.14);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: hsl(215 25% 85%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(11, 20, 34, 0.45);
+}
+
+.badgeOpen {
+  color: #0b1422;
+  background: #d4af37;
+  border-color: #d4af37;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.cardDesc {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: hsl(215 25% 85%);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: var(--radius);
+  color: hsl(215 25% 88%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.cardCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d4af37;
+  padding-top: 16px;
+  border-top: 1px solid rgba(212, 175, 55, 0.25);
+  transition: gap 0.3s ease;
+}
+
+.card:hover .cardCta {
+  gap: 14px;
+}
+
+@media (max-width: 640px) {
+  .card {
+    min-height: 400px;
+    padding: 22px;
+  }
+}
