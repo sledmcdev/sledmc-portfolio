@@ -6,8 +6,8 @@
 
 .inner {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 60px;
+  grid-template-columns: 60% calc(40% - 40px);
+  gap: 40px;
   align-items: center;
 }
 
@@ -23,10 +23,10 @@
 }
 
 .message {
-  font-size: 1.35rem;
-  line-height: 1.5;
+  font-size: 1.15rem;
+  line-height: 1.2;
   color: var(--fg-color);
-
+  white-space: pre-line;
 }
 
 .portrait {
@@ -72,9 +72,7 @@
 /* Portrait frame (4:5) so the founder shows head-and-shoulders, like an editorial portrait */
 .imageCol {
   position: relative;
-  justify-self: center;
   width: 100%;
-  max-width: 440px;
   aspect-ratio: 4 / 5;
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
@@ -83,6 +81,11 @@
 }
 
 @media (max-width: 1024px) {
-  .inner { grid-template-columns: 1fr; gap: 40px; }
-  .card { padding: 32px 24px; }
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .card {
+    padding: 32px 24px;
+  }
 }
