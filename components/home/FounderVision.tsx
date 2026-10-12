@@ -37,11 +37,6 @@ export default function FounderVision() {
                 <span>{FOUNDER.designation}</span>
               </div>
             </div>
-
-            <div className={styles.philosophy}>
-              <span className={styles.philLabel}>{content.philosophyLabel}</span>
-              <p className="serif-quote">{FOUNDER.philosophy}</p>
-            </div>
           </motion.div>
 
           <motion.div

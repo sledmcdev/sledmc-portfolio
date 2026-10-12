@@ -33,9 +33,8 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 16px 0;
+  padding-top: 16px;
   border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
 }
 
 .portraitInfo {
@@ -52,21 +51,6 @@
 .portraitInfo span {
   font-size: 0.8125rem;
   color: var(--amber);
-}
-
-.philosophy {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.philLabel {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  color: var(--amber);
-  text-transform: uppercase;
 }
 
 /* Portrait frame (4:5) so the founder shows head-and-shoulders, like an editorial portrait */
