@@ -4,27 +4,53 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-.inner {
+.containerGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* Row 1: 2 Columns (Thought & Image) - 75% height (~500px), same width ratio */
+.rowTop {
   display: grid;
   grid-template-columns: 60% calc(40% - 40px);
   gap: 40px;
-  align-items: center;
+  align-items: stretch;
 }
 
 .card {
   background: var(--card-color);
   border: 1px solid var(--border-color);
-  padding: 48px;
+  padding: 36px 40px;
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  justify-content: space-between;
+  gap: 20px;
+  height: 500px;
   box-shadow: var(--shadow-card);
 }
 
-.message {
-  font-size: 1.15rem;
-  line-height: 1.2;
+.messageBox {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--amber) transparent;
+}
+
+.messageBox::-webkit-scrollbar {
+  width: 5px;
+}
+
+.messageBox::-webkit-scrollbar-thumb {
+  background: var(--amber);
+  border-radius: 4px;
+}
+
+.messageBox p {
+  font-size: 1.05rem;
+  line-height: 1.6;
   color: var(--fg-color);
   white-space: pre-line;
 }
@@ -33,8 +59,9 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  padding-top: 16px;
+  padding-top: 18px;
   border-top: 1px solid var(--border-color);
+  flex-shrink: 0;
 }
 
 .portraitInfo {
@@ -51,25 +78,165 @@
 .portraitInfo span {
   font-size: 0.8125rem;
   color: var(--amber);
+  line-height: 1.35;
 }
 
-/* Portrait frame (4:5) so the founder shows head-and-shoulders, like an editorial portrait */
+/* Portrait frame: full 75% proportional height (~500px) showing the entire image scaled cleanly */
 .imageCol {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: 500px;
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-card);
+  background: var(--card-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Row 2: Automated Image Carousel across both columns */
+.rowBottom {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--card-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+}
+
+.carouselHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.carouselTitleBox {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.carouselTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--heading-color);
+}
+
+.carouselControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ctrlBtn {
+  background: var(--section-dark-bg);
+  border: 1px solid var(--border-color);
+  color: var(--fg-color);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ctrlBtn:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-color);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dotActive {
+  width: 20px;
+  border-radius: 4px;
+  background: var(--amber);
+}
+
+.carouselTrack {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.carouselCard {
+  position: relative;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--section-dark-bg);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.carouselCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--amber);
+}
+
+.cardCaption {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid var(--border-color);
+}
+
+.captionTag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--amber);
+}
+
+.captionText {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--fg-color);
 }
 
 @media (max-width: 1024px) {
-  .inner {
+  .rowTop {
     grid-template-columns: 1fr;
     gap: 30px;
   }
   .card {
     padding: 32px 24px;
+  }
+  .carouselTrack {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .carouselTrack {
+    grid-template-columns: 1fr;
+  }
+  .rowBottom {
+    padding: 24px 16px;
   }
 }

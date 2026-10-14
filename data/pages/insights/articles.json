@@ -1,5 +1,88 @@
 {
   "readMoreLabel": "Read Article →",
+  "adminArticles": [
+    {
+      "id": "admin-art-1",
+      "category": "Admin Insight",
+      "title": "Strategic Blueprint for Sri Lankan Skilled Labor Deployment to the European Union",
+      "description": "An executive analysis by SLEDMC leadership on legal frameworks, bilateral bilateral migration corridors, and fast-track work permit protocols in 2025/2026.",
+      "readTime": "8 min read",
+      "author": "SLEDMC Editorial Board",
+      "authorRole": "Admin & Compliance Directorate",
+      "publishedAt": "2025-03-28",
+      "featured": true,
+      "icon": "TrendingUp",
+      "content": "European labor markets continue to demonstrate robust demand for verified, destination-ready vocational professionals. SLEDMC's rigorous in-country vetting and embassy-aligned documentation guarantee full compliance with European immigration directives."
+    },
+    {
+      "id": "admin-art-2",
+      "category": "Regulatory Policy",
+      "title": "Code 95 & CQC Compliance Standards: European Road Safety & Commercial Fleet Preparedness",
+      "description": "Essential guidance from SLEDMC transport directors detailing driver qualification cards, tachograph rules, and winter driving preparation.",
+      "readTime": "6 min read",
+      "author": "Admin & Vocational Lead",
+      "authorRole": "Transport & Academy Division",
+      "publishedAt": "2025-03-15",
+      "featured": false,
+      "icon": "FileText",
+      "content": "Understanding the transition from local driving experience to heavy vehicle operations under EU Regulation (EC) No 561/2006 on driving times and rest periods."
+    },
+    {
+      "id": "admin-art-3",
+      "category": "Workplace Integration",
+      "title": "Cultural Immersion & Destination Language Mastery for Overseas Vocational Recruits",
+      "description": "How structured linguistic training reduces onboarding friction and elevates candidate retention rates beyond 95% across European hospitals and hotels.",
+      "readTime": "5 min read",
+      "author": "SLEDMC Academy Admin",
+      "authorRole": "Language & Integration Desk",
+      "publishedAt": "2025-02-20",
+      "featured": false,
+      "icon": "Sparkles",
+      "content": "Language proficiency combined with cultural context training allows international candidates to integrate smoothly into team workflows from day one."
+    }
+  ],
+  "youtubeVideos": [
+    {
+      "id": "video-1",
+      "youtubeId": "ysz5S6PUM-U",
+      "title": "European Workforce Mobility: Inside SLEDMC Academy Training",
+      "category": "Academy & Training",
+      "duration": "12:45",
+      "views": "14.2K views",
+      "channel": "SLEDMC Official",
+      "description": "A comprehensive tour of the practical trade testing and European road regulations simulator at SLEDMC Academy Colombo."
+    },
+    {
+      "id": "video-2",
+      "youtubeId": "ScMzIvxBSi4",
+      "title": "Category C/CE Driver Preparation & Code 95 Simulator Walkthrough",
+      "category": "Transport Pathways",
+      "duration": "08:30",
+      "views": "28.5K views",
+      "channel": "SLEDMC Official",
+      "description": "Instructors demonstrate tachograph compliance and defensive driving standards required by European freight logistics carriers."
+    },
+    {
+      "id": "video-3",
+      "youtubeId": "L_LUpnjgPso",
+      "title": "Candidate Success Story: Deployment to European Logistics Hub",
+      "category": "Candidate Stories",
+      "duration": "06:15",
+      "views": "19.8K views",
+      "channel": "SLEDMC Global Mobility",
+      "description": "Interview with placed professional drivers and technicians discussing arrival support, contract transparency, and living in Europe."
+    },
+    {
+      "id": "video-4",
+      "youtubeId": "kJQP7kiw5Fk",
+      "title": "Hospitality & Culinary Vocational Certification in Europe",
+      "category": "Vocational Excellence",
+      "duration": "10:10",
+      "views": "9.4K views",
+      "channel": "SLEDMC Academy",
+      "description": "Overview of European culinary hygiene, hotel operations, and practical kitchen training methodologies."
+    }
+  ],
   "extraArticles": [
     {
       "category": "Employer Insights",

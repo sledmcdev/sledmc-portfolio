@@ -32,5 +32,38 @@
     "result": "Alex secured a Senior Engineering Lead role at a leading construction firm, with a 35% salary increase compared to his previous position.",
     "metric": "35% salary increase",
     "industry": "Engineering"
+  },
+  {
+    "id": "story-4",
+    "type": "employer",
+    "company": "TransEuro Logistics Sp. z o.o.",
+    "title": "Rapid Deployment of 45 Long-Haul Drivers",
+    "challenge": "A European logistics carrier faced driver shortages across international routes ahead of peak transport season.",
+    "approach": "SLEDMC Academy pre-screened and certified Category C/CE drivers with Code 95 and digital tachograph training in Colombo.",
+    "result": "45 certified drivers successfully deployed to Poland and Germany with zero visa compliance delays.",
+    "metric": "45 Drivers Deployed",
+    "industry": "Transport & Logistics"
+  },
+  {
+    "id": "story-5",
+    "type": "candidate",
+    "name": "Dinesh Ranasinghe",
+    "title": "Professional HGV Driver to European Fleet Specialist",
+    "previous": "Heavy vehicle driver in Sri Lanka seeking structured European employment with legal visa sponsorship.",
+    "support": "Full Code 95 pathway, European highway regulations preparation, and English language training at SLEDMC Academy.",
+    "result": "Secured permanent European transport contract with accommodation assistance and comprehensive medical insurance.",
+    "metric": "100% Legal Work Permit",
+    "industry": "Heavy Transport"
+  },
+  {
+    "id": "story-6",
+    "type": "employer",
+    "company": "Alpine Hospitality Resort Group",
+    "title": "Staffing Luxury Kitchens & Front-of-House",
+    "challenge": "High-end resort chain in Central Europe needed 25 culinary and hospitality staff within 6 weeks.",
+    "approach": "Specialist trade testing, European food safety hygiene protocols, and conversational hospitality language immersion.",
+    "result": "All 25 candidates placed with 96% first-year retention and excellent employer ratings.",
+    "metric": "96% Retention Rate",
+    "industry": "Hospitality & Culinary"
   }
 ]

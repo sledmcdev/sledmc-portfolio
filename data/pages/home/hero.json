@@ -18,6 +18,13 @@
   ],
   "imageLabel": "Cinematic Noir — Recruitment Executive Image",
   "image": "/images/home/hero.jpg",
-  "imageAlt": "SLEDMC fleet of heavy trucks ready for European transport routes",
+  "imageAlt": "SLEDMC recruitment and vocational mobility",
+  "carouselImages": [
+    { "src": "/images/home/hero.jpg", "alt": "SLEDMC recruitment and heavy vehicle transport fleet", "label": "European Transport & Logistics" },
+    { "src": "/images/home/hero-2.jpg", "alt": "Skilled engineering and technical specialists in modern workspace", "label": "Technical & Engineering Talent" },
+    { "src": "/images/home/hero-3.jpg", "alt": "Professional hospitality culinary staff at luxury hotel", "label": "Hospitality & Culinary Professionals" },
+    { "src": "/images/home/hero-4.jpg", "alt": "Dedicated healthcare and specialized care staff", "label": "Healthcare & Care Support" },
+    { "src": "/images/home/hero-5.jpg", "alt": "Vocational academy training and European trade certification", "label": "Academy Training & Readiness" }
+  ],
   "floatCard": { "metric": "98%", "label": "RETENTION RATE" }
 }

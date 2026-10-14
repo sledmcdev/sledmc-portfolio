@@ -162,84 +162,211 @@
 }
 
 /* Sectors Grid */
-.sectorGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+/* Sectors Carousel Track */
+.sectorCarouselTrack {
+  display: flex;
   gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 12px 4px 28px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--amber) transparent;
 }
 
-.sectorCard {
-  background: var(--card-color);
+.sectorCarouselTrack::-webkit-scrollbar {
+  height: 6px;
+}
+
+.sectorCarouselTrack::-webkit-scrollbar-thumb {
+  background: var(--amber);
+  border-radius: 3px;
+}
+
+.sectorCardWithBg {
+  flex: 0 0 360px;
+  scroll-snap-align: start;
+  min-height: 480px;
+  background-size: cover;
+  background-position: center;
   border: 1px solid var(--border-color);
-  padding: 32px;
   border-radius: var(--radius);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   box-shadow: var(--shadow-card);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.sectorTitle {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 16px;
+.sectorCardWithBg:hover {
+  transform: translateY(-6px);
+  border-color: var(--amber);
+  box-shadow: var(--shadow-amber);
+}
+
+.sectorCardTop {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: var(--heading-color);
+  justify-content: space-between;
+  gap: 12px;
 }
 
-.sectorList {
+.sectorIconBox {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(11, 20, 34, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+}
+
+.sectorBadge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  background: rgba(11, 20, 34, 0.8);
+  border: 1px solid var(--accent-border);
+  padding: 4px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+
+.sectorCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.sectorCardTitle {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.sectorCardSub {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 8px;
+}
+
+.sectorListModern {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.sectorList li {
-  color: var(--muted-fg);
-  font-size: 0.95rem;
-  position: relative;
-  padding-left: 20px;
+.sectorListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
 }
 
-.sectorList li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
+.sectorCardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: var(--amber);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+  text-decoration: none;
+  transition: gap 0.2s;
 }
 
-/* How SLEDMC Works Grid */
-.worksGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+.sectorCardLink:hover {
+  gap: 10px;
 }
 
-.worksCard {
+/* Modern List for Operational Workflows */
+.workflowModernList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.workflowListItem {
+  display: flex;
+  align-items: center;
+  gap: 24px;
   background: var(--card-color);
   border: 1px solid var(--border-color);
-  padding: 24px;
+  border-left: 4px solid var(--amber);
+  padding: 20px 28px;
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-.worksTitle {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--heading-color);
+.workflowListItem:hover {
+  transform: translateX(8px);
+  border-color: var(--amber);
 }
 
-.worksDesc {
-  color: var(--muted-fg);
-  font-size: 0.875rem;
+.workflowStepNumber {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 72px;
 }
 
-.worksNum {
-  font-size: 0.8125rem;
+.stepNumText {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
   font-weight: 800;
   color: var(--amber);
   letter-spacing: 0.1em;
-  margin-bottom: 8px;
+}
+
+.stepProgressDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--amber);
+}
+
+.workflowContent {
+  flex: 1;
+}
+
+.workflowItemTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 4px;
+}
+
+.workflowItemDesc {
+  font-size: 0.9rem;
+  color: var(--muted-fg);
+  line-height: 1.5;
+}
+
+.workflowStatusIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Employer Benefit Card */
@@ -297,35 +424,80 @@
   color: var(--feature-box-muted);
 }
 
-/* Services Grid */
-.servicesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+/* Full Employer Support Services - Modern List */
+.servicesModernList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.serviceCard {
+.serviceModernItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
   background: var(--card-color);
   border: 1px solid var(--border-color);
-  padding: 28px;
   border-radius: var(--radius);
-  transition: var(--transition);
+  padding: 18px 24px;
   box-shadow: var(--shadow-card);
+  transition: all 0.2s ease;
 }
 
-.serviceCard:hover {
+.serviceModernItem:hover {
   border-color: var(--amber);
-  transform: translateY(-4px);
+  transform: translateX(6px);
 }
 
-.serviceIcon {
-  margin-bottom: 16px;
+.serviceIdxBadge {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: var(--amber);
+  background: var(--amber-muted);
+  border: 1px solid var(--accent-border);
+  padding: 4px 10px;
+  border-radius: 4px;
 }
 
-.serviceTitle {
-  font-size: 1.15rem;
+.serviceItemMain {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.serviceTitleText {
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--heading-color);
+}
+
+.servicePill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-fg);
+  background: var(--section-dark-bg);
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+}
+
+@media (max-width: 680px) {
+  .serviceModernItem {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .workflowListItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 }
 
 /* Partner Network */

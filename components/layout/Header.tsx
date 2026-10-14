@@ -80,8 +80,21 @@ export default function Header() {
               <img src={nav.logo.src} alt={nav.logo.alt} className={styles.logoImg} />
             </div>
             <div className={styles.logoText}>
-              <span className={styles.logoMain}>{nav.logo.title}</span>
-              <span className={styles.logoSub}>{nav.logo.subtitle}</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={nav.logo.textLogoSrc || "/text-logo.png"}
+                alt={nav.logo.title}
+                className={styles.textLogoImg}
+                onError={(e) => {
+                  (e.currentTarget as HTMLElement).style.display = "none";
+                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                  if (fallback) fallback.style.display = "flex";
+                }}
+              />
+              <div className={styles.textLogoFallback} style={{ display: "none" }}>
+                <span className={styles.logoMain}>{nav.logo.title}</span>
+                <span className={styles.logoSub}>{nav.logo.subtitle}</span>
+              </div>
             </div>
           </Link>
 

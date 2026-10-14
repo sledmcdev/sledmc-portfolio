@@ -13,6 +13,7 @@ import {
   ChevronDown,
   Send,
   GraduationCap,
+  ArrowRight,
 } from "lucide-react";
 import styles from "@/app/clients/Clients.module.css";
 
@@ -142,33 +143,57 @@ export default function ClientsSection() {
         </div>
       </section>
 
-      {/* WORKFORCE SECTORS */}
+      {/* WORKFORCE SECTORS - WITH CAROUSEL & BACKGROUND IMAGES */}
       <section id="sectors" className={`${styles.section} ${styles.sectionDark}`}>
         <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className={styles.eyebrow}>{sectors.eyebrow}</span>
-            <h2 className={styles.sectionTitle}>{sectors.title}</h2>
-            <p className={styles.sectionDesc}>{sectors.description}</p>
+          <div className={styles.sectionHeaderRow}>
+            <div className={styles.sectionHeader}>
+              <span className={styles.eyebrow}>{sectors.eyebrow}</span>
+              <h2 className={styles.sectionTitle}>{sectors.title}</h2>
+              <p className={styles.sectionDesc}>{sectors.description}</p>
+            </div>
           </div>
 
-          <div className={styles.sectorGrid}>
+          <div className={styles.sectorCarouselTrack}>
             {sectors.items.map((sec) => (
-              <div key={sec.title} className={styles.sectorCard}>
-                <h3 className={styles.sectorTitle}>
-                  <Icon name={sec.icon} color="var(--amber)" size={22} /> {sec.title}
-                </h3>
-                <ul className={styles.sectorList}>
-                  {sec.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+              <div
+                key={sec.title}
+                className={styles.sectorCardWithBg}
+                style={{
+                  backgroundImage: `linear-gradient(180deg, rgba(11, 20, 34, 0.45) 0%, rgba(11, 20, 34, 0.92) 80%), url(${sec.image || "/images/clients/sectors/drivers.jpg"})`,
+                }}
+              >
+                <div className={styles.sectorCardTop}>
+                  <div className={styles.sectorIconBox}>
+                    <Icon name={sec.icon} color="#d4af37" size={26} />
+                  </div>
+                  {sec.badge && <span className={styles.sectorBadge}>{sec.badge}</span>}
+                </div>
+
+                <div className={styles.sectorCardContent}>
+                  <h3 className={styles.sectorCardTitle}>{sec.title}</h3>
+                  {sec.subtitle && <p className={styles.sectorCardSub}>{sec.subtitle}</p>}
+
+                  <ul className={styles.sectorListModern}>
+                    {sec.items.map((item) => (
+                      <li key={item} className={styles.sectorListItem}>
+                        <CheckCircle2 size={14} color="var(--amber)" style={{ flexShrink: 0, marginTop: 2 }} />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a href="#request-form" className={styles.sectorCardLink}>
+                    Request {sec.title} Talent <ArrowRight size={14} />
+                  </a>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* HOW SLEDMC WORKS */}
+      {/* HOW SLEDMC WORKS - OPERATIONAL WORKFLOWS MODERN LIST */}
       <section className={styles.section}>
         <div className="container">
           <div className={styles.sectionHeader}>
@@ -177,12 +202,20 @@ export default function ClientsSection() {
             <p className={styles.sectionDesc}>{howItWorks.description}</p>
           </div>
 
-          <div className={styles.worksGrid}>
-            {howItWorks.steps.map((w) => (
-              <div key={w.num} className={styles.worksCard}>
-                <div className={styles.worksNum}>{w.num}</div>
-                <h3 className={styles.worksTitle}>{w.title}</h3>
-                <p className={styles.worksDesc}>{w.desc}</p>
+          <div className={styles.workflowModernList}>
+            {howItWorks.steps.map((w, idx) => (
+              <div key={w.num} className={styles.workflowListItem}>
+                <div className={styles.workflowStepNumber}>
+                  <span className={styles.stepNumText}>{w.num}</span>
+                  <span className={styles.stepProgressDot} />
+                </div>
+                <div className={styles.workflowContent}>
+                  <h3 className={styles.workflowItemTitle}>{w.title}</h3>
+                  <p className={styles.workflowItemDesc}>{w.desc}</p>
+                </div>
+                <div className={styles.workflowStatusIcon}>
+                  <CheckCircle2 size={20} color="var(--amber)" />
+                </div>
               </div>
             ))}
           </div>
@@ -215,7 +248,7 @@ export default function ClientsSection() {
         </div>
       </section>
 
-      {/* EMPLOYER SERVICES */}
+      {/* FULL EMPLOYER SUPPORT SERVICES - MODERN LIST */}
       <section className={styles.section}>
         <div className="container">
           <div className={styles.sectionHeader}>
@@ -223,11 +256,15 @@ export default function ClientsSection() {
             <h2 className={styles.sectionTitle}>{services.title}</h2>
           </div>
 
-          <div className={styles.servicesGrid}>
-            {services.items.map((serv) => (
-              <div key={serv} className={styles.serviceCard}>
-                <Icon name={services.itemIcon} size={24} color="var(--amber)" className={styles.serviceIcon} />
-                <h3 className={styles.serviceTitle}>{serv}</h3>
+          <div className={styles.servicesModernList}>
+            {services.items.map((serv, index) => (
+              <div key={serv} className={styles.serviceModernItem}>
+                <div className={styles.serviceIdxBadge}>0{index + 1}</div>
+                <div className={styles.serviceItemMain}>
+                  <Icon name={services.itemIcon} size={22} color="var(--amber)" className={styles.serviceIcon} />
+                  <span className={styles.serviceTitleText}>{serv}</span>
+                </div>
+                <span className={styles.servicePill}>End-to-End Covered</span>
               </div>
             ))}
           </div>

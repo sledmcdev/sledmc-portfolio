@@ -6,6 +6,9 @@
     {
       "icon": "Truck",
       "title": "Professional Drivers",
+      "image": "/images/clients/sectors/drivers.jpg",
+      "subtitle": "EU Road & Long-Haul Transport",
+      "badge": "Active Deployment",
       "items": [
         "Category C / CE Truck Drivers",
         "Heavy Vehicle & Tanker Operators",
@@ -16,6 +19,9 @@
     {
       "icon": "Building2",
       "title": "Hospitality & Culinary",
+      "image": "/images/clients/sectors/hospitality.jpg",
+      "subtitle": "Hotels, Resorts & Culinary Excellence",
+      "badge": "High Demand",
       "items": [
         "Hotel Service & Front Desk Staff",
         "Restaurant & Dining Service Personnel",
@@ -26,6 +32,9 @@
     {
       "icon": "HeartHandshake",
       "title": "Care & Healthcare Support",
+      "image": "/images/clients/sectors/healthcare.jpg",
+      "subtitle": "Care Facilities & Assisted Living",
+      "badge": "Certified Care",
       "items": [
         "Certified Care Workers",
         "Elderly Care Assistants",
@@ -36,6 +45,9 @@
     {
       "icon": "Package",
       "title": "Logistics & Warehouse",
+      "image": "/images/clients/sectors/logistics.jpg",
+      "subtitle": "Supply Chain & Distribution Hubs",
+      "badge": "Volume Hiring",
       "items": [
         "Warehouse Operators & Order Pickers",
         "Logistics & Inventory Personnel",
@@ -46,6 +58,9 @@
     {
       "icon": "Wrench",
       "title": "Skilled Trades",
+      "image": "/images/clients/sectors/skilled-trades.jpg",
+      "subtitle": "Industrial & Technical Vocational Experts",
+      "badge": "Trade Tested",
       "items": [
         "Automotive & Heavy Equipment Mechanics",
         "Industrial & MIG/TIG Welders",
@@ -56,6 +71,9 @@
     {
       "icon": "Sparkles",
       "title": "Facility Services (Future)",
+      "image": "/images/clients/sectors/facility-services.jpg",
+      "subtitle": "Commercial Operations & Hygiene",
+      "badge": "Opening Soon",
       "items": [
         "Commercial Cleaning Staff",
         "Facility Maintenance Personnel",

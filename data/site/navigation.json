@@ -1,6 +1,7 @@
 {
   "logo": {
     "src": "/logo.png",
+    "textLogoSrc": "/text-logo.png",
     "alt": "SLEDMC Logo",
     "title": "SLEDMC",
     "subtitle": "MOBILITY & SKILLS"
@@ -89,16 +90,8 @@
       ]
     },
     {
-      "label": "Services",
-      "href": "/services"
-    },
-    {
       "label": "Industries",
       "href": "/industries"
-    },
-    {
-      "label": "Our Approach",
-      "href": "/our-approach"
     },
     {
       "label": "Insights",

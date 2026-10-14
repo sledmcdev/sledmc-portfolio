@@ -15,8 +15,6 @@
       "links": [
         { "label": "About Us", "href": "/about" },
         { "label": "SLEDMC Academy", "href": "/academy" },
-        { "label": "Our Approach", "href": "/our-approach" },
-        { "label": "Services", "href": "/services" },
         { "label": "Industries", "href": "/industries" },
         { "label": "Insights", "href": "/insights" }
       ]
