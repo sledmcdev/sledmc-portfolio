@@ -8,7 +8,6 @@
       { "label": "Request Workers", "href": "/clients#request-form", "variant": "primary" }
     ]
   },
-  "watermark": "SLEDMC",
   "columns": [
     {
       "title": "Company",

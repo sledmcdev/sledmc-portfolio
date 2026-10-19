@@ -4,8 +4,8 @@
   "quoteClose": "”",
   "thoughtLead": "SLEDMC was born from a simple belief: talent should not be limited by geography. Across Europe, employers seek motivated, verified professionals; in Sri Lanka, skilled individuals aspire to build international futures. Through SLEDMC Academy, we build the structured bridge — preparing people with vocational excellence, European compliance, and lifelong mobility.",
   "portraitLabel": "Founder Portrait",
-  "philosophyLabel": "OUR PHILOSOPHY",
-  "imageLabel": "Founder Portrait — High Resolution Photography",
+  "readMoreLabel": "Read the full message",
+  "readMoreHref": "/about#founder",
   "image": "/images/home/founder.PNG",
   "imageAlt": "Portrait of Gayan Madurapperuma, Founder & CEO of SLEDMC",
   "carouselImages": [

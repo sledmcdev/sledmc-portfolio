@@ -1,0 +1,25 @@
+.wordmark {
+  display: block;
+  aspect-ratio: 1157 / 228;
+  flex-shrink: 0;
+}
+
+.wordmark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+}
+
+.onDark {
+  display: none !important;
+}
+
+:global([data-theme="dark"]) .onLight {
+  display: none !important;
+}
+
+:global([data-theme="dark"]) .onDark {
+  display: block !important;
+}

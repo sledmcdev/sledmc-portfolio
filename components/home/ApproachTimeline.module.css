@@ -198,3 +198,20 @@
     transform: translateY(-50%);
   }
 }
+
+/* Box frame only appears on hover for mouse users; touch devices (no hover) keep the box visible */
+@media (hover: hover) and (pointer: fine) {
+  .card {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease,
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .step:hover .card,
+  .step:focus-within .card {
+    background: var(--card-color);
+    border-color: var(--amber);
+    box-shadow: var(--shadow-card);
+  }
+}

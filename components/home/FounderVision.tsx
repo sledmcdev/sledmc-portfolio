@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import PlaceholderImage from "@/components/shared/PlaceholderImage";
 import { FOUNDER } from "@/lib/data";
 import content from "@/data/pages/home/founder-vision.json";
@@ -49,57 +49,41 @@ export default function FounderVision() {
     <section className={`section ${styles.section}`}>
       <div className="container">
         <div className={styles.containerGrid}>
-          {/* ROW 1 */}
-          <div className={styles.rowTop}>
-            {/* 1st Row 1st Column: Thought / Vision */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className={styles.card}
-            >
-              <div className="mono-eyebrow" style={{ marginBottom: 12 }}>{content.eyebrow}</div>
+          {/* ROW 1: compact founder's thought with a small portrait (full message lives on /about) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className={styles.card}
+          >
+            <div className={styles.cardBody}>
+              <div className="mono-eyebrow">{content.eyebrow}</div>
               <blockquote className={styles.messageBox}>
-                <p className="serif-quote">{content.quoteOpen}{FOUNDER.message}{content.quoteClose}</p>
+                <p className="serif-quote">{content.quoteOpen}{content.thoughtLead}{content.quoteClose}</p>
               </blockquote>
-              
-              <div className={styles.portrait}>
-                <PlaceholderImage
-                  label={content.portraitLabel}
-                  src={content.image}
-                  alt={content.imageAlt}
-                  position="50% 20%"
-                  sizes="54px"
-                  width={54}
-                  height={54}
-                  style={{ borderRadius: 2, minHeight: "unset" }}
-                />
+              <div className={styles.cardFooter}>
                 <div className={styles.portraitInfo}>
                   <strong>{FOUNDER.name}</strong>
                   <span>{FOUNDER.designation}</span>
                 </div>
+                <Link href={content.readMoreHref} className={styles.readMore}>
+                  {content.readMoreLabel}
+                  <ArrowRight size={16} />
+                </Link>
               </div>
-            </motion.div>
-
-            {/* 1st Row 2nd Column: Founder Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className={styles.imageCol}
-            >
+            </div>
+            <div className={styles.portraitCol}>
               <PlaceholderImage
-                label={content.imageLabel}
+                label={content.portraitLabel}
                 src={content.image}
                 alt={content.imageAlt}
-                position="center 20%"
-                sizes="(max-width: 900px) 90vw, 440px"
+                position="50% 20%"
+                sizes="(max-width: 680px) 140px, 220px"
                 height="100%"
-                style={{ borderRadius: 2 }}
+                style={{ minHeight: "unset" }}
               />
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
 
           {/* ROW 2 (Spanning both columns): Automated Image Carousel */}
           <motion.div

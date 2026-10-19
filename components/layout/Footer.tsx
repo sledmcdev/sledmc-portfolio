@@ -5,6 +5,7 @@ import footer from "@/data/site/footer.json";
 import nav from "@/data/site/navigation.json";
 import LionMotif from "@/components/shared/LionMotif";
 import styles from "./Footer.module.css";
+import BrandWordmark from "@/components/shared/BrandWordmark";
 
 const SOCIALS = [
   { key: "linkedin", Icon: Linkedin },
@@ -38,7 +39,7 @@ export default function Footer() {
 
       {/* Main Footer */}
       <div className={styles.main}>
-        <div className={styles.watermark}>{footer.watermark}</div>
+        <BrandWordmark decorative className={styles.watermark} />
         <LionMotif width={320} opacity={0.06} className={styles.lion} />
         <div className="container">
           <div className={styles.grid}>
@@ -49,8 +50,8 @@ export default function Footer() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={nav.logo.src} alt={nav.logo.alt} className={styles.logoImg} />
                 </div>
-                <div>
-                  <div className={styles.logoMain}>{nav.logo.title}</div>
+                <div className={styles.logoText}>
+                  <BrandWordmark alt={nav.logo.title} className={styles.wordmark} />
                   <div className={styles.logoSub}>{nav.logo.subtitle}</div>
                 </div>
               </Link>

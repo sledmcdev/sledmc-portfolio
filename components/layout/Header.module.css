@@ -52,42 +52,13 @@
   object-fit: contain;
 }
 
-.logoText {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-  justify-content: center;
-}
 
 .textLogoImg {
-  height: 38px;
-  max-width: 170px;
-  width: auto;
-  object-fit: contain;
-  display: block;
+  height: 26px;
 }
 
-.textLogoFallback {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
 
-.logoMain {
-  font-size: 1.1rem;
-  font-weight: 900;
-  color: var(--fg-color);
-  letter-spacing: -0.02em;
-}
 
-.logoSub {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 700;
-  color: var(--amber);
-  letter-spacing: 0.2em;
-  margin-top: 2px;
-}
 
 /* Desktop Nav */
 .desktopNav {

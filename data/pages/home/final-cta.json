@@ -1,0 +1,8 @@
+{
+  "eyebrow": "THE NEXT STEP",
+  "title": "Are you ready to start?",
+  "description": "Whether you are a candidate building an international career or a partner looking for skilled, job-ready talent, choose your path and we will take it from there.",
+  "buttons": [
+    { "label": "Get Started", "href": "#hero", "variant": "primary" }
+  ]
+}

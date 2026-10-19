@@ -49,16 +49,11 @@
 
 .watermark {
   position: absolute;
-  bottom: -20px;
-  right: -20px;
-  font-size: clamp(8rem, 22vw, 20rem);
-  font-weight: 900;
-  color: var(--fg-color);
-  opacity: 0.03;
-  user-select: none;
+  bottom: 28px;
+  right: 24px;
+  width: clamp(280px, 48vw, 820px);
+  opacity: 0.05;
   pointer-events: none;
-  line-height: 0.8;
-  letter-spacing: -0.05em;
 }
 
 .grid {
@@ -103,11 +98,14 @@
   object-fit: contain;
 }
 
-.logoMain {
-  font-size: 1.1rem;
-  font-weight: 900;
-  color: var(--fg-color);
-  letter-spacing: -0.02em;
+.logoText {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wordmark {
+  height: 30px;
 }
 
 .logoSub {

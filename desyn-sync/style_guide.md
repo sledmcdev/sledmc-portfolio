@@ -53,24 +53,24 @@ All colors are HSL channels used with `hsl(var(--token))`.
 
 ## 2. Typography
 
-- **Headings / UI:** `Inter Tight` — bold, tight tracking (`tracking-tighter`), large fluid sizes via `clamp()`, e.g. `clamp(2.6rem, 6.5vw, 6rem)` with `line-height: 0.92`.
-- **Serif accents:** `Cormorant Garamond` — for pull-quotes / founder statements only.
-- **Mono labels:** `ui-monospace` — uppercase, `tracking-[0.3em]`, `text-[10px]`–`text-[11px]`, amber or `white/40`. Used as eyebrow labels above every section.
+- **Headings / UI / Body:** `Roboto` — bold, tight tracking (`tracking-tighter`), large fluid sizes via `clamp()`, e.g. `clamp(2.6rem, 6.5vw, 6rem)` with `line-height: 0.92`.
+- **Accents:** `Roboto` italic — for pull-quotes / founder statements only (mapped to the main font; no separate serif).
+- **Mono labels:** `Roboto Mono` — uppercase, `tracking-[0.3em]`, `text-[10px]`–`text-[11px]`, amber or `white/40`. Used as eyebrow labels above every section.
 
 ### Font tokens
 
 ```css
---font-heading: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
---font-body: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
---font-display: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
---font-serif: "Cormorant Garamond", Georgia, serif;
---font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+--font-heading: "Roboto", ui-sans-serif, system-ui, sans-serif;
+--font-body: "Roboto", ui-sans-serif, system-ui, sans-serif;
+--font-display: "Roboto", ui-sans-serif, system-ui, sans-serif;
+--font-serif: "Roboto", ui-sans-serif, system-ui, sans-serif;
+--font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 ```
 
 Load fonts at the top of `index.css` before `@tailwind base;`:
 
 ```css
-@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:wght@400;500;600;700&display=swap");
 ```
 
 ---

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import BrandWordmark from "@/components/shared/BrandWordmark";
 import defaults from "@/data/site/final-cta.json";
 import styles from "./FinalCTA.module.css";
 
@@ -20,7 +21,7 @@ export default function FinalCTA({ content }: { content?: Partial<CTAContent> })
           viewport={{ once: true }}
           className={styles.box}
         >
-          <div className={styles.watermark} aria-hidden="true">{c.watermark}</div>
+          <BrandWordmark decorative className={styles.watermark} />
           <div className={styles.content}>
             <span className="mono-eyebrow" style={{ marginBottom: 16 }}>{c.eyebrow}</span>
             <h2 className={styles.title}>{c.title}</h2>

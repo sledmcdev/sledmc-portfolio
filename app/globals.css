@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:wght@400;500;600;700&display=swap");
 
 /* ─────────────────────────────────────────────────────────
    DESIGN TOKENS — SLEDMC BRANDING (MIDNIGHT NAVY & METALLIC GOLD)
@@ -40,6 +40,9 @@
   /* Adaptive Section Backgrounds */
   --section-dark-bg: hsl(217 40% 17%);     /* same navy as the canvas — one consistent dark surface */
   --hero-bg: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.15) 0%, hsl(217 40% 17%) 70%);
+  --hero-overlay: linear-gradient(90deg, hsl(217 40% 14% / 0.94) 0%, hsl(217 40% 14% / 0.82) 50%, hsl(217 40% 14% / 0.6) 100%);
+  --hero-card-bg: hsl(217 36% 22% / 0.82);
+  --hero-overlay-solid: hsl(217 40% 14% / 0.88);
   --feature-box-bg: linear-gradient(135deg, hsl(217 36% 24%) 0%, hsl(217 40% 18%) 100%);
   --input-bg: hsl(217 40% 14% / 0.85);
   --input-border: hsl(217 28% 34%);
@@ -59,10 +62,11 @@
   --skeleton-shine: hsl(217 32% 30%);
 
   /* Font Families */
-  --font-heading: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-heading: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  /* Accent quotes now use Roboto italic (same family) instead of a separate serif */
+  --font-serif: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Container & Spacing */
   --container: 1500px;
@@ -116,6 +120,9 @@
   /* Adaptive Section Backgrounds for Light Theme */
   --section-dark-bg: hsl(217 30% 93%);
   --hero-bg: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.12) 0%, hsl(210 20% 97%) 70%);
+  --hero-overlay: linear-gradient(90deg, hsl(210 25% 97% / 0.95) 0%, hsl(210 25% 97% / 0.85) 50%, hsl(210 25% 97% / 0.6) 100%);
+  --hero-card-bg: hsl(0 0% 100% / 0.85);
+  --hero-overlay-solid: hsl(210 25% 97% / 0.9);
   --feature-box-bg: linear-gradient(135deg, hsl(43 70% 96%) 0%, hsl(217 35% 94%) 100%);
   --input-bg: hsl(0 0% 100%);
   --input-border: hsl(217 20% 80%);

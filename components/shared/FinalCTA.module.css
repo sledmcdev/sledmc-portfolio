@@ -17,19 +17,12 @@
 /* Sized to the box (not the viewport) and inset on every side so it never clips */
 .watermark {
   position: absolute;
-  left: 48px;
-  right: 48px;
+  left: 50%;
   bottom: 40px;
-  text-align: center;
-  font-size: clamp(4.5rem, 13vw, 12rem);
-  font-weight: 900;
-  color: var(--fg-color);
-  opacity: 0.06;
-  user-select: none;
+  transform: translateX(-50%);
+  width: min(calc(100% - 96px), 900px);
+  opacity: 0.08;
   pointer-events: none;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
 }
 
 .content {
@@ -64,7 +57,7 @@
 
 @media (max-width: 768px) {
   .box { padding: 56px 24px 120px; }
-  .watermark { left: 24px; right: 24px; bottom: 24px; font-size: 16vw; }
+  .watermark { width: calc(100% - 48px); bottom: 24px; }
   .buttons { flex-direction: column; }
   .buttons :global(.btn) { width: 100%; white-space: normal; text-align: center; }
 }

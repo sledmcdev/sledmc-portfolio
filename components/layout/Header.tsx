@@ -6,6 +6,7 @@ import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
 import ThemeToggle from "@/components/theme/ThemeToggle";
 import nav from "@/data/site/navigation.json";
 import styles from "./Header.module.css";
+import BrandWordmark from "@/components/shared/BrandWordmark";
 
 type NavItem = {
   label: string;
@@ -79,23 +80,7 @@ export default function Header() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={nav.logo.src} alt={nav.logo.alt} className={styles.logoImg} />
             </div>
-            <div className={styles.logoText}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={nav.logo.textLogoSrc || "/text-logo.png"}
-                alt={nav.logo.title}
-                className={styles.textLogoImg}
-                onError={(e) => {
-                  (e.currentTarget as HTMLElement).style.display = "none";
-                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                  if (fallback) fallback.style.display = "flex";
-                }}
-              />
-              <div className={styles.textLogoFallback} style={{ display: "none" }}>
-                <span className={styles.logoMain}>{nav.logo.title}</span>
-                <span className={styles.logoSub}>{nav.logo.subtitle}</span>
-              </div>
-            </div>
+            <BrandWordmark alt={nav.logo.title} className={styles.textLogoImg} />
           </Link>
 
           <nav className={styles.desktopNav} aria-label={nav.a11y.mainNav}>

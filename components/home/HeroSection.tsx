@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
-import PlaceholderImage from "@/components/shared/PlaceholderImage";
+import Image from "next/image";
 import LionMotif from "@/components/shared/LionMotif";
 import { COMPANY } from "@/lib/data";
 import content from "@/data/pages/home/hero.json";
@@ -21,21 +21,44 @@ const SLIDES = content.carouselImages && content.carouselImages.length > 0
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
+  // Restarting the timer on every slide change means a manual click gets a full interval too
   useEffect(() => {
-    if (isPaused) return;
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
-    }, 4500);
+    }, 5000);
     return () => clearInterval(timer);
-  }, [isPaused]);
+  }, [currentSlide]);
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
 
   return (
-    <section className={`grid-nexus ${styles.hero}`} aria-label={content.ariaLabel}>
+    <section id="hero" className={styles.hero} aria-label={content.ariaLabel}>
+      {/* Background carousel */}
+      <div className={styles.bgCarousel} aria-hidden="true">
+        <AnimatePresence initial={false}>
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ opacity: { duration: 1.2 }, scale: { duration: 6, ease: "easeOut" } }}
+            className={styles.bgSlide}
+          >
+            <Image
+              src={SLIDES[currentSlide].src}
+              alt=""
+              fill
+              priority={currentSlide === 0}
+              sizes="100vw"
+              style={{ objectFit: "cover" }}
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      <div className={styles.bgOverlay} aria-hidden="true" />
+
       <LionMotif width={480} opacity={0.06} className={styles.lion} />
       <div className={`container ${styles.inner}`}>
         {/* Text Content */}
@@ -69,21 +92,6 @@ export default function HeroSection() {
             {COMPANY.shortDescription}
           </motion.p>
 
-          {/* Dual CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className={styles.ctas}
-          >
-            {content.ctas.map((cta) => (
-              <Link key={cta.href} href={cta.href} className={`btn btn-${cta.variant} btn-lg ${styles.ctaCard}`}>
-                <span>{cta.label}</span>
-                <ArrowUpRight size={18} />
-              </Link>
-            ))}
-          </motion.div>
-
           {/* Quick Stats */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -100,85 +108,49 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Visual with 5-image automated carousel */}
+        {/* Sector buttons: Candidates / Partners (where the carousel image used to be) */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className={styles.visual}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          className={styles.sectorButtons}
         >
-          <div className={styles.imageFrame}>
-            <div className={styles.carouselWrapper}>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentSlide}
-                  initial={{ opacity: 0, scale: 1.04 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className={styles.slideMotion}
-                >
-                  <PlaceholderImage
-                    label={SLIDES[currentSlide].label}
-                    src={SLIDES[currentSlide].src}
-                    alt={SLIDES[currentSlide].alt}
-                    priority={currentSlide === 0}
-                    sizes="(max-width: 900px) 100vw, 45vw"
-                    height="100%"
-                    style={{ minHeight: 520, borderRadius: 2 }}
-                  />
-                  <div className={styles.slideCaptionOverlay}>
-                    <span className={styles.slideCaptionLabel}>{SLIDES[currentSlide].label}</span>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Slide Navigation Controls */}
-              <div className={styles.carouselNav}>
-                <button
-                  type="button"
-                  className={styles.carouselArrow}
-                  onClick={prevSlide}
-                  aria-label="Previous slide"
-                >
-                  <ChevronLeft size={16} />
-                </button>
-                <div className={styles.carouselDots}>
-                  {SLIDES.map((_, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
-                      className={`${styles.carouselDot} ${idx === currentSlide ? styles.carouselDotActive : ""}`}
-                      onClick={() => setCurrentSlide(idx)}
-                      aria-label={`Go to slide ${idx + 1}`}
-                      aria-current={idx === currentSlide}
-                    />
-                  ))}
-                </div>
-                <button
-                  type="button"
-                  className={styles.carouselArrow}
-                  onClick={nextSlide}
-                  aria-label="Next slide"
-                >
-                  <ChevronRight size={16} />
-                </button>
-              </div>
-            </div>
-
-            {/* Floating Amber Metric Card */}
-            <motion.div
-              className={styles.floatCard}
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <span className={styles.floatMetric}>{content.floatCard.metric}</span>
-              <span className={styles.floatLabel}>{content.floatCard.label}</span>
-            </motion.div>
-          </div>
+          {content.sectorButtons.map((btn) => (
+            <Link key={btn.id} href={btn.href} className={styles.sectorButton}>
+              <span className={styles.sectorArt}>
+                <img src={btn.image} alt={btn.imageAlt} loading="eager" />
+              </span>
+              <span className={styles.sectorText}>
+                <span className={styles.sectorLabel}>{btn.label}</span>
+                <span className={styles.sectorDesc}>{btn.description}</span>
+              </span>
+              <ArrowUpRight size={18} className={styles.sectorArrow} />
+            </Link>
+          ))}
         </motion.div>
+      </div>
+
+      {/* Carousel controls */}
+      <div className={styles.carouselNav}>
+        <span className={styles.slideCaptionLabel} aria-live="polite">{SLIDES[currentSlide].label}</span>
+        <button type="button" className={styles.carouselArrow} onClick={prevSlide} aria-label="Previous slide">
+          <ChevronLeft size={16} />
+        </button>
+        <div className={styles.carouselDots}>
+          {SLIDES.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              className={`${styles.carouselDot} ${idx === currentSlide ? styles.carouselDotActive : ""}`}
+              onClick={() => setCurrentSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              aria-current={idx === currentSlide}
+            />
+          ))}
+        </div>
+        <button type="button" className={styles.carouselArrow} onClick={nextSlide} aria-label="Next slide">
+          <ChevronRight size={16} />
+        </button>
       </div>
     </section>
   );

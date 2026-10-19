@@ -6,9 +6,23 @@
     "highlight": "elite talent",
     "after": " with visionary organizations."
   },
-  "ctas": [
-    { "label": "I'm Looking for Talent", "href": "/organizations", "variant": "primary" },
-    { "label": "I'm Looking for a Job", "href": "/job-seekers", "variant": "secondary" }
+  "sectorButtons": [
+    {
+      "id": "candidates",
+      "label": "Candidates",
+      "description": "Find jobs, training & career pathways",
+      "href": "/candidates",
+      "image": "/images/home/sectors/candidates.svg",
+      "imageAlt": "Illustration of a candidate searching for a job"
+    },
+    {
+      "id": "partners",
+      "label": "Partners (Employers)",
+      "description": "Hire skilled, job-ready talent",
+      "href": "/clients",
+      "image": "/images/home/sectors/partners.svg",
+      "imageAlt": "Illustration of an employer and partner shaking hands on a deal"
+    }
   ],
   "quickStats": [
     { "value": "15+", "label": "YEARS EXP" },
@@ -25,6 +39,5 @@
     { "src": "/images/home/hero-3.jpg", "alt": "Professional hospitality culinary staff at luxury hotel", "label": "Hospitality & Culinary Professionals" },
     { "src": "/images/home/hero-4.jpg", "alt": "Dedicated healthcare and specialized care staff", "label": "Healthcare & Care Support" },
     { "src": "/images/home/hero-5.jpg", "alt": "Vocational academy training and European trade certification", "label": "Academy Training & Readiness" }
-  ],
-  "floatCard": { "metric": "98%", "label": "RETENTION RATE" }
+  ]
 }
