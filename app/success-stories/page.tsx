@@ -10,7 +10,7 @@ export const metadata = meta;
 export default function SuccessStoriesPage() {
   return (
     <div>
-      <section style={{ background: "linear-gradient(160deg, var(--section-dark-bg) 0%, var(--card-color) 100%)", padding: "140px 0 80px" }}>
+      <section style={{ background: "linear-gradient(160deg, var(--section-dark-bg) 0%, var(--card-color) 100%)", padding: "calc(var(--header-h) + 72px) 0 80px" }}>
         <div className="container">
           <SectionHeader label={hero.label} title={hero.title} subtitle={hero.subtitle} center light />
         </div>

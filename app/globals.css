@@ -70,6 +70,7 @@
 
   /* Container & Spacing */
   --container: 1500px;
+  --header-h: 120px;       /* fixed header height (top bar + main row); see Header.module.css */
   --container-narrow: 960px;
   --section-py: 100px;
   --section-py-sm: 64px;
@@ -165,7 +166,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px; /* keep anchor targets clear of the fixed header */
+  scroll-padding-top: calc(var(--header-h) + 40px); /* keep anchor targets clear of the fixed header */
   -webkit-text-size-adjust: 100%;
 }
 
@@ -747,6 +748,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
+  :root { --header-h: 98px; }
   :root { --section-py: 64px; }
   .container { padding: 0 20px; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }

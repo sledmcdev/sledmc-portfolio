@@ -39,6 +39,11 @@ export default function Footer() {
 
       {/* Main Footer */}
       <div className={styles.main}>
+        {/* Curved top-left edge with gold swoosh — the header's lower curve, mirrored */}
+        <svg className={styles.wave} viewBox="0 0 1440 44" preserveAspectRatio="none" aria-hidden="true">
+          <path className={styles.waveGold} d="M0 16 C150 12 260 4 380 2 C270 12 170 26 90 36 C55 40 25 43 0 44 Z" />
+          <path className={styles.waveFill} d="M0 0 H1440 V0 H520 C380 0 300 6 220 12 C140 19 70 25 0 27 Z" />
+        </svg>
         <BrandWordmark decorative className={styles.watermark} />
         <LionMotif width={320} opacity={0.06} className={styles.lion} />
         <div className="container">

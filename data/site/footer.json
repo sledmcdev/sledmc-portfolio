@@ -1,11 +1,10 @@
 {
   "ctaBand": {
     "eyebrow": "TRANSFORM YOUR TEAM",
-    "title": "Ready to make your next move?",
-    "subtitle": "Whether you are seeking prepared international talent or your next European career milestone, SLEDMC is your strategic partner.",
+    "title": "Start Your European Journey Today",
+    "subtitle": "Take the first step towards a brighter future with SLEDMC",
     "buttons": [
-      { "label": "Join as Candidate", "href": "/candidates", "variant": "secondary" },
-      { "label": "Request Workers", "href": "/clients#request-form", "variant": "primary" }
+      { "label": "Register Now", "href": "/#hero", "variant": "primary" }
     ]
   },
   "columns": [
