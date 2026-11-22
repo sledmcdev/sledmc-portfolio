@@ -4,7 +4,7 @@
 
 .headerSection {
   background: var(--bg-color);
-  padding: 140px 0 60px;
+  padding: calc(var(--header-h) + 72px) 0 60px;
   border-bottom: 1px solid var(--border-color);
 }
 

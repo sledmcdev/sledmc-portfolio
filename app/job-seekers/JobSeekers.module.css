@@ -4,7 +4,7 @@
 
 .hero {
   background: var(--bg-color);
-  padding: 150px 0 80px;
+  padding: calc(var(--header-h) + 82px) 0 80px;
   color: var(--fg-color);
   position: relative;
   overflow: hidden;

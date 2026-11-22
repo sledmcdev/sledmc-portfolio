@@ -12,7 +12,7 @@ export default function BlogsPage() {
       <section
         style={{
           background: "linear-gradient(160deg, var(--section-dark-bg) 0%, var(--card-color) 100%)",
-          padding: "140px 0 80px",
+          padding: "calc(var(--header-h) + 72px) 0 80px",
         }}
       >
         <div className="container">

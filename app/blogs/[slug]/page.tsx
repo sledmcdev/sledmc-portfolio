@@ -28,7 +28,7 @@ export default function BlogPostPage({ params }: BlogPageProps) {
       <section
         style={{
           background: "linear-gradient(160deg, var(--section-dark-bg) 0%, var(--card-color) 100%)",
-          padding: "140px 0 64px",
+          padding: "calc(var(--header-h) + 72px) 0 64px",
         }}
       >
         <div className="container-narrow">

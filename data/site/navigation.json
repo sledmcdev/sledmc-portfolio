@@ -3,7 +3,8 @@
     "src": "/logo.png",
     "alt": "SLEDMC Logo",
     "title": "SLEDMC",
-    "subtitle": "MOBILITY & SKILLS"
+    "subtitle": "MOBILITY & SKILLS",
+    "tagline": "Sri Lanka European Skills Development & Mobility Centre"
   },
   "items": [
     {
@@ -127,6 +128,7 @@
   "a11y": {
     "mainNav": "Main navigation",
     "openMenu": "Open navigation",
-    "closeMenu": "Close navigation"
+    "closeMenu": "Close navigation",
+    "contactBar": "Contact and social links"
   }
 }
