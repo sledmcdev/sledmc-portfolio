@@ -18,8 +18,8 @@ export default function Home() {
       <HeroSection />
       <TrustedBy />
       <WhyChooseUs />
-      <CompanyIntro />
-      <FounderVision />
+      {/* <CompanyIntro />
+      <FounderVision /> */}
       <KeyStats />
       <ServicesGrid />
       <IndustriesGrid />
@@ -27,7 +27,7 @@ export default function Home() {
       <AwardsSection />
       <TestimonialsSlider />
       {/* "Get Started" scrolls back up to the hero's Candidates / Partners buttons */}
-      <FinalCTA content={finalCta} />
+      {/* <FinalCTA content={finalCta} /> */}
     </>
   );
 }

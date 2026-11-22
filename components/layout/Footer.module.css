@@ -6,23 +6,39 @@
   border-top: 1px solid var(--border-color);
 }
 
-/* CTA Band */
+/* CTA Band — inverted against the page: light theme uses the dark theme's navy canvas,
+   dark theme uses the light theme's off-white canvas. Local tokens keep the eyebrow,
+   text and button readable on each. */
 .ctaBand {
-  background: var(--section-dark-bg);
-  border-top: 1px solid var(--border-color);
+  --cta-bg: hsl(217 40% 17%);
+  --cta-heading: hsl(210 40% 98%);
+  --cta-text: hsl(215 30% 82%);
+  --amber: hsl(43 85% 50%);
+  --on-accent: hsl(220 50% 8%);
+  background: var(--cta-bg);
   padding: 64px 0 96px; /* extra bottom room for the curved edge of .main */
 }
 
+:global([data-theme="dark"]) .ctaBand {
+  --cta-bg: hsl(210 25% 97%);
+  --cta-heading: hsl(217 72% 22%);
+  --cta-text: hsl(0 0% 12%);
+  --amber: hsl(38 92% 30%);
+  --on-accent: hsl(0 0% 100%);
+}
+
+/* Extra right padding pulls the button in from the edge, towards the centre */
 .ctaInner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 40px;
+  padding-right: clamp(0px, 10vw, 180px);
 }
 
 .ctaTitle {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  color: var(--heading-color);
+  color: var(--cta-heading);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.04em;
@@ -30,7 +46,7 @@
 }
 
 .ctaSubtitle {
-  color: var(--muted-fg);
+  color: var(--cta-text);
   font-size: 1rem;
 }
 
@@ -279,7 +295,7 @@
 
 @media (max-width: 1024px) {
   .grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-  .ctaInner { flex-direction: column; text-align: center; }
+  .ctaInner { flex-direction: column; text-align: center; padding-right: 0; }
 }
 
 /* Sri Lankan lion watermark */
