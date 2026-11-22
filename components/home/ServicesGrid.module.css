@@ -1,76 +1,307 @@
+/* =========================================================
+   Section & Carousel Layout
+   ========================================================= */
 .section {
-  background: var(--section-dark-bg);
-  padding: 100px 0;
-  border-bottom: 1px solid var(--border-color);
+  background: var(--section-dark-bg, #eef2f7);
+  padding: 96px 0;
+  border-bottom: 1px solid var(--border-color, #e2e8f0);
+  overflow: hidden;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+.carouselWrapper {
+  position: relative;
+  margin-top: 48px;
+  padding: 0 58px;
+}
+
+.carouselViewport {
+  overflow: hidden;
+  padding: 12px 4px 20px;
+  background: transparent;
+}
+
+.carouselTrack {
+  display: flex;
   gap: 24px;
+  will-change: transform;
 }
 
+.slide {
+  display: flex;
+}
+
+/* =========================================================
+   Service Card
+   ========================================================= */
 .card {
-  background: var(--card-color);
-  border: 1px solid var(--border-color);
-  padding: 36px;
+  position: relative;
+  width: 100%;
+  min-height: 290px;
+  border-radius: 18px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  border-radius: var(--radius);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: var(--shadow-card);
+  background: linear-gradient(155deg, #001845 0%, #002b7a 52%, #0047b3 100%);
+  box-shadow:
+    0 14px 32px -6px rgba(0, 28, 85, 0.28),
+    0 4px 12px -4px rgba(0, 28, 85, 0.16);
+  cursor: default;
+  user-select: none;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  border-color: var(--amber);
+  transform: translateY(-5px);
+  box-shadow: 0 22px 40px -8px rgba(0, 28, 85, 0.38);
 }
 
-.iconWrap {
-  width: 48px;
-  height: 48px;
-  background: var(--amber-muted);
-  color: var(--amber);
-  border-radius: 8px;
+/* =========================================================
+   Background Image & Atmospheric Blend
+   ========================================================= */
+.fullBgImageWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  -webkit-mask-image: linear-gradient(
+    102deg,
+    transparent 15%,
+    rgba(0, 0, 0, 0.38) 36%,
+    rgba(0, 0, 0, 0.88) 58%,
+    #000000 100%
+  );
+  mask-image: linear-gradient(
+    102deg,
+    transparent 15%,
+    rgba(0, 0, 0, 0.38) 36%,
+    rgba(0, 0, 0, 0.88) 58%,
+    #000000 100%
+  );
+}
+
+.fullBgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 85% center;
+  display: block;
+  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .fullBgImage {
+  transform: scale(1.05);
+}
+
+.navyAtmosphericOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    98deg,
+    rgba(0, 24, 69, 0.96) 0%,
+    rgba(0, 32, 96, 0.85) 32%,
+    rgba(0, 32, 96, 0.42) 54%,
+    transparent 76%
+  );
+  pointer-events: none;
+}
+
+/* =========================================================
+   Card Header & Typography
+   ========================================================= */
+.cardHeader {
+  position: relative;
+  z-index: 3;
+  padding: 20px 20px 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  text-align: center;
+  gap: 12px;
+}
+
+.goldenIcon {
+  color: #fbbf24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
 }
 
 .title {
-  font-size: 1.25rem;
+  font-size: 1.18rem;
   font-weight: 800;
-  color: var(--heading-color);
-  margin-bottom: 12px;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 8px rgba(0, 12, 42, 0.75);
+}
+
+.cardBody {
+  position: relative;
+  z-index: 3;
+  width: 62%;
+  padding: 12px 12px 24px 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .desc {
-  font-size: 0.95rem;
-  color: var(--muted-fg);
+  font-size: 1.04rem;
+  font-weight: 450;
+  color: #ffffff;
   line-height: 1.6;
-  flex: 1;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 10, 35, 0.95);
+}
+
+/* =========================================================
+   Navigation Arrows, Dots & CTA
+   ========================================================= */
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #fbbf24;
+  background: #002266;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 34, 102, 0.25);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navBtn:hover {
+  background: #fbbf24;
+  color: #001f5c;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.prevBtn {
+  left: 2px;
+}
+
+.nextBtn {
+  right: 2px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  border: none;
+  background: #cbd5e1;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    width 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.activeDot {
+  width: 28px;
+  background: #002266;
 }
 
 .cta {
   display: flex;
   justify-content: center;
-  margin-top: 48px;
+  margin-top: 44px;
 }
 
-/* Box frame only appears on hover for mouse users; touch devices (no hover) keep the box visible */
-@media (hover: hover) and (pointer: fine) {
+.mainCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #002266;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 34, 102, 0.22);
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.mainCtaBtn:hover {
+  background: #003899;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 34, 102, 0.3);
+}
+
+/* =========================================================
+   Responsive Breakpoints (Tablet & Mobile)
+   ========================================================= */
+@media (max-width: 767px) {
   .card {
-    background: transparent;
-    border-color: transparent;
-    box-shadow: none;
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease,
-      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    min-height: 250px;
   }
-  .card:hover,
-  .card:focus-within {
-    background: var(--card-color);
-    border-color: var(--amber);
-    box-shadow: var(--shadow-card);
+
+  .navyAtmosphericOverlay {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 24, 69, 0.92) 0%,
+      rgba(0, 32, 96, 0.78) 55%,
+      rgba(0, 24, 69, 0.88) 100%
+    );
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    padding: 20px 16px 8px;
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 1.05rem;
+  }
+
+  .cardBody {
+    width: 100%;
+    padding: 10px 20px 24px;
+  }
+
+  .desc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 640px) {
+  .carouselWrapper {
+    padding: 0 44px;
+  }
+
+  .navBtn {
+    width: 36px;
+    height: 36px;
   }
 }
