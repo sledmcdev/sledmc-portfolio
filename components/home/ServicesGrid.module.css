@@ -1,6 +1,3 @@
-/* =========================================================
-   Section & Carousel Layout
-   ========================================================= */
 .section {
   background: var(--section-dark-bg, #eef2f7);
   padding: 96px 0;
@@ -109,7 +106,7 @@
 }
 
 /* =========================================================
-   Card Header & Typography
+   Card Header & Typography (Left-Aligned)
    ========================================================= */
 .cardHeader {
   position: relative;
@@ -117,13 +114,13 @@
   padding: 20px 20px 8px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
+  text-align: left;
   gap: 12px;
 }
 
 .goldenIcon {
-  color: #fbbf24;
+  color: #d99b26;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,6 +135,7 @@
   line-height: 1.25;
   margin: 0;
   letter-spacing: -0.01em;
+  text-align: left;
   text-shadow: 0 2px 8px rgba(0, 12, 42, 0.75);
 }
 
@@ -149,8 +147,7 @@
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
 }
 
 .desc {
@@ -159,6 +156,7 @@
   color: #ffffff;
   line-height: 1.6;
   margin: 0;
+  text-align: left;
   text-shadow: 0 2px 8px rgba(0, 10, 35, 0.95);
 }
 
@@ -173,7 +171,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 2px solid #fbbf24;
+  border: 2px solid #d99b26;
   background: #002266;
   color: #ffffff;
   display: flex;
@@ -188,7 +186,7 @@
 }
 
 .navBtn:hover {
-  background: #fbbf24;
+  background: #d99b26;
   color: #001f5c;
   transform: translateY(-50%) scale(1.08);
 }
@@ -258,50 +256,51 @@
 }
 
 /* =========================================================
-   Responsive Breakpoints (Tablet & Mobile)
+   Responsive Breakpoints (Mobile Matches Desktop Layout)
    ========================================================= */
 @media (max-width: 767px) {
   .card {
-    min-height: 250px;
+    min-height: 220px;
   }
 
-  .navyAtmosphericOverlay {
-    background: linear-gradient(
-      180deg,
-      rgba(0, 24, 69, 0.92) 0%,
-      rgba(0, 32, 96, 0.78) 55%,
-      rgba(0, 24, 69, 0.88) 100%
-    );
+  .fullBgImage {
+    object-position: 82% center;
   }
 
   .cardHeader {
-    flex-direction: column;
-    padding: 20px 16px 8px;
+    padding: 16px 14px 6px;
     gap: 8px;
+    max-width: 72%;
+  }
+
+  .goldenIcon svg {
+    width: 19px;
+    height: 19px;
   }
 
   .title {
-    font-size: 1.05rem;
+    font-size: 0.96rem;
+    line-height: 1.25;
   }
 
   .cardBody {
-    width: 100%;
-    padding: 10px 20px 24px;
+    width: 58%;
+    padding: 8px 6px 18px 14px;
   }
 
   .desc {
-    font-size: 0.88rem;
-    line-height: 1.55;
+    font-size: 0.8rem;
+    line-height: 1.5;
   }
 }
 
 @media (max-width: 640px) {
   .carouselWrapper {
-    padding: 0 44px;
+    padding: 0 42px;
   }
 
   .navBtn {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
   }
 }

@@ -1,13 +1,13 @@
 .section {
-  background: var(--section-dark-bg);
+  background: var(--section-dark-bg, #eef1f6);
   padding: 100px 0;
   border-bottom: 1px solid var(--border-color);
 }
 
 .inner {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: 72px;
+  grid-template-columns: minmax(0, 4.5fr) minmax(0, 7.5fr);
+  gap: 56px;
   align-items: start;
 }
 
@@ -17,99 +17,197 @@
 }
 
 .left :global(.section-header) {
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 
 .highlightBox {
-  border-left: 2px solid var(--amber);
-  background: var(--amber-muted);
-  padding: 28px 32px;
+  border-left: 3px solid var(--amber, #d99b26);
+  background: var(--amber-muted, rgba(217, 155, 38, 0.12));
+  padding: 24px 28px;
 }
 
 .highlightBox p {
   font-family: var(--font-serif);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-style: italic;
   line-height: 1.5;
-  color: var(--fg-color);
+  color: var(--fg-color, #1e293b);
 }
 
 .right {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
-.item {
+/* =========================================================
+   Card Base & Hover
+   ========================================================= */
+.card {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  border-radius: 18px;
+  overflow: hidden;
   display: flex;
-  align-items: flex-start;
-  gap: 18px;
-  height: 100%;
-  background: var(--card-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  padding: 28px 24px;
-  box-shadow: var(--shadow-card);
-  transition: border-color 0.3s, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(155deg, #001845 0%, #002b7a 52%, #0047b3 100%);
+  box-shadow:
+    0 14px 32px -6px rgba(0, 28, 85, 0.28),
+    0 4px 12px -4px rgba(0, 28, 85, 0.16);
+  cursor: default;
+  user-select: none;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.item:hover {
-  border-color: var(--amber);
-  transform: translateY(-4px);
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 40px -8px rgba(0, 28, 85, 0.38);
+}
+
+/* =========================================================
+   Background Image & Atmospheric Blend
+   ========================================================= */
+.fullBgImageWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  -webkit-mask-image: linear-gradient(102deg,
+      transparent 15%,
+      rgba(0, 0, 0, 0.38) 36%,
+      rgba(0, 0, 0, 0.88) 58%,
+      #000000 100%);
+  mask-image: linear-gradient(102deg,
+      transparent 15%,
+      rgba(0, 0, 0, 0.38) 36%,
+      rgba(0, 0, 0, 0.88) 58%,
+      #000000 100%);
+}
+
+.fullBgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 85% center;
+  display: block;
+  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .fullBgImage {
+  transform: scale(1.05);
+}
+
+.navyAtmosphericOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(98deg,
+      rgba(0, 24, 69, 0.96) 0%,
+      rgba(0, 32, 96, 0.85) 32%,
+      rgba(0, 32, 96, 0.42) 54%,
+      transparent 76%);
+  pointer-events: none;
+}
+
+/* =========================================================
+   Card Content (Matched to Service Card Icon, Topic & Desc)
+   ========================================================= */
+.cardContent {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Spans full width of the card */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 34px;
 }
 
 .iconWrap {
-  width: 44px;
-  height: 44px;
+  color: #d99b26;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  background: var(--amber-muted);
-  color: var(--amber);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
 }
 
 .itemTitle {
-  font-size: 1.125rem;
+  font-size: 1.18rem;
   font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: var(--heading-color);
-  margin: 10px 0 8px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin: 0;
+  text-align: left;
+  text-shadow: 0 2px 8px rgba(0, 12, 42, 0.75);
 }
 
+/* Kept on the left side so the right-side photo stays clear */
 .itemDesc {
-  font-size: 0.9rem;
-  color: var(--muted-fg);
+  font-size: 1.04rem;
+  font-weight: 450;
+  color: #ffffff;
   line-height: 1.6;
+  margin: 0;
+  max-width: 65%;
+  text-align: left;
+  text-shadow: 0 2px 8px rgba(0, 10, 35, 0.95);
 }
 
-@media (max-width: 1024px) {
+/* =========================================================
+   Responsive Breakpoints
+   ========================================================= */
+@media (max-width: 1150px) {
   .inner {
     grid-template-columns: 1fr;
     gap: 48px;
   }
-  .left { position: static; }
-}
 
-@media (max-width: 640px) {
-  .right { grid-template-columns: 1fr; }
-}
-
-/* Box frame only appears on hover for mouse users; touch devices (no hover) keep the box visible */
-@media (hover: hover) and (pointer: fine) {
-  .item {
-    background: transparent;
-    border-color: transparent;
-    box-shadow: none;
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease,
-      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  .left {
+    position: static;
+    max-width: 680px;
   }
-  .item:hover,
-  .item:focus-within {
-    background: var(--card-color);
-    border-color: var(--amber);
-    box-shadow: var(--shadow-card);
+}
+
+@media (max-width: 767px) {
+  .right {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: 200px;
+  }
+
+  .cardHeader {
+    gap: 8px;
+    max-width: 72%;
+  }
+
+  .iconWrap svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .itemTitle {
+    font-size: 0.96rem;
+    line-height: 1.25;
+  }
+
+  .itemDesc {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    max-width: 72%;
   }
 }
