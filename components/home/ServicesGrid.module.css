@@ -1,3 +1,6 @@
+/* =========================================================
+   Section & Carousel Layout
+   ========================================================= */
 .section {
   background: var(--section-dark-bg, #eef2f7);
   padding: 96px 0;
@@ -28,7 +31,7 @@
 }
 
 /* =========================================================
-   Service Card
+   Service Card (Light Mode Default: Royal Navy Blue)
    ========================================================= */
 .card {
   position: relative;
@@ -46,7 +49,8 @@
   user-select: none;
   transition:
     transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.3s ease;
 }
 
 .card:hover {
@@ -103,6 +107,52 @@
     transparent 76%
   );
   pointer-events: none;
+}
+
+/* =========================================================
+   Dark Mode Overrides (hsl(217, 40%, 14%) / #152032)
+   ========================================================= */
+:global(.dark) .card,
+:global([data-theme="dark"]) .card {
+  background: linear-gradient(155deg, #152032 0%, #1a273d 60%, #20304a 100%);
+  box-shadow:
+    0 14px 32px -6px rgba(0, 0, 0, 0.48),
+    0 4px 12px -4px rgba(0, 0, 0, 0.32);
+}
+
+:global(.dark) .card:hover,
+:global([data-theme="dark"]) .card:hover {
+  box-shadow: 0 22px 40px -8px rgba(0, 0, 0, 0.6);
+}
+
+:global(.dark) .navyAtmosphericOverlay,
+:global([data-theme="dark"]) .navyAtmosphericOverlay {
+  background: linear-gradient(
+    98deg,
+    rgba(21, 32, 50, 0.97) 0%,
+    rgba(21, 32, 50, 0.88) 32%,
+    rgba(21, 32, 50, 0.45) 54%,
+    transparent 76%
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(:root:not(.light):not([data-theme="light"])) .card {
+    background: linear-gradient(155deg, #152032 0%, #1a273d 60%, #20304a 100%);
+    box-shadow:
+      0 14px 32px -6px rgba(0, 0, 0, 0.48),
+      0 4px 12px -4px rgba(0, 0, 0, 0.32);
+  }
+
+  :global(:root:not(.light):not([data-theme="light"])) .navyAtmosphericOverlay {
+    background: linear-gradient(
+      98deg,
+      rgba(21, 32, 50, 0.97) 0%,
+      rgba(21, 32, 50, 0.88) 32%,
+      rgba(21, 32, 50, 0.45) 54%,
+      transparent 76%
+    );
+  }
 }
 
 /* =========================================================
@@ -185,6 +235,11 @@
     transform 0.2s ease;
 }
 
+:global(.dark) .navBtn,
+:global([data-theme="dark"]) .navBtn {
+  background: #152032;
+}
+
 .navBtn:hover {
   background: #d99b26;
   color: #001f5c;
@@ -225,6 +280,11 @@
   background: #002266;
 }
 
+:global(.dark) .activeDot,
+:global([data-theme="dark"]) .activeDot {
+  background: #d99b26;
+}
+
 .cta {
   display: flex;
   justify-content: center;
@@ -245,6 +305,7 @@
   box-shadow: 0 8px 20px rgba(0, 34, 102, 0.22);
   transition:
     background-color 0.25s ease,
+    color 0.25s ease,
     transform 0.25s ease,
     box-shadow 0.25s ease;
 }
@@ -253,6 +314,34 @@
   background: #003899;
   transform: translateY(-2px);
   box-shadow: 0 12px 24px rgba(0, 34, 102, 0.3);
+}
+
+:global(.dark) .mainCtaBtn,
+:global([data-theme="dark"]) .mainCtaBtn {
+  background: #d99b26;
+  color: #152032;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+:global(.dark) .mainCtaBtn:hover,
+:global([data-theme="dark"]) .mainCtaBtn:hover {
+  background: #eab308;
+  color: #0f172a;
+  box-shadow: 0 12px 24px rgba(217, 155, 38, 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(:root:not(.light):not([data-theme="light"])) .mainCtaBtn {
+    background: #d99b26;
+    color: #152032;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  :global(:root:not(.light):not([data-theme="light"])) .mainCtaBtn:hover {
+    background: #eab308;
+    color: #0f172a;
+    box-shadow: 0 12px 24px rgba(217, 155, 38, 0.35);
+  }
 }
 
 /* =========================================================

@@ -1,8 +1,7 @@
 "use client";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import SectionHeader from "@/components/shared/SectionHeader";
+import { ChevronLeft, ChevronRight, Quote, Users, Briefcase } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/data";
 import PlaceholderImage from "@/components/shared/PlaceholderImage";
 import content from "@/data/pages/home/testimonials.json";
@@ -21,6 +20,11 @@ export default function TestimonialsSlider() {
 
   const filtered = TESTIMONIALS.filter((t) => t.type === activeTab);
 
+  // Title එකේ අන්තිම වචන 2 Gold color කරන්න
+  const titleWords = content.title.trim().split(" ");
+  const goldTitlePart = titleWords.slice(-2).join(" ");
+  const navyTitlePart = titleWords.slice(0, -2).join(" ");
+
   const goTo = useCallback((i: number, smooth = true) => {
     const track = trackRef.current;
     const card = track?.children[i] as HTMLElement | undefined;
@@ -32,7 +36,14 @@ export default function TestimonialsSlider() {
     setActive(i);
   }, []);
 
-  // Keep the active index in sync when the user swipes / scrolls manually
+  // Start එකේදී සහ Tab මාරු කරද්දී පළවෙනි card එක (index 0) highlight වෙන්න
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      goTo(0, false);
+    }, 50);
+    return () => clearTimeout(timer);
+  }, [activeTab, goTo]);
+
   const handleScroll = () => {
     if (frame.current) cancelAnimationFrame(frame.current);
     frame.current = requestAnimationFrame(() => {
@@ -65,24 +76,47 @@ export default function TestimonialsSlider() {
     <section className={`section ${styles.section}`}>
       <div className="container">
         <div className={styles.header}>
-          <SectionHeader
-            label={content.label}
-            title={content.title}
-            center
-          />
-          <div className={`tabs ${styles.tabs}`} role="tablist">
-            {content.tabs.map((tab) => (
-              <button
-                key={tab.id}
-                id={`tab-${tab.id}`}
-                role="tab"
-                aria-selected={activeTab === tab.id}
-                className={`tab-btn ${activeTab === tab.id ? "active" : ""}`}
-                onClick={() => handleTab(tab.id as Audience)}
-              >
-                {tab.label}
-              </button>
-            ))}
+          {/* Eyebrow Label with Gold Lines */}
+          <div className={styles.eyebrow}>
+            <span className={styles.eyebrowLine} />
+            <span>{content.label}</span>
+            <span className={styles.eyebrowLine} />
+          </div>
+
+          {/* Two-tone Title */}
+          <h2 className={styles.mainTitle}>
+            {navyTitlePart}{" "}
+            <span className={styles.goldHighlight}>{goldTitlePart}</span>
+          </h2>
+
+          {/* Subtitle */}
+          <p className={styles.subtitle}>
+            {(content as { subtitle?: string }).subtitle ??
+              "Real stories. Real people. Their success is our motivation."}
+          </p>
+
+          {/* Pill Tabs with Icons */}
+          <div className={styles.tabs} role="tablist">
+            {content.tabs.map((tab) => {
+              const isSelected = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  id={`tab-${tab.id}`}
+                  role="tab"
+                  aria-selected={isSelected}
+                  className={`${styles.tabBtn} ${isSelected ? styles.tabBtnActive : ""}`}
+                  onClick={() => handleTab(tab.id as Audience)}
+                >
+                  {tab.id === "employer" ? (
+                    <Users size={16} className={styles.tabIcon} />
+                  ) : (
+                    <Briefcase size={16} className={styles.tabIcon} />
+                  )}
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -90,9 +124,9 @@ export default function TestimonialsSlider() {
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
+          exit={{ opacity: 0, y: -16 }}
           transition={{ duration: 0.3 }}
         >
           <div
@@ -108,46 +142,67 @@ export default function TestimonialsSlider() {
               if (e.key === "ArrowRight") { e.preventDefault(); next(); }
             }}
           >
-            {filtered.map((t, i) => (
-              <button
-                key={t.id}
-                type="button"
-                className={`${styles.card} ${i === active ? styles.cardActive : ""}`}
-                onClick={() => goTo(i)}
-                aria-label={fill(content.cardAriaLabel, { name: t.name })}
-                aria-current={i === active}
-              >
-                <Quote className={styles.quoteIcon} size={36} />
-                <p className={styles.testimonial}>{t.testimonial}</p>
-                <div className={styles.person}>
-                  <PlaceholderImage
-                    label=""
-                    src={t.photo}
-                    alt={t.name}
-                    position="center"
-                    sizes="52px"
-                    width={52}
-                    height={52}
-                    rounded
-                    style={{ minHeight: "unset", flexShrink: 0, padding: 0 }}
-                  />
-                  <div className={styles.personText}>
-                    <div className={styles.personName}>{t.name}</div>
-                    <div className={styles.personRole}>
-                      {t.position}
-                      {t.company ? `, ${t.company}` : ""}
+            {filtered.map((t, i) => {
+              const isActive = i === active;
+              return (
+                <button
+                  key={t.id}
+                  type="button"
+                  className={`${styles.card} ${isActive ? styles.cardActive : ""}`}
+                  onClick={() => goTo(i)}
+                  aria-label={fill(content.cardAriaLabel, { name: t.name })}
+                  aria-current={isActive}
+                >
+                  {/* Top Quote Icons Row */}
+                  <div className={styles.quoteRow}>
+                    <Quote className={styles.quoteIconLeft} size={34} />
+                    {isActive && (
+                      <Quote className={styles.quoteIconRight} size={38} />
+                    )}
+                  </div>
+
+                  {/* Quote Text */}
+                  <p className={styles.testimonial}>&ldquo;{t.testimonial}&rdquo;</p>
+
+                  {/* Author Footer */}
+                  <div className={styles.person}>
+                    <div className={styles.avatarWrap}>
+                      <PlaceholderImage
+                        label=""
+                        src={t.photo}
+                        alt={t.name}
+                        position="center"
+                        sizes="52px"
+                        width={52}
+                        height={52}
+                        rounded
+                        style={{ minHeight: "unset", flexShrink: 0, padding: 0 }}
+                      />
+                    </div>
+                    <div className={styles.personText}>
+                      <div className={styles.personName}>{t.name}</div>
+                      <div className={styles.personRole}>
+                        {t.position}
+                        {t.company ? `, ${t.company}` : ""}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </button>
-            ))}
+                </button>
+              );
+            })}
           </div>
         </motion.div>
       </AnimatePresence>
 
+      {/* Bottom Controls */}
       <div className={styles.nav}>
-        <button className={styles.navBtn} onClick={prev} disabled={active === 0} aria-label={content.prevAriaLabel}>
-          <ChevronLeft size={20} />
+        <button
+          className={styles.navBtn}
+          onClick={prev}
+          disabled={active === 0}
+          aria-label={content.prevAriaLabel}
+        >
+          <ChevronLeft size={18} />
         </button>
         <div className={styles.dots}>
           {filtered.map((t, i) => (
@@ -165,7 +220,7 @@ export default function TestimonialsSlider() {
           disabled={active === filtered.length - 1}
           aria-label={content.nextAriaLabel}
         >
-          <ChevronRight size={20} />
+          <ChevronRight size={18} />
         </button>
       </div>
     </section>

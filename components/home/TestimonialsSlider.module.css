@@ -1,36 +1,126 @@
 .section {
-  --card-w: min(620px, 82vw);
-  background: var(--section-dark-bg);
-  padding: 100px 0;
-  border-bottom: 1px solid var(--border-color);
+  --card-w: min(500px, 84vw);
+  --navy: var(--heading-color, #061b49);
+  --gold: var(--amber, #b48327);
+  --gold-light: #d4a338;
+  background: var(--section-bg, #ffffff);
+  padding: 96px 0;
   overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
+:global(.dark) .section,
+:global([data-theme="dark"]) .section {
+  background: var(--section-dark-bg, #071126);
+}
+
+/* ── Header ──────────────────────────────────────────── */
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 48px;
+  text-align: center;
+  margin-bottom: 44px;
 }
 
-.header :global(.section-header) {
-  margin-bottom: 28px;
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
 }
 
+.eyebrowLine {
+  width: 44px;
+  height: 1.5px;
+  background: var(--gold);
+  opacity: 0.75;
+}
+
+.mainTitle {
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--heading-color, #061b49);
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+}
+
+.goldHighlight {
+  color: var(--gold);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--fg-color, #334155);
+  opacity: 0.85;
+  margin: 0 0 28px;
+  max-width: 560px;
+}
+
+/* ── Pill Tabs ───────────────────────────────────────── */
 .tabs {
-  margin: 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-/* ── One-row carousel ────────────────────────────────── */
+.tabBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color, #e2e8f0);
+  background: var(--card-color, #f1f5f9);
+  color: var(--fg-color, #334155);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.tabBtn:hover:not(.tabBtnActive) {
+  border-color: var(--gold);
+  color: var(--heading-color, #061b49);
+}
+
+.tabBtnActive {
+  background: #061b49;
+  color: #ffffff;
+  border-color: #061b49;
+  box-shadow: 0 6px 18px rgba(6, 27, 73, 0.25), inset 0 -2px 0 var(--gold-light);
+}
+
+:global(.dark) .tabBtnActive,
+:global([data-theme="dark"]) .tabBtnActive {
+  background: var(--gold);
+  color: var(--on-accent, #061b49);
+  border-color: var(--gold);
+  box-shadow: 0 6px 18px rgba(180, 131, 39, 0.28);
+}
+
+.tabIcon {
+  flex-shrink: 0;
+}
+
+/* ── Carousel Track ──────────────────────────────────── */
 .track {
   position: relative;
   display: flex;
-  gap: 28px;
+  align-items: stretch;
+  gap: 24px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  /* Side padding lets the first and last cards sit in the center */
-  padding: 16px calc(50% - var(--card-w) / 2) 24px;
+  padding: 20px calc(50% - var(--card-w) / 2) 28px;
   outline: none;
 }
 
@@ -38,8 +128,10 @@
   display: none;
 }
 
+/* ── Cards (Fixed Equal Size) ────────────────────────── */
 .card {
   flex: 0 0 var(--card-w);
+  width: var(--card-w);
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
@@ -47,61 +139,104 @@
   font: inherit;
   color: inherit;
   cursor: pointer;
-  background: var(--card-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  padding: 40px 40px 32px;
-  box-shadow: var(--shadow-card);
-  opacity: 0.45;
-  transform: scale(0.94);
-  transition: opacity 0.4s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+  background: var(--card-color, #ffffff);
+  /* 2px border තියෙන නිසා active වෙද්දී size එක මිලිමීටරයක්වත් වෙනස් වෙන්නේ නැහැ */
+  border: 2px solid var(--border-color, #e5e7eb);
+  border-radius: 16px;
+  padding: 32px 32px 26px;
+  box-shadow: var(--shadow-card, 0 4px 20px rgba(15, 23, 42, 0.04));
+  opacity: 0.72;
+  transition: box-shadow 0.35s ease,
+              border-color 0.3s ease,
+              background-color 0.3s ease,
+              opacity 0.3s ease;
 }
 
-.card:hover {
-  opacity: 0.75;
+.card:hover:not(.cardActive) {
+  opacity: 0.92;
+  border-color: var(--gold);
 }
 
 .cardActive,
 .cardActive:hover {
   opacity: 1;
-  transform: scale(1);
-  border-color: var(--amber);
+  border-color: var(--gold);
+  box-shadow: 0 18px 40px rgba(6, 27, 73, 0.14);
   cursor: default;
+  z-index: 2;
+}
+
+:global(.dark) .cardActive,
+:global([data-theme="dark"]) .cardActive {
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
 .card:focus-visible {
-  outline: 2px solid var(--amber);
+  outline: 2px solid var(--gold);
   outline-offset: 4px;
 }
 
-.quoteIcon {
-  color: var(--amber);
-  opacity: 0.8;
-  margin-bottom: 20px;
-  flex-shrink: 0;
+/* ── Quote Icons ─────────────────────────────────────── */
+.quoteRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 38px;
+  margin-bottom: 14px;
 }
 
+.quoteIconLeft {
+  color: var(--border-color, #dbeafe);
+  fill: var(--border-color, #dbeafe);
+  transform: rotate(180deg);
+  transition: color 0.3s ease, fill 0.3s ease;
+}
+
+.cardActive .quoteIconLeft {
+  color: var(--gold);
+  fill: var(--gold);
+}
+
+.quoteIconRight {
+  color: var(--gold);
+  fill: var(--gold);
+  opacity: 0.16;
+}
+
+/* ── Testimonial Text (Equal Font Size) ──────────────── */
 .testimonial {
   flex: 1;
-  font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.05rem;
   font-style: italic;
-  line-height: 1.55;
-  color: var(--fg-color);
-  margin-bottom: 32px;
+  line-height: 1.65;
+  color: var(--fg-color, #1e293b);
+  margin: 0 0 24px;
+  transition: color 0.3s ease;
 }
 
+.cardActive .testimonial {
+  color: var(--heading-color, #0f172a);
+}
+
+/* ── Author Footer ───────────────────────────────────── */
 .person {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border-color);
+  gap: 14px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-color, #f1f5f9);
 }
 
-.person :global(.img-placeholder-icon) {
-  width: 20px;
-  height: 20px;
+.avatarWrap {
+  border-radius: 50%;
+  padding: 2px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.cardActive .avatarWrap {
+  border-color: var(--gold);
 }
 
 .personText {
@@ -109,42 +244,52 @@
 }
 
 .personName {
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--heading-color);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--heading-color, #061b49);
 }
 
 .personRole {
-  font-size: 0.875rem;
-  color: var(--amber);
+  font-size: 0.82rem;
+  color: var(--fg-color, #64748b);
+  opacity: 0.8;
+  margin-top: 2px;
 }
 
-/* ── Controls ────────────────────────────────────────── */
+.cardActive .personRole {
+  color: var(--gold);
+  opacity: 1;
+  font-weight: 500;
+}
+
+/* ── Navigation Controls ─────────────────────────────── */
 .nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  margin-top: 32px;
+  gap: 18px;
+  margin-top: 24px;
 }
 
 .navBtn {
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--border-color);
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border-color, #e2e8f0);
   border-radius: 50%;
-  background: var(--card-color);
-  color: var(--fg-color);
+  background: var(--card-color, #ffffff);
+  color: var(--heading-color, #061b49);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  transition: all 0.2s ease;
 }
 
 .navBtn:hover:not(:disabled) {
-  background: var(--amber);
-  color: var(--on-accent);
-  border-color: var(--amber);
+  background: var(--gold);
+  color: var(--on-accent, #ffffff);
+  border-color: var(--gold);
 }
 
 .navBtn:disabled {
@@ -154,28 +299,44 @@
 
 .dots {
   display: flex;
+  align-items: center;
   gap: 8px;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 4px;
-  background: var(--border-color);
-  transition: all 0.3s;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: var(--border-color, #cbd5e1);
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .dotActive {
-  background: var(--amber);
-  width: 28px;
+  background: var(--gold);
+  transform: scale(1.15);
 }
 
+/* ── Responsive ──────────────────────────────────────── */
 @media (max-width: 640px) {
-  .track { gap: 16px; }
-  .card { padding: 28px 24px 24px; }
-  .testimonial { font-size: 1.15rem; }
+  .section {
+    padding: 64px 0;
+  }
+  .track {
+    gap: 16px;
+  }
+  .card {
+    padding: 24px 20px 20px;
+  }
+  .testimonial {
+    font-size: 0.98rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card { transition: none; }
+  .card {
+    transition: none;
+  }
 }
