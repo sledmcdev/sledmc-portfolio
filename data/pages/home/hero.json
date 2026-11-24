@@ -12,32 +12,38 @@
       "label": "Candidates",
       "description": "Find jobs, training & career pathways",
       "href": "/candidates",
-      "image": "/images/home/sectors/candidates.svg",
-      "imageAlt": "Illustration of a candidate searching for a job"
+      "image": "/images/home/sectors/candidates.jpg",
+      "imageAlt": "Smiling young professional ready for her next career move",
+      "imagePosition": "72% 30%"
     },
     {
       "id": "partners",
       "label": "Partners (Employers)",
       "description": "Hire skilled, job-ready talent",
       "href": "/clients",
-      "image": "/images/home/sectors/partners.svg",
-      "imageAlt": "Illustration of an employer and partner shaking hands on a deal"
+      "image": "/images/home/sectors/partners.jpg",
+      "imageAlt": "Business leader holding a tablet with his team in the background",
+      "imagePosition": "70% 25%"
     }
   ],
   "quickStats": [
-    { "value": "15+", "label": "YEARS EXP" },
-    { "value": "500+", "label": "PLACEMENTS" },
-    { "value": "100+", "label": "ORGANIZATIONS" },
-    { "value": "20+", "label": "SECTORS" }
+    {
+      "value": "15+",
+      "label": "YEARS EXP"
+    },
+    {
+      "value": "500+",
+      "label": "PLACEMENTS"
+    },
+    {
+      "value": "100+",
+      "label": "ORGANIZATIONS"
+    },
+    {
+      "value": "20+",
+      "label": "SECTORS"
+    }
   ],
-  "imageLabel": "Cinematic Noir — Recruitment Executive Image",
-  "image": "/images/home/hero.jpg",
-  "imageAlt": "SLEDMC recruitment and vocational mobility",
-  "carouselImages": [
-    { "src": "/images/home/hero.jpg", "alt": "SLEDMC recruitment and heavy vehicle transport fleet", "label": "European Transport & Logistics" },
-    { "src": "/images/home/hero-2.jpg", "alt": "Skilled engineering and technical specialists in modern workspace", "label": "Technical & Engineering Talent" },
-    { "src": "/images/home/hero-3.jpg", "alt": "Professional hospitality culinary staff at luxury hotel", "label": "Hospitality & Culinary Professionals" },
-    { "src": "/images/home/hero-4.jpg", "alt": "Dedicated healthcare and specialized care staff", "label": "Healthcare & Care Support" },
-    { "src": "/images/home/hero-5.jpg", "alt": "Vocational academy training and European trade certification", "label": "Academy Training & Readiness" }
-  ]
+  "image": "/images/home/hero.png",
+  "imageAlt": "SLEDMC recruitment and vocational mobility"
 }

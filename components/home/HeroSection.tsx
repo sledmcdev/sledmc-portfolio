@@ -1,61 +1,100 @@
 "use client";
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef, type PointerEvent } from "react";
+import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import LionMotif from "@/components/shared/LionMotif";
 import { COMPANY } from "@/lib/data";
 import content from "@/data/pages/home/hero.json";
 import styles from "./HeroSection.module.css";
 
-const SLIDES = content.carouselImages && content.carouselImages.length > 0
-  ? content.carouselImages
-  : [
-      { src: content.image, alt: content.imageAlt, label: content.imageLabel },
-      { src: "/images/home/hero-2.jpg", alt: "Technical talent", label: "Technical Talent" },
-      { src: "/images/home/hero-3.jpg", alt: "Hospitality staff", label: "Hospitality" },
-      { src: "/images/home/hero-4.jpg", alt: "Healthcare staff", label: "Healthcare" },
-      { src: "/images/home/hero-5.jpg", alt: "Academy training", label: "Academy" },
-    ];
+type SectorButton = (typeof content.sectorButtons)[number];
 
-export default function HeroSection() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+const MotionLink = motion.create(Link);
 
-  // Restarting the timer on every slide change means a manual click gets a full interval too
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [currentSlide]);
+/** Cover-image card that tilts toward the pointer, with image, text and arrow on separate depth layers. */
+function SectorCard({ btn }: { btn: SectorButton }) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const reduceMotion = useReducedMotion();
 
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
+  // Pointer position across the card, -0.5 .. 0.5 on each axis
+  const px = useMotionValue(0);
+  const py = useMotionValue(0);
+  const spring = { stiffness: 220, damping: 18, mass: 0.6 };
+  const rotateX = useSpring(useTransform(py, [-0.5, 0.5], [10, -10]), spring);
+  const rotateY = useSpring(useTransform(px, [-0.5, 0.5], [-12, 12]), spring);
+  const glare = useTransform(
+    [px, py],
+    ([x, y]: number[]) =>
+      `radial-gradient(circle at ${(x + 0.5) * 100}% ${(y + 0.5) * 100}%, rgba(255,255,255,0.28), transparent 55%)`
+  );
+
+  const handleMove = (e: PointerEvent<HTMLAnchorElement>) => {
+    if (reduceMotion || e.pointerType !== "mouse" || !ref.current) return;
+    const r = ref.current.getBoundingClientRect();
+    px.set((e.clientX - r.left) / r.width - 0.5);
+    py.set((e.clientY - r.top) / r.height - 0.5);
+  };
+  const reset = () => {
+    px.set(0);
+    py.set(0);
+  };
 
   return (
+    <div className={styles.sectorStage}>
+      <MotionLink
+        ref={ref}
+        href={btn.href}
+        className={styles.sectorButton}
+        onPointerMove={handleMove}
+        onPointerLeave={reset}
+        onBlur={reset}
+        style={reduceMotion ? undefined : { rotateX, rotateY }}
+      >
+        <span className={styles.sectorArt}>
+          <Image
+            src={btn.image}
+            alt={btn.imageAlt}
+            fill
+            priority
+            sizes="(max-width: 600px) 50vw, (max-width: 1024px) 300px, 280px"
+            style={{ objectFit: "cover", objectPosition: btn.imagePosition }}
+          />
+          <span className={styles.sectorArtShade} aria-hidden="true" />
+        </span>
+        <span className={styles.sectorText}>
+          <span className={styles.sectorLabel}>{btn.label}</span>
+          <span className={styles.sectorDesc}>{btn.description}</span>
+        </span>
+        <span className={styles.sectorArrow} aria-hidden="true">
+          <ArrowUpRight size={18} />
+        </span>
+        {!reduceMotion && (
+          <motion.span
+            className={styles.sectorGlare}
+            aria-hidden="true"
+            style={{ background: glare }}
+          />
+        )}
+      </MotionLink>
+    </div>
+  );
+}
+
+export default function HeroSection() {
+  return (
     <section id="hero" className={styles.hero} aria-label={content.ariaLabel}>
-      {/* Background carousel */}
-      <div className={styles.bgCarousel} aria-hidden="true">
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0, scale: 1.06 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ opacity: { duration: 1.2 }, scale: { duration: 6, ease: "easeOut" } }}
-            className={styles.bgSlide}
-          >
-            <Image
-              src={SLIDES[currentSlide].src}
-              alt=""
-              fill
-              priority={currentSlide === 0}
-              sizes="100vw"
-              style={{ objectFit: "cover" }}
-            />
-          </motion.div>
-        </AnimatePresence>
+      {/* Background image */}
+      <div className={styles.bgImage} aria-hidden="true">
+        <Image
+          src={content.image}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: "cover" }}
+        />
       </div>
       <div className={styles.bgOverlay} aria-hidden="true" />
 
@@ -108,7 +147,7 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Sector buttons: Candidates / Partners (where the carousel image used to be) */}
+        {/* Sector buttons: Candidates / Partners */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -116,42 +155,11 @@ export default function HeroSection() {
           className={styles.sectorButtons}
         >
           {content.sectorButtons.map((btn) => (
-            <Link key={btn.id} href={btn.href} className={styles.sectorButton}>
-              <span className={styles.sectorArt}>
-                <img src={btn.image} alt={btn.imageAlt} loading="eager" />
-              </span>
-              <span className={styles.sectorText}>
-                <span className={styles.sectorLabel}>{btn.label}</span>
-                <span className={styles.sectorDesc}>{btn.description}</span>
-              </span>
-              <ArrowUpRight size={18} className={styles.sectorArrow} />
-            </Link>
+            <SectorCard key={btn.id} btn={btn} />
           ))}
         </motion.div>
       </div>
 
-      {/* Carousel controls */}
-      <div className={styles.carouselNav}>
-        <span className={styles.slideCaptionLabel} aria-live="polite">{SLIDES[currentSlide].label}</span>
-        <button type="button" className={styles.carouselArrow} onClick={prevSlide} aria-label="Previous slide">
-          <ChevronLeft size={16} />
-        </button>
-        <div className={styles.carouselDots}>
-          {SLIDES.map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              className={`${styles.carouselDot} ${idx === currentSlide ? styles.carouselDotActive : ""}`}
-              onClick={() => setCurrentSlide(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              aria-current={idx === currentSlide}
-            />
-          ))}
-        </div>
-        <button type="button" className={styles.carouselArrow} onClick={nextSlide} aria-label="Next slide">
-          <ChevronRight size={16} />
-        </button>
-      </div>
     </section>
   );
 }
