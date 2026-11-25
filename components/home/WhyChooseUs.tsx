@@ -8,8 +8,6 @@ import {
   ShieldCheck,
   Zap,
   Handshake,
-  RotateCcw,
-  Sparkles,
   X,
 } from "lucide-react";
 import SectionHeader from "@/components/shared/SectionHeader";
@@ -35,85 +33,67 @@ const DEFAULT_CARD_IMAGES = [
   "/images/why-choose-us/long-term-partnerships.jpeg",
 ];
 
-// Stacked 3D golden bars forming the tree trunk
-const TRUNK_BARS = [
-  { x: 256, y: 406, w: 88, h: 14, delay: 0.08 },
-  { x: 258, y: 384, w: 84, h: 14, delay: 0.14 },
-  { x: 260, y: 362, w: 80, h: 14, delay: 0.2 },
-  { x: 262, y: 340, w: 76, h: 14, delay: 0.26 },
-  { x: 264, y: 318, w: 72, h: 14, delay: 0.32 },
-  { x: 266, y: 296, w: 68, h: 14, delay: 0.38 },
-  { x: 269, y: 274, w: 64, h: 14, delay: 0.44 },
+// Branch node coordinates + card open direction
+const BRANCH_NODES = [
+  { id: 0, xPct: 33, yPct: 26, delay: 1.15, side: "left" as const, vPos: "top" as const },
+  { id: 1, xPct: 68, yPct: 24, delay: 1.25, side: "right" as const, vPos: "top" as const },
+  { id: 2, xPct: 44, yPct: 45, delay: 1.35, side: "left" as const, vPos: "middle" as const },
+  { id: 3, xPct: 63, yPct: 50, delay: 1.45, side: "right" as const, vPos: "middle" as const },
+  { id: 4, xPct: 33, yPct: 60, delay: 1.55, side: "left" as const, vPos: "bottom" as const },
+  { id: 5, xPct: 75, yPct: 61, delay: 1.65, side: "right" as const, vPos: "bottom" as const },
 ];
 
-// Organic golden bar branches reaching each of the 6 nodes
-const BRANCH_SEGMENTS = [
-  // Node 0: Bottom-Left Branch
-  { x: 196, y: 268, w: 62, h: 13, rotate: -20, delay: 0.5, nodeId: 0 },
-  { x: 132, y: 292, w: 58, h: 13, rotate: -20, delay: 0.58, nodeId: 0 },
-
-  // Node 1: Mid-Left Branch
-  { x: 212, y: 230, w: 78, h: 13, rotate: 34, delay: 0.55, nodeId: 1 },
-  { x: 142, y: 184, w: 72, h: 13, rotate: 34, delay: 0.63, nodeId: 1 },
-
-  // Node 2: Upper-Left Diagonal
-  { x: 244, y: 190, w: 68, h: 13, rotate: 54, delay: 0.6, nodeId: 2 },
-  { x: 200, y: 130, w: 64, h: 13, rotate: 54, delay: 0.68, nodeId: 2 },
-
-  // Node 3: Top-Center Crown Shoot
-  { x: 268, y: 112, w: 76, h: 13, rotate: -72, delay: 0.72, nodeId: 3 },
-
-  // Node 4: Top-Right Diagonal
-  { x: 314, y: 182, w: 74, h: 13, rotate: -48, delay: 0.64, nodeId: 4 },
-  { x: 368, y: 122, w: 68, h: 13, rotate: -48, delay: 0.72, nodeId: 4 },
-
-  // Node 5: Lower-Right Branch
-  { x: 356, y: 274, w: 68, h: 13, rotate: -24, delay: 0.6, nodeId: 5 },
-  { x: 418, y: 248, w: 58, h: 13, rotate: -24, delay: 0.68, nodeId: 5 },
-  { x: 390, y: 314, w: 50, h: 13, rotate: 36, delay: 0.74, nodeId: 5 },
+// Leaves detaching from the canopy, swaying side-to-side all the way until landing on the ground
+const FALLING_TO_GROUND_LEAVES = [
+  { startX: "34%", startY: "32%", dropY: 228, sway: 22, size: 12, dur: 5.4, delay: 1.8, repeatDelay: 2.2 },
+  { startX: "64%", startY: "28%", dropY: 245, sway: -25, size: 11, dur: 5.9, delay: 3.4, repeatDelay: 2.6 },
+  { startX: "46%", startY: "22%", dropY: 268, sway: 26, size: 12, dur: 6.3, delay: 5.1, repeatDelay: 2.4 },
+  { startX: "29%", startY: "50%", dropY: 162, sway: -18, size: 10, dur: 4.8, delay: 6.7, repeatDelay: 2.8 },
+  { startX: "69%", startY: "48%", dropY: 170, sway: 20, size: 11, dur: 5.0, delay: 8.2, repeatDelay: 2.5 },
 ];
 
-// 6 Interactive Navy & Gold Nodes + Anchored Card Direction
-const TREE_NODES = [
-  { id: 0, xPct: 19, yPct: 68, delay: 0.8, side: "left" as const, vPos: "bottom" as const },
-  { id: 1, xPct: 16, yPct: 37, delay: 0.86, side: "left" as const, vPos: "middle" as const },
-  { id: 2, xPct: 30, yPct: 16, delay: 0.92, side: "left" as const, vPos: "top" as const },
-  { id: 3, xPct: 50, yPct: 8, delay: 0.98, side: "right" as const, vPos: "top" as const },
-  { id: 4, xPct: 70, yPct: 14, delay: 1.04, side: "right" as const, vPos: "top" as const },
-  { id: 5, xPct: 74, yPct: 74, delay: 1.1, side: "right" as const, vPos: "bottom" as const },
+// Fallen leaves resting naturally on the ground around the base of the trunk
+const GROUND_LEAVES = [
+  { left: "30%", bottom: "6.2%", rotate: -18, scale: 1.0 },
+  { left: "33%", bottom: "5.0%", rotate: 34, scale: 1.1 },
+  { left: "36%", bottom: "6.8%", rotate: -28, scale: 0.95 },
+  { left: "39%", bottom: "4.9%", rotate: 16, scale: 1.05 },
+  { left: "42%", bottom: "6.5%", rotate: -42, scale: 0.9 },
+  { left: "45%", bottom: "4.7%", rotate: 25, scale: 0.96 },
+  { left: "48%", bottom: "6.0%", rotate: -14, scale: 0.88 },
+  { left: "53%", bottom: "6.3%", rotate: 28, scale: 0.95 },
+  { left: "56%", bottom: "4.8%", rotate: -36, scale: 1.08 },
+  { left: "59%", bottom: "6.7%", rotate: 19, scale: 0.92 },
+  { left: "62%", bottom: "5.2%", rotate: -22, scale: 1.04 },
+  { left: "65%", bottom: "6.4%", rotate: 41, scale: 0.92 },
+  { left: "68%", bottom: "5.4%", rotate: -15, scale: 0.86 },
+  { left: "71%", bottom: "6.6%", rotate: 30, scale: 0.94 },
 ];
 
-const SPARKLE_PARTICLES = [
-  { left: "24%", top: "28%", size: 5, dur: 3.2, delay: 0.2 },
-  { left: "74%", top: "32%", size: 6, dur: 3.8, delay: 0.8 },
-  { left: "42%", top: "22%", size: 4, dur: 2.9, delay: 1.1 },
-  { left: "62%", top: "54%", size: 5, dur: 3.5, delay: 0.5 },
-  { left: "28%", top: "55%", size: 4, dur: 4.0, delay: 1.4 },
+// Subtle fireflies floating near the tree in Dark Mode
+const NIGHT_FIREFLIES = [
+  { left: "26%", top: "34%", dx: 12, dy: -16, dur: 4.2, delay: 0.2 },
+  { left: "40%", top: "20%", dx: -14, dy: -12, dur: 4.8, delay: 0.9 },
+  { left: "56%", top: "26%", dx: 15, dy: -18, dur: 4.5, delay: 1.4 },
+  { left: "72%", top: "38%", dx: -12, dy: -14, dur: 5.1, delay: 0.6 },
+  { left: "34%", top: "52%", dx: 10, dy: -15, dur: 4.4, delay: 1.8 },
+  { left: "62%", top: "56%", dx: -15, dy: -12, dur: 4.9, delay: 1.1 },
 ];
 
 export default function WhyChooseUs() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [discovered, setDiscovered] = useState<number[]>([]);
-  const [replayKey, setReplayKey] = useState(0);
 
   const handleSelectNode = (index: number) => {
     setActiveIndex(index);
     setDiscovered((prev) => (prev.includes(index) ? prev : [...prev, index]));
   };
 
-  const handleReplay = () => {
-    setActiveIndex(null);
-    setHoveredIndex(null);
-    setDiscovered([]);
-    setReplayKey((k) => k + 1);
-  };
-
   const totalItems = WHY_CHOOSE_US.length;
   const activeItem = activeIndex !== null ? WHY_CHOOSE_US[activeIndex] : null;
   const ActiveIcon = activeItem ? ICON_MAP[activeItem.icon] || Award : Award;
   const activeNodeMeta =
-    activeIndex !== null ? TREE_NODES[activeIndex % TREE_NODES.length] : null;
+    activeIndex !== null ? BRANCH_NODES[activeIndex % BRANCH_NODES.length] : null;
   const activeBgImage =
     activeIndex !== null
       ? (activeItem as { image?: string })?.image ||
@@ -136,193 +116,160 @@ export default function WhyChooseUs() {
             </div>
           </div>
 
-          {/* Right Column - Large Advanced 3D Golden Bar Tree */}
+          {/* Right Column - Real Cloudy Sun Sky (Light) & Real Moon Star Sky (Dark) */}
           <div className={styles.right}>
-            <div key={replayKey} className={styles.treeStage}>
-              {/* Top Interactive Prompt Bar */}
-              <div className={styles.topPromptBar}>
-                <span className={styles.promptText}>
-                  <Sparkles size={14} className={styles.promptSpark} />
-                  {activeItem
-                    ? `${activeItem.title} (${discovered.length}/${totalItems})`
-                    : "Tap or hover any branch node to explore"}
-                </span>
-
-                <button
-                  type="button"
-                  onClick={handleReplay}
-                  title="Replay Tree Growth"
-                  className={styles.replayBtn}
-                >
-                  <RotateCcw size={14} />
-                </button>
-              </div>
-
-              {/* Large Interactive Tree Canvas */}
+            <div className={styles.treeStage}>
               <div className={styles.treeCanvas}>
-                {/* Ambient Radial Aura */}
-                <div className={styles.treeAura} />
+                {/* =========================================================
+                    REAL SKY PHOTO LAYER (Seamless Radial Edge-Fade Blend)
+                   ========================================================= */}
+                <div className={styles.skyPhotoWrap} aria-hidden="true">
+                  {/* Light Mode: Real Cloudy Sun Sky */}
+                  <img
+                    src="/images/why-choose-us/day-sky.jpeg"
+                    alt=""
+                    className={`${styles.skyPhotoImg} ${styles.daySkyPhoto}`}
+                  />
 
-                {/* Floating Golden Particles */}
-                {SPARKLE_PARTICLES.map((p, idx) => (
+                  {/* Dark Mode: Real Moon & Starry Night Sky */}
+                  <img
+                    src="/images/why-choose-us/night-sky.jpeg"
+                    alt=""
+                    className={`${styles.skyPhotoImg} ${styles.nightSkyPhoto}`}
+                  />
+                </div>
+
+                {/* Subtle Nighttime Fireflies (Dark Mode only) */}
+                <div className={styles.firefliesLayer} aria-hidden="true">
+                  {NIGHT_FIREFLIES.map((ff, idx) => (
+                    <motion.span
+                      key={`firefly-${idx}`}
+                      className={styles.fireflyDot}
+                      style={{ left: ff.left, top: ff.top }}
+                      animate={{
+                        x: [0, ff.dx, -ff.dx * 0.5, 0],
+                        y: [0, ff.dy, ff.dy * 0.4, 0],
+                        opacity: [0.15, 0.9, 0.3, 0.9, 0.15],
+                        scale: [0.8, 1.3, 0.9, 1.25, 0.8],
+                      }}
+                      transition={{
+                        duration: ff.dur,
+                        delay: ff.delay,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  ))}
+                </div>
+
+                {/* Stage 1: Bare Trunk Grows First, Then Auto-Hides Once Full Tree Appears */}
+                <motion.img
+                  src="/images/why-choose-us/tree-trunk.jpeg"
+                  alt="Growing Tree Trunk"
+                  className={`${styles.treeLayerImg} ${styles.trunkLayer}`}
+                  initial={{ scaleY: 0.08, scaleX: 0.55, opacity: 0 }}
+                  whileInView={{
+                    scaleY: [0.08, 1, 1],
+                    scaleX: [0.55, 1, 1],
+                    opacity: [0, 1, 0],
+                  }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{
+                    duration: 1.55,
+                    times: [0, 0.58, 1],
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  style={{ transformOrigin: "50% 92%" }}
+                />
+
+                {/* Stage 2: Full Thriving Tree (Natural Green in Both Modes, Moon-Shaded in Dark Mode) */}
+                <motion.img
+                  src="/images/why-choose-us/tree-full.jpeg"
+                  alt="Full Thriving Tree"
+                  className={`${styles.treeLayerImg} ${styles.canopyLayer}`}
+                  initial={{ scale: 0.78, opacity: 0, filter: "blur(5px)" }}
+                  whileInView={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{
+                    delay: 0.65,
+                    duration: 0.85,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  style={{ transformOrigin: "50% 82%" }}
+                />
+
+                {/* Dark Mode Cast Night Shadow Grounding the Tree */}
+                <div className={styles.nightTreeCastShadow} aria-hidden="true" />
+
+                {/* =========================================================
+                    Swaying Leaves Fluttering All the Way Down Until Landing on Ground
+                   ========================================================= */}
+                {FALLING_TO_GROUND_LEAVES.map((leaf, idx) => (
                   <motion.span
-                    key={idx}
-                    className={styles.goldParticle}
+                    key={`flutter-leaf-${idx}`}
+                    className={styles.flutteringLeaf}
                     style={{
-                      left: p.left,
-                      top: p.top,
-                      width: p.size,
-                      height: p.size,
+                      left: leaf.startX,
+                      top: leaf.startY,
+                      width: leaf.size,
+                      height: leaf.size * 0.58,
                     }}
+                    initial={{ opacity: 0, x: 0, y: 0, rotate: 0 }}
                     animate={{
-                      y: [0, -14, 0],
-                      opacity: [0.25, 0.95, 0.25],
-                      scale: [0.85, 1.25, 0.85],
+                      opacity: [0, 0.95, 0.95, 0.95, 0.9, 0],
+                      x: [
+                        0,
+                        leaf.sway,
+                        -leaf.sway * 0.85,
+                        leaf.sway * 0.75,
+                        -leaf.sway * 0.4,
+                        leaf.sway * 0.2,
+                      ],
+                      y: [
+                        0,
+                        leaf.dropY * 0.24,
+                        leaf.dropY * 0.52,
+                        leaf.dropY * 0.78,
+                        leaf.dropY,
+                        leaf.dropY,
+                      ],
+                      rotate: [0, 42, -38, 32, -18, 12],
                     }}
                     transition={{
-                      duration: p.dur,
-                      delay: p.delay,
+                      delay: leaf.delay,
+                      duration: leaf.dur,
+                      times: [0, 0.22, 0.48, 0.72, 0.88, 1],
                       repeat: Infinity,
+                      repeatDelay: leaf.repeatDelay,
                       ease: "easeInOut",
                     }}
                   />
                 ))}
 
-                {/* Pure-Code 3D Golden Bar Tree SVG */}
-                <svg
-                  viewBox="0 0 600 450"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className={styles.treeSvg}
+                {/* Ground Fallen Leaves */}
+                <motion.div
+                  className={styles.groundLeavesGroup}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 1.35, duration: 0.9 }}
                 >
-                  <defs>
-                    <linearGradient
-                      id="sledmcGold3D"
-                      x1="0"
-                      y1="0"
-                      x2="0"
-                      y2="1"
-                    >
-                      <stop offset="0%" stopColor="#f5c443" />
-                      <stop offset="50%" stopColor="#d99b26" />
-                      <stop offset="100%" stopColor="#a87010" />
-                    </linearGradient>
+                  {GROUND_LEAVES.map((gl, idx) => (
+                    <span
+                      key={`ground-leaf-${idx}`}
+                      className={styles.groundLeaf}
+                      style={{
+                        left: gl.left,
+                        bottom: gl.bottom,
+                        transform: `rotate(${gl.rotate}deg) scale(${gl.scale})`,
+                      }}
+                    />
+                  ))}
+                </motion.div>
 
-                    <linearGradient
-                      id="sledmcGoldLit"
-                      x1="0"
-                      y1="0"
-                      x2="1"
-                      y2="0"
-                    >
-                      <stop offset="0%" stopColor="#fde047" />
-                      <stop offset="50%" stopColor="#f59e0b" />
-                      <stop offset="100%" stopColor="#fde047" />
-                    </linearGradient>
-
-                    <radialGradient id="pedestalGlow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="rgba(217, 155, 38, 0.35)" />
-                      <stop offset="65%" stopColor="rgba(0, 34, 102, 0.12)" />
-                      <stop offset="100%" stopColor="rgba(0, 34, 102, 0)" />
-                    </radialGradient>
-
-                    <filter
-                      id="barDepthShadow"
-                      x="-20%"
-                      y="-20%"
-                      width="140%"
-                      height="160%"
-                    >
-                      <feDropShadow
-                        dx="0"
-                        dy="5"
-                        stdDeviation="3.5"
-                        floodColor="#061433"
-                        floodOpacity="0.22"
-                      />
-                    </filter>
-                  </defs>
-
-                  {/* Ground Pedestal Shadow */}
-                  <ellipse
-                    cx="300"
-                    cy="432"
-                    rx="115"
-                    ry="13"
-                    fill="url(#pedestalGlow)"
-                  />
-
-                  {/* Stacked Golden Trunk Bars */}
-                  <g filter="url(#barDepthShadow)">
-                    {TRUNK_BARS.map((bar, idx) => (
-                      <motion.rect
-                        key={`trunk-${idx}`}
-                        x={bar.x}
-                        y={bar.y}
-                        width={bar.w}
-                        height={bar.h}
-                        rx={6}
-                        fill="url(#sledmcGold3D)"
-                        initial={{ scaleX: 0, opacity: 0 }}
-                        whileInView={{ scaleX: 1, opacity: 1 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{
-                          delay: bar.delay,
-                          type: "spring",
-                          stiffness: 220,
-                          damping: 18,
-                        }}
-                        style={{
-                          transformOrigin: `${bar.x + bar.w / 2}px ${bar.y + bar.h / 2
-                            }px`,
-                        }}
-                      />
-                    ))}
-
-                    {/* Branching Golden Segments */}
-                    {BRANCH_SEGMENTS.map((seg, idx) => {
-                      const cx = seg.x + seg.w / 2;
-                      const cy = seg.y + seg.h / 2;
-                      const isBranchActive =
-                        activeIndex === seg.nodeId ||
-                        hoveredIndex === seg.nodeId;
-
-                      return (
-                        <g
-                          key={`branch-${idx}`}
-                          transform={`rotate(${seg.rotate} ${cx} ${cy})`}
-                        >
-                          <motion.rect
-                            x={seg.x}
-                            y={seg.y}
-                            width={seg.w}
-                            height={seg.h}
-                            rx={6}
-                            fill={
-                              isBranchActive
-                                ? "url(#sledmcGoldLit)"
-                                : "url(#sledmcGold3D)"
-                            }
-                            initial={{ scaleX: 0, opacity: 0 }}
-                            whileInView={{ scaleX: 1, opacity: 1 }}
-                            viewport={{ once: true, amount: 0.2 }}
-                            transition={{
-                              delay: seg.delay,
-                              type: "spring",
-                              stiffness: 210,
-                              damping: 18,
-                            }}
-                            style={{ transformOrigin: `${cx}px ${cy}px` }}
-                          />
-                        </g>
-                      );
-                    })}
-                  </g>
-                </svg>
-
-                {/* 6 Interactive Navy & Gold Circular Nodes */}
+                {/* Stage 3: 6 Interactive Branch Nodes */}
                 {WHY_CHOOSE_US.map((item, i) => {
-                  const pos = TREE_NODES[i % TREE_NODES.length];
+                  const pos = BRANCH_NODES[i % BRANCH_NODES.length];
                   const NodeIcon = ICON_MAP[item.icon] || Award;
                   const isActive = activeIndex === i;
                   const isDiscovered = discovered.includes(i);
@@ -332,11 +279,7 @@ export default function WhyChooseUs() {
                       key={item.title}
                       type="button"
                       aria-label={item.title}
-                      onMouseEnter={() => {
-                        setHoveredIndex(i);
-                        handleSelectNode(i);
-                      }}
-                      onMouseLeave={() => setHoveredIndex(null)}
+                      onMouseEnter={() => handleSelectNode(i)}
                       onClick={() => handleSelectNode(i)}
                       initial={{ scale: 0, opacity: 0 }}
                       whileInView={{ scale: 1, opacity: 1 }}
@@ -351,15 +294,15 @@ export default function WhyChooseUs() {
                         left: `${pos.xPct}%`,
                         top: `${pos.yPct}%`,
                       }}
-                      className={`${styles.treeNode} ${isActive ? styles.treeNodeActive : ""
-                        } ${isDiscovered ? styles.treeNodeDiscovered : ""}`}
+                      className={`${styles.branchNode} ${isActive ? styles.branchNodeActive : ""
+                        } ${isDiscovered ? styles.branchNodeVisited : ""}`}
                     >
                       <span className={styles.nodePulse} />
-                      <span className={styles.nodeOrbitRing} />
-                      <span className={styles.nodeCircle}>
-                        <NodeIcon size={24} strokeWidth={2} />
+                      <span className={styles.nodeGoldHalo} />
+                      <span className={styles.nodeRing}>
+                        <NodeIcon size={20} strokeWidth={2} />
                       </span>
-                      <span className={styles.nodeStepBadge}>0{i + 1}</span>
+                      <span className={styles.keyNumberTag}>0{i + 1}</span>
                     </motion.button>
                   );
                 })}
@@ -369,11 +312,11 @@ export default function WhyChooseUs() {
                   {activeItem && activeIndex !== null && activeNodeMeta && (
                     <motion.div
                       key={activeItem.title}
-                      initial={{ opacity: 0, scale: 0.9, y: 8 }}
+                      initial={{ opacity: 0, scale: 0.9, y: 10 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.92, y: -6 }}
+                      exit={{ opacity: 0, scale: 0.92, y: -8 }}
                       transition={{
-                        duration: 0.24,
+                        duration: 0.25,
                         ease: [0.16, 1, 0.3, 1],
                       }}
                       style={
@@ -387,9 +330,12 @@ export default function WhyChooseUs() {
                           : styles.cardOpenLeft
                         } ${activeNodeMeta.vPos === "bottom"
                           ? styles.cardAlignBottom
-                          : styles.cardAlignTop
+                          : activeNodeMeta.vPos === "middle"
+                            ? styles.cardAlignMiddle
+                            : styles.cardAlignTop
                         }`}
                     >
+                      {/* Close Button */}
                       <button
                         type="button"
                         aria-label="Close card"
@@ -399,9 +345,10 @@ export default function WhyChooseUs() {
                         }}
                         className={styles.closeCardBtn}
                       >
-                        <X size={14} />
+                        <X size={13} />
                       </button>
 
+                      {/* Background Image with Atmospheric Fade */}
                       <div className={styles.fullBgImageWrap}>
                         <img
                           src={activeBgImage}
@@ -412,6 +359,7 @@ export default function WhyChooseUs() {
 
                       <div className={styles.navyAtmosphericOverlay} />
 
+                      {/* Card Foreground Content */}
                       <div className={styles.cardContent}>
                         <div className={styles.cardHeader}>
                           <div className={styles.iconWrap}>
@@ -431,16 +379,16 @@ export default function WhyChooseUs() {
                 </AnimatePresence>
               </div>
 
-              {/* Bottom 6-Dot Interactive Selector Bar */}
-              <div className={styles.dotsBar}>
+              {/* Bottom 6-Dot Progress Indicator */}
+              <div className={styles.treeDots}>
                 {WHY_CHOOSE_US.map((item, i) => (
                   <button
                     key={item.title}
                     type="button"
-                    aria-label={`View ${item.title}`}
+                    aria-label={`Select ${item.title}`}
                     onClick={() => handleSelectNode(i)}
-                    className={`${styles.dotPill} ${activeIndex === i ? styles.dotPillActive : ""
-                      } ${discovered.includes(i) ? styles.dotPillVisited : ""}`}
+                    className={`${styles.dotItem} ${activeIndex === i ? styles.dotItemActive : ""
+                      } ${discovered.includes(i) ? styles.dotItemVisited : ""}`}
                   />
                 ))}
               </div>

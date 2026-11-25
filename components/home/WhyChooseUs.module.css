@@ -1,14 +1,14 @@
 .section {
   background: var(--section-dark-bg, #eef1f6);
-  padding: 100px 0;
+  padding: 120px 0 100px;
   border-bottom: 1px solid var(--border-color);
   overflow-x: clip;
 }
 
 .inner {
   display: grid;
-  grid-template-columns: minmax(0, 4.2fr) minmax(0, 7.8fr);
-  gap: 40px;
+  grid-template-columns: minmax(0, 4.5fr) minmax(0, 7.5fr);
+  gap: 48px;
   align-items: center;
 }
 
@@ -36,13 +36,14 @@
 }
 
 /* =========================================================
-   Right Column: Large Interactive 3D Golden Bar Tree
+   Right Column: Tree Stage & Seamless Real Sky Backdrop
    ========================================================= */
 .right {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 12px;
 }
 
 .treeStage {
@@ -54,105 +55,139 @@
   justify-content: center;
 }
 
-/* Top Interactive Prompt Bar */
-.topPromptBar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 7px 14px 7px 18px;
-  margin-bottom: 10px;
-  border-radius: 9999px;
-  background: rgba(0, 34, 102, 0.06);
-  border: 1px solid rgba(0, 34, 102, 0.12);
-}
-
-.promptText {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: #001845;
-}
-
-.promptSpark {
-  color: #d99b26;
-  flex-shrink: 0;
-}
-
-.replayBtn {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 34, 102, 0.16);
-  background: #ffffff;
-  color: #002266;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 3px 10px rgba(0, 24, 69, 0.08);
-  transition: all 0.25s ease;
-}
-
-.replayBtn:hover {
-  background: #d99b26;
-  color: #001845;
-  border-color: #d99b26;
-  transform: rotate(-140deg);
-}
-
-/* Larger Tree Canvas */
 .treeCanvas {
   position: relative;
   width: 100%;
-  max-width: 680px;
-  aspect-ratio: 600 / 450;
+  max-width: 640px;
+  aspect-ratio: 4 / 3;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.treeAura {
+/* =========================================================
+   SEAMLESS SKY PHOTO LAYER (Positioned Higher Above the Tree)
+   ========================================================= */
+.skyPhotoWrap {
   position: absolute;
-  inset: 8%;
-  border-radius: 50%;
-  background: radial-gradient(circle,
-      rgba(217, 155, 38, 0.14) 0%,
-      rgba(0, 34, 102, 0.04) 55%,
-      transparent 75%);
+  top: -28%;
+  left: -16%;
+  right: -16%;
+  bottom: 24%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  -webkit-mask-image: radial-gradient(ellipse 58% 54% at 52% 44%,
+      rgba(0, 0, 0, 0.98) 22%,
+      rgba(0, 0, 0, 0.62) 48%,
+      rgba(0, 0, 0, 0.16) 66%,
+      transparent 80%);
+  mask-image: radial-gradient(ellipse 58% 54% at 52% 44%,
+      rgba(0, 0, 0, 0.98) 22%,
+      rgba(0, 0, 0, 0.62) 48%,
+      rgba(0, 0, 0, 0.16) 66%,
+      transparent 80%);
+}
+
+/* Secondary edge-dissolve vignette matching exact page background color */
+.skyPhotoWrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 56% at 52% 44%,
+      transparent 28%,
+      color-mix(in srgb, var(--section-dark-bg, #eef1f6) 52%, transparent) 56%,
+      var(--section-dark-bg, #eef1f6) 80%);
+}
+
+.skyPhotoImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 56% 18%;
+  user-select: none;
   pointer-events: none;
 }
 
-.goldParticle {
-  position: absolute;
-  border-radius: 50%;
-  background: #eab308;
-  box-shadow: 0 0 10px rgba(234, 179, 8, 0.85);
+/* Light Mode: Show Real Cloudy Sun Sky seamlessly */
+.daySkyPhoto {
+  display: block;
+  opacity: 0.85;
+  filter: contrast(0.96) brightness(1.04);
+}
+
+.nightSkyPhoto {
+  display: none;
+}
+
+/* Nighttime Fireflies & Shadow (Hidden in Light Mode) */
+.firefliesLayer,
+.nightTreeCastShadow {
+  display: none;
   pointer-events: none;
+}
+
+.treeLayerImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: multiply;
+}
+
+.trunkLayer {
+  z-index: 1;
+}
+
+.canopyLayer {
   z-index: 2;
 }
 
-.treeSvg {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  height: 100%;
-  display: block;
-  overflow: visible;
+/* =========================================================
+   Swaying Leaves Fluttering All the Way to the Ground
+   ========================================================= */
+.flutteringLeaf {
+  position: absolute;
+  z-index: 7;
+  border-radius: 100% 0 100% 0;
+  background: linear-gradient(135deg, #6ab04c 0%, #3b781e 100%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
+  pointer-events: none;
+}
+
+/* Ground Fallen Leaves */
+.groundLeavesGroup {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.groundLeaf {
+  position: absolute;
+  width: 13px;
+  height: 7.5px;
+  border-radius: 100% 0 100% 0;
+  background: linear-gradient(135deg, #62a642 0%, #2d6115 100%);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.24);
 }
 
 /* =========================================================
-   6 Large Navy Blue & Gold Circular Nodes
+   6 Interactive Branch Nodes
    ========================================================= */
-.treeNode {
+.branchNode {
   position: absolute;
   transform: translate(-50%, -50%);
   z-index: 12;
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   border: none;
   background: transparent;
@@ -165,25 +200,26 @@
   justify-content: center;
 }
 
-.treeNodeActive {
+.branchNodeActive {
   z-index: 30;
 }
 
-.nodeCircle {
+.nodeRing {
   position: relative;
   z-index: 3;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #12439e 0%, #05183d 100%);
-  border: 3.5px solid #d99b26;
+  background: radial-gradient(circle at 35% 30%, #0b3482 0%, #001845 100%);
+  border: 3px solid #d99b26;
   color: #ffd166;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow:
-    0 12px 24px rgba(5, 24, 61, 0.38),
-    inset 0 1.5px 2px rgba(255, 255, 255, 0.35);
+    0 8px 20px rgba(0, 18, 56, 0.44),
+    0 0 14px rgba(217, 155, 38, 0.35),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
   transition:
     transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     background 0.25s ease,
@@ -191,31 +227,31 @@
     box-shadow 0.25s ease;
 }
 
-.treeNode:hover .nodeCircle,
-.treeNodeActive .nodeCircle {
+.branchNode:hover .nodeRing,
+.branchNodeActive .nodeRing {
   transform: scale(1.16);
-  background: linear-gradient(145deg, #facc15 0%, #ca8a04 100%);
+  background: linear-gradient(145deg, #facc15 0%, #c88c1b 100%);
   border-color: #ffffff;
   color: #001845;
   box-shadow:
-    0 0 0 7px rgba(217, 155, 38, 0.3),
-    0 14px 28px rgba(5, 24, 61, 0.45);
+    0 0 0 7px rgba(234, 179, 8, 0.35),
+    0 12px 26px rgba(0, 18, 56, 0.48);
 }
 
-.treeNodeDiscovered:not(.treeNodeActive) .nodeCircle {
+.branchNodeVisited:not(.branchNodeActive) .nodeRing {
   border-color: #fde047;
 }
 
-.nodeOrbitRing {
+.nodeGoldHalo {
   position: absolute;
-  inset: -5px;
+  inset: -4px;
   border-radius: 50%;
-  border: 1.5px dashed rgba(217, 155, 38, 0.55);
+  border: 1.5px dashed rgba(255, 209, 102, 0.7);
   pointer-events: none;
-  animation: orbitSpin 12s linear infinite;
+  animation: haloRotate 14s linear infinite;
 }
 
-@keyframes orbitSpin {
+@keyframes haloRotate {
   from {
     transform: rotate(0deg);
   }
@@ -231,54 +267,54 @@
   border-radius: 50%;
   border: 2px solid #eab308;
   pointer-events: none;
-  animation: nodeRadar 2.2s infinite ease-out;
+  animation: branchPulse 2.2s infinite ease-out;
 }
 
-.treeNodeDiscovered .nodePulse {
+.branchNodeVisited .nodePulse {
   animation: none;
   opacity: 0;
 }
 
-@keyframes nodeRadar {
+@keyframes branchPulse {
   0% {
     transform: scale(0.95);
-    opacity: 0.9;
+    opacity: 0.85;
   }
 
   100% {
-    transform: scale(1.58);
+    transform: scale(1.55);
     opacity: 0;
   }
 }
 
-.nodeStepBadge {
+.keyNumberTag {
   position: absolute;
-  bottom: -6px;
-  right: -4px;
+  bottom: -5px;
+  right: -3px;
   z-index: 4;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 800;
-  padding: 2px 6px;
+  padding: 2px 5px;
   border-radius: 9999px;
   background: #d99b26;
   color: #001845;
   border: 1.5px solid #ffffff;
   line-height: 1;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-.treeNodeActive .nodeStepBadge {
+.branchNodeActive .keyNumberTag {
   background: #001845;
   color: #ffd166;
 }
 
 /* =========================================================
-   Node-Anchored Card Popover (Clean 3-4px Gap Outside Active Icon)
+   Node-Anchored Card Popover (Clean 4px Gap Outside Active Icon)
    ========================================================= */
 .anchoredCard {
   position: absolute;
-  z-index: 40;
-  width: 375px;
+  z-index: 45;
+  width: 380px;
   max-width: calc(100vw - 32px);
   min-height: 185px;
   border-radius: 16px;
@@ -287,15 +323,13 @@
   flex-direction: column;
   justify-content: center;
   background: linear-gradient(155deg, #001845 0%, #002b7a 52%, #0047b3 100%);
-  border: 1.5px solid rgba(255, 209, 102, 0.75);
+  border: 1.5px solid rgba(255, 209, 102, 0.78);
   box-shadow:
     0 22px 44px -8px rgba(0, 20, 64, 0.52),
-    0 6px 16px -4px rgba(0, 20, 64, 0.3);
+    0 0 22px rgba(217, 155, 38, 0.22);
   user-select: none;
 }
 
-/* Desktop Horizontal Placement:
-   64px circle radius (32px) + 1.16x active scale (~5px) + 4px clean gap = 42px */
 .cardOpenRight {
   left: calc(var(--node-x) + 42px);
 }
@@ -304,41 +338,44 @@
   right: calc(100% - var(--node-x) + 42px);
 }
 
-/* Desktop Vertical Alignment */
 .cardAlignTop {
-  top: clamp(4%, calc(var(--node-y) - 10%), 46%);
+  top: clamp(4%, calc(var(--node-y) - 8%), 44%);
+}
+
+.cardAlignMiddle {
+  top: clamp(18%, calc(var(--node-y) - 16%), 46%);
 }
 
 .cardAlignBottom {
-  bottom: clamp(4%, calc(100% - var(--node-y) - 14%), 36%);
+  bottom: clamp(4%, calc(100% - var(--node-y) - 12%), 36%);
 }
 
 .closeCardBtn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 10;
-  width: 24px;
-  height: 24px;
+  top: 9px;
+  right: 9px;
+  z-index: 12;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  background: rgba(0, 18, 56, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 18, 56, 0.68);
   color: #ffffff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   backdrop-filter: blur(4px);
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .closeCardBtn:hover {
   background: #d99b26;
   color: #001845;
   border-color: #d99b26;
+  transform: scale(1.08);
 }
 
-/* Card Background Image & Atmospheric Blend */
 .fullBgImageWrap {
   position: absolute;
   inset: 0;
@@ -417,61 +454,127 @@
   font-size: 0.88rem;
   font-weight: 450;
   color: #ffffff;
-  line-height: 1.52;
+  line-height: 1.5;
   margin: 0;
   max-width: 66%;
   text-align: left;
   text-shadow: 0 2px 8px rgba(0, 10, 35, 0.95);
 }
 
-/* Bottom 6-Dot Indicator Pill Bar */
-.dotsBar {
+/* Bottom 6 Dots under the Tree */
+.treeDots {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  margin-top: 8px;
+  gap: 8px;
+  margin-top: 6px;
 }
 
-.dotPill {
-  width: 9px;
-  height: 9px;
+.dotItem {
+  width: 8px;
+  height: 8px;
   border-radius: 9999px;
   border: none;
   padding: 0;
-  background: rgba(15, 23, 42, 0.22);
+  background: rgba(0, 34, 102, 0.22);
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
-.dotPillVisited {
+.dotItemVisited {
   background: rgba(217, 155, 38, 0.7);
 }
 
-.dotPillActive {
-  width: 26px;
+.dotItemActive {
+  width: 22px;
   background: #002266;
 }
 
 /* =========================================================
-   DARK MODE OVERRIDES -> hsl(217, 40%, 14%) / #152032
+   DARK MODE: SEAMLESS STARRY NIGHT SKY + MOON-SHADED GREEN TREE
    ========================================================= */
-:global(.dark) .topPromptBar,
-:global([data-theme="dark"]) .topPromptBar {
-  background: hsla(217, 40%, 14%, 0.75);
-  border-color: rgba(217, 155, 38, 0.3);
+:global(.dark) .daySkyPhoto,
+:global([data-theme="dark"]) .daySkyPhoto {
+  display: none;
 }
 
-:global(.dark) .promptText,
-:global([data-theme="dark"]) .promptText {
-  color: #f1f5f9;
+:global(.dark) .nightSkyPhoto,
+:global([data-theme="dark"]) .nightSkyPhoto {
+  display: block;
+  opacity: 0.94;
+  mix-blend-mode: lighten;
+  filter: contrast(1.08) brightness(0.96);
 }
 
-:global(.dark) .replayBtn,
-:global([data-theme="dark"]) .replayBtn {
-  background: hsl(217, 40%, 14%);
-  color: #ffd166;
-  border-color: rgba(217, 155, 38, 0.35);
+/* Dark Mode Edge-Dissolve Vignette matching exact Dark Theme Background */
+:global(.dark) .skyPhotoWrap::after,
+:global([data-theme="dark"]) .skyPhotoWrap::after {
+  background: radial-gradient(ellipse 60% 56% at 52% 44%,
+      transparent 28%,
+      hsla(217, 40%, 14%, 0.54) 56%,
+      hsl(217, 40%, 14%) 80%);
+}
+
+:global(.dark) .firefliesLayer,
+:global([data-theme="dark"]) .firefliesLayer {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+}
+
+.fireflyDot {
+  position: absolute;
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
+  background: #fef08a;
+  box-shadow:
+    0 0 8px 2px #facc15,
+    0 0 14px 4px rgba(217, 155, 38, 0.55);
+}
+
+:global(.dark) .treeLayerImg,
+:global([data-theme="dark"]) .treeLayerImg {
+  mix-blend-mode: normal;
+}
+
+/* Dark Night-Shaded Trunk */
+:global(.dark) .trunkLayer,
+:global([data-theme="dark"]) .trunkLayer {
+  filter: brightness(0.58) contrast(1.28) saturate(0.8) drop-shadow(-14px 16px 26px rgba(0, 0, 0, 0.85));
+}
+
+/* Tree Leaves STAY NATURAL GREEN, Shaded by Nighttime Moonlight Shadow */
+:global(.dark) .canopyLayer,
+:global([data-theme="dark"]) .canopyLayer {
+  filter: brightness(0.62) contrast(1.26) saturate(0.95) drop-shadow(-16px 18px 28px rgba(0, 0, 0, 0.88)) drop-shadow(6px -4px 14px rgba(186, 230, 253, 0.2));
+}
+
+/* Dark Night Cast Shadow Beneath the Tree */
+:global(.dark) .nightTreeCastShadow,
+:global([data-theme="dark"]) .nightTreeCastShadow {
+  display: block;
+  position: absolute;
+  bottom: 4%;
+  left: 34%;
+  width: 44%;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center,
+      rgba(2, 6, 23, 0.8) 0%,
+      rgba(2, 6, 23, 0.35) 55%,
+      transparent 80%);
+  z-index: 1;
+}
+
+/* Falling & Ground Leaves Stay Deep Night-Green in Dark Mode */
+:global(.dark) .flutteringLeaf,
+:global([data-theme="dark"]) .flutteringLeaf,
+:global(.dark) .groundLeaf,
+:global([data-theme="dark"]) .groundLeaf {
+  background: linear-gradient(135deg, #3b7a24 0%, #1c420e 100%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
 }
 
 :global(.dark) .anchoredCard,
@@ -492,18 +595,18 @@
       transparent 78%);
 }
 
-:global(.dark) .dotPill,
-:global([data-theme="dark"]) .dotPill {
-  background: rgba(255, 255, 255, 0.22);
+:global(.dark) .dotItem,
+:global([data-theme="dark"]) .dotItem {
+  background: rgba(255, 255, 255, 0.2);
 }
 
-:global(.dark) .dotPillActive,
-:global([data-theme="dark"]) .dotPillActive {
+:global(.dark) .dotItemActive,
+:global([data-theme="dark"]) .dotItemActive {
   background: #d99b26;
 }
 
 /* =========================================================
-   Responsive Breakpoints (Mobile Anchors Card Cleanly Next to Node)
+   Responsive Breakpoints (Mobile Anchors Card Above/Below Icon)
    ========================================================= */
 @media (max-width: 1150px) {
   .inner {
@@ -518,26 +621,16 @@
 }
 
 @media (max-width: 767px) {
-  .treeCanvas {
-    max-width: 100%;
+  .branchNode {
+    width: 44px;
+    height: 44px;
   }
 
-  .treeNode {
-    width: 46px;
-    height: 46px;
+  .nodeRing svg {
+    width: 17px;
+    height: 17px;
   }
 
-  .nodeCircle svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .nodeStepBadge {
-    font-size: 0.56rem;
-    padding: 1.5px 5px;
-  }
-
-  /* Mobile: Opens cleanly 3px-4px below or above the active icon without touching it */
   .anchoredCard,
   .cardOpenRight,
   .cardOpenLeft {
@@ -545,17 +638,18 @@
     right: auto;
     transform: translateX(-50%) !important;
     width: 94%;
-    max-width: 350px;
-    min-height: 165px;
+    max-width: 345px;
+    min-height: 170px;
   }
 
-  .cardAlignTop {
-    top: calc(var(--node-y) + 31px);
+  .cardAlignTop,
+  .cardAlignMiddle {
+    top: calc(var(--node-y) + 29px);
     bottom: auto;
   }
 
   .cardAlignBottom {
-    bottom: calc(100% - var(--node-y) + 31px);
+    bottom: calc(100% - var(--node-y) + 29px);
     top: auto;
   }
 
@@ -569,12 +663,12 @@
   }
 
   .itemTitle {
-    font-size: 0.98rem;
+    font-size: 0.96rem;
   }
 
   .itemDesc {
     font-size: 0.82rem;
-    line-height: 1.48;
+    line-height: 1.46;
     max-width: 72%;
   }
 }
