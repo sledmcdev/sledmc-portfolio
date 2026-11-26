@@ -33,17 +33,15 @@ const DEFAULT_CARD_IMAGES = [
   "/images/why-choose-us/long-term-partnerships.jpeg",
 ];
 
-// Branch node coordinates + card open direction
 const BRANCH_NODES = [
-  { id: 0, xPct: 27, yPct: 58, delay: 1.15, side: "left" as const, vPos: "bottom" as const },  // 01: Bottom-Left Arch Start
-  { id: 1, xPct: 23, yPct: 43, delay: 1.25, side: "left" as const, vPos: "middle" as const },  // 02: Mid-Left Arch
-  { id: 2, xPct: 33, yPct: 26, delay: 1.35, side: "left" as const, vPos: "top" as const },     // 03: Upper-Left Arch
-  { id: 3, xPct: 48, yPct: 19, delay: 1.45, side: "right" as const, vPos: "top" as const },    // 04: Top-Center Arch Peak
-  { id: 4, xPct: 62, yPct: 27, delay: 1.55, side: "right" as const, vPos: "top" as const },    // 05: Upper-Right Arch
-  { id: 5, xPct: 73, yPct: 44, delay: 1.65, side: "right" as const, vPos: "middle" as const }, // 06: Mid-Right Arch End
+  { id: 0, xPct: 48, yPct: 40, delay: 1.15, side: "right" as const, vPos: "middle" as const },
+  { id: 1, xPct: 23, yPct: 43, delay: 1.25, side: "left" as const, vPos: "middle" as const },
+  { id: 2, xPct: 33, yPct: 26, delay: 1.35, side: "left" as const, vPos: "top" as const },
+  { id: 3, xPct: 48, yPct: 19, delay: 1.45, side: "right" as const, vPos: "top" as const },
+  { id: 4, xPct: 62, yPct: 27, delay: 1.55, side: "right" as const, vPos: "top" as const },
+  { id: 5, xPct: 73, yPct: 44, delay: 1.65, side: "right" as const, vPos: "middle" as const },
 ];
 
-// Leaves detaching from the canopy, swaying side-to-side all the way until landing on the ground
 const FALLING_TO_GROUND_LEAVES = [
   { startX: "34%", startY: "32%", dropY: 228, sway: 22, size: 12, dur: 5.4, delay: 1.8, repeatDelay: 2.2 },
   { startX: "64%", startY: "28%", dropY: 245, sway: -25, size: 11, dur: 5.9, delay: 3.4, repeatDelay: 2.6 },
@@ -52,7 +50,6 @@ const FALLING_TO_GROUND_LEAVES = [
   { startX: "69%", startY: "48%", dropY: 170, sway: 20, size: 11, dur: 5.0, delay: 8.2, repeatDelay: 2.5 },
 ];
 
-// Fallen leaves resting naturally on the ground around the base of the trunk
 const GROUND_LEAVES = [
   { left: "30%", bottom: "6.2%", rotate: -18, scale: 1.0 },
   { left: "33%", bottom: "5.0%", rotate: 34, scale: 1.1 },
@@ -70,7 +67,6 @@ const GROUND_LEAVES = [
   { left: "71%", bottom: "6.6%", rotate: 30, scale: 0.94 },
 ];
 
-// Subtle fireflies floating near the tree in Dark Mode
 const NIGHT_FIREFLIES = [
   { left: "26%", top: "34%", dx: 12, dy: -16, dur: 4.2, delay: 0.2 },
   { left: "40%", top: "20%", dx: -14, dy: -12, dur: 4.8, delay: 0.9 },
@@ -97,14 +93,13 @@ export default function WhyChooseUs() {
   const activeBgImage =
     activeIndex !== null
       ? (activeItem as { image?: string })?.image ||
-      DEFAULT_CARD_IMAGES[activeIndex % totalItems]
+        DEFAULT_CARD_IMAGES[activeIndex % totalItems]
       : "";
 
   return (
     <section className={`section ${styles.section}`}>
       <div className="container">
         <div className={styles.inner}>
-          {/* Left Column */}
           <div className={styles.left}>
             <SectionHeader
               label={content.label}
@@ -116,22 +111,15 @@ export default function WhyChooseUs() {
             </div>
           </div>
 
-          {/* Right Column - Real Cloudy Sun Sky (Light) & Real Moon Star Sky (Dark) */}
           <div className={styles.right}>
             <div className={styles.treeStage}>
               <div className={styles.treeCanvas}>
-                {/* =========================================================
-                    REAL SKY PHOTO LAYER (Seamless Radial Edge-Fade Blend)
-                   ========================================================= */}
                 <div className={styles.skyPhotoWrap} aria-hidden="true">
-                  {/* Light Mode: Real Cloudy Sun Sky */}
                   <img
                     src="/images/why-choose-us/day-sky.jpeg"
                     alt=""
                     className={`${styles.skyPhotoImg} ${styles.daySkyPhoto}`}
                   />
-
-                  {/* Dark Mode: Real Moon & Starry Night Sky */}
                   <img
                     src="/images/why-choose-us/night-sky.jpeg"
                     alt=""
@@ -139,7 +127,6 @@ export default function WhyChooseUs() {
                   />
                 </div>
 
-                {/* Subtle Nighttime Fireflies (Dark Mode only) */}
                 <div className={styles.firefliesLayer} aria-hidden="true">
                   {NIGHT_FIREFLIES.map((ff, idx) => (
                     <motion.span
@@ -162,7 +149,6 @@ export default function WhyChooseUs() {
                   ))}
                 </div>
 
-                {/* Stage 1: Bare Trunk Grows First, Then Auto-Hides Once Full Tree Appears */}
                 <motion.img
                   src="/images/why-choose-us/tree-trunk.jpeg"
                   alt="Growing Tree Trunk"
@@ -182,7 +168,6 @@ export default function WhyChooseUs() {
                   style={{ transformOrigin: "50% 92%" }}
                 />
 
-                {/* Stage 2: Full Thriving Tree (Natural Green in Both Modes, Moon-Shaded in Dark Mode) */}
                 <motion.img
                   src="/images/why-choose-us/tree-full.jpeg"
                   alt="Full Thriving Tree"
@@ -198,12 +183,8 @@ export default function WhyChooseUs() {
                   style={{ transformOrigin: "50% 82%" }}
                 />
 
-                {/* Dark Mode Cast Night Shadow Grounding the Tree */}
                 <div className={styles.nightTreeCastShadow} aria-hidden="true" />
 
-                {/* =========================================================
-                    Swaying Leaves Fluttering All the Way Down Until Landing on Ground
-                   ========================================================= */}
                 {FALLING_TO_GROUND_LEAVES.map((leaf, idx) => (
                   <motion.span
                     key={`flutter-leaf-${idx}`}
@@ -246,7 +227,6 @@ export default function WhyChooseUs() {
                   />
                 ))}
 
-                {/* Ground Fallen Leaves */}
                 <motion.div
                   className={styles.groundLeavesGroup}
                   initial={{ opacity: 0 }}
@@ -267,7 +247,6 @@ export default function WhyChooseUs() {
                   ))}
                 </motion.div>
 
-                {/* Stage 3: 6 Interactive Branch Nodes */}
                 {WHY_CHOOSE_US.map((item, i) => {
                   const pos = BRANCH_NODES[i % BRANCH_NODES.length];
                   const NodeIcon = ICON_MAP[item.icon] || Award;
@@ -294,8 +273,9 @@ export default function WhyChooseUs() {
                         left: `${pos.xPct}%`,
                         top: `${pos.yPct}%`,
                       }}
-                      className={`${styles.branchNode} ${isActive ? styles.branchNodeActive : ""
-                        } ${isDiscovered ? styles.branchNodeVisited : ""}`}
+                      className={`${styles.branchNode} ${
+                        isActive ? styles.branchNodeActive : ""
+                      } ${isDiscovered ? styles.branchNodeVisited : ""}`}
                     >
                       <span className={styles.nodePulse} />
                       <span className={styles.nodeGoldHalo} />
@@ -307,7 +287,6 @@ export default function WhyChooseUs() {
                   );
                 })}
 
-                {/* Node-Anchored Card Popover */}
                 <AnimatePresence mode="wait">
                   {activeItem && activeIndex !== null && activeNodeMeta && (
                     <motion.div
@@ -325,17 +304,16 @@ export default function WhyChooseUs() {
                           "--node-y": `${activeNodeMeta.yPct}%`,
                         } as React.CSSProperties
                       }
-                      className={`${styles.anchoredCard} ${activeNodeMeta.side === "left"
+                      className={`${styles.anchoredCard} ${
+                        activeNodeMeta.side === "left"
                           ? styles.cardOpenRight
                           : styles.cardOpenLeft
-                        } ${activeNodeMeta.vPos === "bottom"
-                          ? styles.cardAlignBottom
-                          : activeNodeMeta.vPos === "middle"
-                            ? styles.cardAlignMiddle
-                            : styles.cardAlignTop
-                        }`}
+                      } ${
+                        activeNodeMeta.vPos === "middle"
+                          ? styles.cardAlignMiddle
+                          : styles.cardAlignTop
+                      }`}
                     >
-                      {/* Close Button */}
                       <button
                         type="button"
                         aria-label="Close card"
@@ -348,7 +326,6 @@ export default function WhyChooseUs() {
                         <X size={13} />
                       </button>
 
-                      {/* Background Image with Atmospheric Fade */}
                       <div className={styles.fullBgImageWrap}>
                         <img
                           src={activeBgImage}
@@ -359,7 +336,6 @@ export default function WhyChooseUs() {
 
                       <div className={styles.navyAtmosphericOverlay} />
 
-                      {/* Card Foreground Content */}
                       <div className={styles.cardContent}>
                         <div className={styles.cardHeader}>
                           <div className={styles.iconWrap}>
@@ -379,7 +355,6 @@ export default function WhyChooseUs() {
                 </AnimatePresence>
               </div>
 
-              {/* Bottom 6-Dot Progress Indicator */}
               <div className={styles.treeDots}>
                 {WHY_CHOOSE_US.map((item, i) => (
                   <button
@@ -387,8 +362,9 @@ export default function WhyChooseUs() {
                     type="button"
                     aria-label={`Select ${item.title}`}
                     onClick={() => handleSelectNode(i)}
-                    className={`${styles.dotItem} ${activeIndex === i ? styles.dotItemActive : ""
-                      } ${discovered.includes(i) ? styles.dotItemVisited : ""}`}
+                    className={`${styles.dotItem} ${
+                      activeIndex === i ? styles.dotItemActive : ""
+                    } ${discovered.includes(i) ? styles.dotItemVisited : ""}`}
                   />
                 ))}
               </div>
