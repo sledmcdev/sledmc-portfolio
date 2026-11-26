@@ -35,12 +35,12 @@ const DEFAULT_CARD_IMAGES = [
 
 // Branch node coordinates + card open direction
 const BRANCH_NODES = [
-  { id: 0, xPct: 33, yPct: 26, delay: 1.15, side: "left" as const, vPos: "top" as const },
-  { id: 1, xPct: 68, yPct: 24, delay: 1.25, side: "right" as const, vPos: "top" as const },
-  { id: 2, xPct: 44, yPct: 45, delay: 1.35, side: "left" as const, vPos: "middle" as const },
-  { id: 3, xPct: 63, yPct: 50, delay: 1.45, side: "right" as const, vPos: "middle" as const },
-  { id: 4, xPct: 33, yPct: 60, delay: 1.55, side: "left" as const, vPos: "bottom" as const },
-  { id: 5, xPct: 75, yPct: 61, delay: 1.65, side: "right" as const, vPos: "bottom" as const },
+  { id: 0, xPct: 27, yPct: 58, delay: 1.15, side: "left" as const, vPos: "bottom" as const },  // 01: Bottom-Left Arch Start
+  { id: 1, xPct: 23, yPct: 43, delay: 1.25, side: "left" as const, vPos: "middle" as const },  // 02: Mid-Left Arch
+  { id: 2, xPct: 33, yPct: 26, delay: 1.35, side: "left" as const, vPos: "top" as const },     // 03: Upper-Left Arch
+  { id: 3, xPct: 48, yPct: 19, delay: 1.45, side: "right" as const, vPos: "top" as const },    // 04: Top-Center Arch Peak
+  { id: 4, xPct: 62, yPct: 27, delay: 1.55, side: "right" as const, vPos: "top" as const },    // 05: Upper-Right Arch
+  { id: 5, xPct: 73, yPct: 44, delay: 1.65, side: "right" as const, vPos: "middle" as const }, // 06: Mid-Right Arch End
 ];
 
 // Leaves detaching from the canopy, swaying side-to-side all the way until landing on the ground
